@@ -36,11 +36,12 @@
 <div class="hidden md:block">
   <div id="testVanta" class="flex">
     <?php 
-      include('src/include/sideNav.php');
+      // include('src/include/sideNav.php');
      ?>
 
 
     <div id="slim-content" class="flex flex-col  w-full">
+
       <?php include('src/include/navbar.php') ?>
       <?php include ('src/include/header.php') ?>
       <div  class="flex flex-col ">
@@ -56,7 +57,7 @@
 </div>
 <!--desktop-->
   <div class="md:hidden">
-    
+
     <div class="flex flex-col  w-full">
       <?php include('src/include/navbar.php') ?>
       <?php include ('src/include/header.php') ?>
