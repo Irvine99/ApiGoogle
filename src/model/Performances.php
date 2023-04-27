@@ -18,9 +18,20 @@ class Performances {
 
     }
 
-    public function getClics(){
-        $data = new Data;
-        $result = $data->getData();
-        var_dump($result);
-    }
+    // public function getClics(){
+    //     $data = new Data;
+    //     $result = $data->getData();
+    //     $clicsArray = [];
+    //     foreach ($result as $key => $data) {
+    //         $perfo = new Performances;
+    //         $perfo->clics = $data->performances['clics'];
+    //         $clicsArray[] = $perfo->clics;
+    //     }
+    //     var_dump($clicsArray);
+    //     }
+        
+        
+            
+        
+    
 }

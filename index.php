@@ -10,6 +10,9 @@ if(isset($_GET['action']) && $_GET['action'] !== ''){
             case 'stan':
                 sideNavData();
                 break;
+            case 'info':
+                test();
+                break;
             
         } 
     }else{
