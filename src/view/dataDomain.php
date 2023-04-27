@@ -35,21 +35,18 @@
 <!--mobile-->
 <div class="hidden md:block">
   <div id="testVanta" class="flex">
-    <?php 
-      include('src/include/sideNav.php');
-     ?>
 
+    <?php include('src/include/sideNavData.php') ?>
 
     <div id="slim-content" class="flex flex-col  w-full">
       <?php include('src/include/navbar.php') ?>
       <?php include ('src/include/header.php') ?>
-      <div  class="flex flex-col ">
+      <div class="flex flex-col mt-10">
       <?php include ('src/include/card.php') ?>
-      <div class="flex ">
+<div class="flex gap-4">
         <?php include ('src/include/chartBar.php') ?>
-        <?php include ('src/include/chartLine.php') ?> 
-      </div>
-      <?php include ('src/include/tabs.php') ?> 
+      <?php include ('src/include/chartLine.php') ?>    
+</div> 
       </div>
     </div>
   </div>
@@ -62,8 +59,7 @@
       <?php include ('src/include/header.php') ?>
       <div class="flex flex-col mt-10">
       <?php include ('src/include/card.php') ?>
-      <?php include ('src/include/chartBar.php') ?>
-      <?php include ('src/include/chartLine.php') ?>     
+  
       </div>
     </div>
   </div>
