@@ -47,4 +47,22 @@ class PerformancesRepo extends Data {
         }
         return $newDates;
     }
+
+    public function getCliksByDate(){
+        $data = $this->data;
+        $clickbydate = array();
+        foreach ($data->performance as $key => $value) {
+            $clickbydate = new Performances;
+            
+            $clickbydate->date = $key;
+            $clickbydate->clicks = $value->clicks;
+            $clickbydate->clicks = $value->impressions;
+            $clickbydate->clicks = $value->ctr;
+            $clickbydate->clicks = $value->average_position;
+
+            $clicksbydates[] = $clickbydate;
+        }return $clicksbydates;
+
+    }
+
 }

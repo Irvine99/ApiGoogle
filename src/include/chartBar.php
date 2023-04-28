@@ -4,8 +4,27 @@
   <canvas
     data-te-chart="bar"
     data-te-dataset-label="<?= "Coucou"; ?>"
-    data-te-labels="['Ben', 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday' , 'Saturday' , 'Sunday ']"
-    data-te-dataset-data="[2112, 2343, 2545, 3423, 2365, 1985, 987]">
+    data-te-labels="[
+      <?php 
+      $count = count($clicksbydates);
+
+      foreach($clicksbydates as $key=>$value) {
+        echo "'".$value->date."'";
+        if($key !== $count - 1) {
+          echo ',';
+        }
+      } ?>
+      
+      ]"
+    data-te-dataset-data="[<?php 
+      $count = count($clicksbydates);
+
+      foreach($clicksbydates as $key=>$value) {
+        echo "'".$value->clicks."'";
+        if($key !== $count - 1) {
+          echo ',';
+        }
+      } ?>]">
   </canvas>
 </div>
 </div>

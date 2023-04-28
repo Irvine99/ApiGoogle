@@ -7,10 +7,9 @@ require_once 'src/model/Periodes.php';
 function test() {
 
     $result = new PerformancesRepo;
+    $dates = $result->getDate();    
+    $clicksbydates = $result->getCliksByDate();
 
-    $dates = $result->getDate();
-    
-    
     include('src/view/homePage.php');
 }
 
@@ -23,7 +22,7 @@ function getUniqueDates(){
     $result = new PerformancesRepo;
     $dates = $result->getDate();
     $data = $result->getUniqueDates();
-
+    $clicksbydates = $result->getCliksByDate();
     include('src/view/homePage.php');
 }
 
