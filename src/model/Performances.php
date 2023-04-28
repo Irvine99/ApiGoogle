@@ -1,37 +1,50 @@
 <?php
 
-require 'src/model/Data.php';
+require_once 'src/model/Data.php';
 
 class Performances {
-
-    public $clics;
-    public $impression;
+    public $clicks;
+    public $impressions;
     public $ctr;
-    public $position_moyenne;
+    public $position;
+    public $date;
+}
 
+class PerformancesRepo extends Data {
 
     public function __construct(){
-        $this->clics;
-        $this->impression;
-        $this->ctr;
-        $this->position_moyenne;
-
+        parent::__construct();
     }
 
-    // public function getClics(){
-    //     $data = new Data;
-    //     $result = $data->getData();
-    //     $clicsArray = [];
-    //     foreach ($result as $key => $data) {
-    //         $perfo = new Performances;
-    //         $perfo->clics = $data->performances['clics'];
-    //         $clicsArray[] = $perfo->clics;
-    //     }
-    //     var_dump($clicsArray);
-    //     }
+    public function getUniqueDates() {
+        if($_POST) {
+        $datePost = $_POST['Coucou'];
+       
+        $uniqueDates = array();
+        $result = $this->data;
         
         
+        $data = [];
+        foreach ($result->performance as $key => $value) {    
+                 if($key == $datePost) {
+                    $data = $value;
+                
+            }
             
-        
-    
+        }
+        return $data;
+
+    }}
+
+    public function getDate(){
+        $dates = $this->data;
+        $newDates = [];
+        foreach ($dates->performance as $key => $value) {
+            $newDate = new Performances;
+            $newDate  = $key;
+            $newDates[] = $newDate;
+            
+        }
+        return $newDates;
+    }
 }

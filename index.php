@@ -13,6 +13,9 @@ if(isset($_GET['action']) && $_GET['action'] !== ''){
             case 'info':
                 test();
                 break;
+            case 'getValue':
+                getUniqueDates();
+                break;
             
         } 
     }else{

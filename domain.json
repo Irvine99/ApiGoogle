@@ -1,98 +1,75 @@
-[
-    {
-       "periode": {
-          "debut": "2023-05-01",
-          "fin": "2023-05-30"
-       },
-       "performances": {
-          "clics": 1149,
-          "impressions": 20112,
-          "ctr": 5.71,
-          "position_moyenne": 3.9
-       },
-       "pages": [
-          {
-             "url": "https://exemple.com/page1",
-             "clics": 621,
-             "impressions": 9834,
-             "ctr": 6.32
-          },
-          {
-             "url": "https://exemple.com/page2",
-             "clics": 187,
-             "impressions": 3526,
-             "ctr": 5.30
-          },
-          {
-             "url": "https://exemple.com/page3",
-             "clics": 92,
-             "impressions": 1507,
-             "ctr": 6.10
-          }
-       ]
-    },
-    {
-       "periode": {
-          "debut": "2023-06-01",
-          "fin": "2023-06-30"
-       },
-       "performances": {
-          "clics": 1402,
-          "impressions": 27678,
-          "ctr": 5.07,
-          "position_moyenne": 2.7
-       },
-       "pages": [
-          {
-             "url": "https://exemple.com/page1",
-             "clics": 871,
-             "impressions": 16345,
-             "ctr": 5.32
-          },
-          {
-             "url": "https://exemple.com/page2",
-             "clics": 293,
-             "impressions": 5421,
-             "ctr": 5.40
-          },
-          {
-             "url": "https://exemple.com/page3",
-             "clics": 104,
-             "impressions": 1712,
-             "ctr": 6.07
-          }
-       ]
-    },
-    {
-       "periode": {
-          "debut": "2023-07-01",
-          "fin": "2023-07-30"
-       },
-       "performances": {
-          "clics": 1035,
-          "impressions": 18906,
-          "ctr": 5.47,
-          "position_moyenne": 4.2
-       },
-       "pages": [
-          {
-             "url": "https://exemple.com/page1",
-             "clics": 523,
-             "impressions": 9876,
-             "ctr": 5.30
-          },
-          {
-             "url": "https://exemple.com/page2",
-             "clics": 283,
-             "impressions": 4789,
-             "ctr": 5.91
-          },
-          {
-             "url": "https://exemple.com/page3",
-             "clics": 112,
-             "impressions": 1509,
-             "ctr": 7.43
-          }
-       ]
-    }
-]
+{
+   "performance": {
+     "Janvier22": {
+
+       "clicks": 2300,
+       "impressions": 55000,
+       "ctr": 0.0418,
+       "average_position": 3.8
+     },
+     "Fevrier22": {
+       "clicks": 2200,
+       "impressions": 50000,
+       "ctr": 0.0440,
+       "average_position": 4.1
+     },
+     "Mars22": {
+       "clicks": 2050,
+       "impressions": 45000,
+       "ctr": 0.0456,
+       "average_position": 4.3
+     },
+     "Avr22": {
+       "clicks": 2050,
+       "impressions": 45000,
+       "ctr": 0.0456,
+       "average_position": 4.3
+     },
+     "Mai22": {
+       "clicks": 2050,
+       "impressions": 45000,
+       "ctr": 0.0456,
+       "average_position": 4.3
+     },
+     "Juin22": {
+       "clicks": 2050,
+       "impressions": 45000,
+       "ctr": 0.0456,
+       "average_position": 4.3
+     },
+     "Jui22": {
+       "clicks": 2050,
+       "impressions": 45000,
+       "ctr": 0.0456,
+       "average_position": 4.3
+     },
+     "Aout22": {
+       "clicks": 2050,
+       "impressions": 45000,
+       "ctr": 0.0456,
+       "average_position": 4.3
+     },
+     "Septembre22": {
+       "clicks": 2050,
+       "impressions": 45000,
+       "ctr": 0.0456,
+       "average_position": 4.3
+     },
+     "Octobre22": {
+       "clicks": 2050,
+       "impressions": 45000,
+       "ctr": 0.0456,
+       "average_position": 4.3
+     },
+     "Novembre22": {
+       "clicks": 2050,
+       "impressions": 45000,
+       "ctr": 0.0456,
+       "average_position": 4.3
+     },
+     "Decembre22": {
+       "clicks": 2050,
+       "impressions": 45000,
+       "ctr": 0.0456,
+       "average_position": 4.3
+     }}}
