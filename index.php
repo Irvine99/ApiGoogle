@@ -16,6 +16,18 @@ if(isset($_GET['action']) && $_GET['action'] !== ''){
             case 'getValue':
                 getUniqueDates();
                 break;
+            case 'position':
+                getUniqueDates();
+                break;
+            case 'clics':
+                getUniqueDates();
+                break;
+            case 'impressions':
+                getUniqueDates();
+                break;
+            case 'ctr':
+                getUniqueDates();
+                break;
             
         } 
     }else{

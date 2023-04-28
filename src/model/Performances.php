@@ -56,9 +56,9 @@ class PerformancesRepo extends Data {
             
             $clickbydate->date = $key;
             $clickbydate->clicks = $value->clicks;
-            $clickbydate->clicks = $value->impressions;
-            $clickbydate->clicks = $value->ctr;
-            $clickbydate->clicks = $value->average_position;
+            $clickbydate->impressions = $value->impressions;
+            $clickbydate->ctr = $value->ctr;
+            $clickbydate->position = $value->average_position;
 
             $clicksbydates[] = $clickbydate;
         }return $clicksbydates;
