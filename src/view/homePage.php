@@ -45,6 +45,17 @@
       <?php include('src/include/navbar.php') ?>
       <?php include ('src/include/header.php') ?>
       <div  class="flex flex-col ">
+      
+      <div class="mx-10 w-[150px]">
+      <form action="index.php?action=getValue" method="POST">
+        <select name="Coucou" id="">
+            <?php foreach($dates as $date) { ?>
+            <option name="dateChoose" value="<?= $date ?>"><?= $date ?></option>
+            <?php } ?>
+        </select>
+        <button class="bg-blue-500 rounded-lg py-1 px-4 text-white hover:bg-blue-500/50 hover:transition ease-in-out duration-300 my-5" type="submit">Yo vas y envoie</button>
+      </form>
+      </div>
       <?php include ('src/include/card.php') ?>
       <div class="flex ">
         <?php include ('src/include/chartBar.php') ?>
