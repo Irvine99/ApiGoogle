@@ -112,6 +112,56 @@ function choiceData(){
     
 }
 
+function login(){
+    $userRepo = new UserRepository();
+    $user = $userRepo->getUserByEmailAndPseudo($_POST['email'],$_POST['your_name']);
+    if($user != []){
+        if(password_verify($_POST['pass'],$user->mdp)){
+            $_SESSION['id_role'] = $user->id_role;
+            $_SESSION['pseudo'] = $user->pseudo;
+            $_SESSION['actif'] = $user->actif;
+            $_SESSION['id_user'] = $user->id;
+            // $_SESSION['token'] = $user->token;
+            if( $_SESSION['actif'] == 0){
+            header('Location: ?action=activationform&token='.$user->token);
+            }elseif ( $_SESSION['actif'] == 1){
+            header('Location: ?action=home');
+            }
+            
+        }else{
+            echo 'info pas correct';
+            //header('Location: ?action=LoginForm');
+        }
+    }else{
+        //header('Location: ?action=LoginForm');
+    }
+} 
+
+
+
+function signUp(){
+    $userRepo = new UserRepository();
+    $user = new User();
+    if($user->createToSignin($_POST)){
+        // le user est créé sans attributs vide
+        $userTmpEmail = $userRepo->getUserByEmail($_POST['email']);
+        if($userTmpEmail == []){
+           
+                $user->mdp = password_hash($user->mdp, PASSWORD_BCRYPT);
+                $userRepo->insertUser($user);
+          
+            }   
+        }else{
+
+            echo 'email deja existant';
+            //header('Location: ?action=SignInForm');
+        }
+    }
+
+function signUpForm(){
+    require('src/view/inscription.php');
+}
+
 
 
 
