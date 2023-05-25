@@ -38,7 +38,7 @@ const header = {
 };
 
 const payload = {
-  iss: 'test-projet-api@projet-api-385606.iam.gserviceaccount.com',
+  iss: '',
   scope: 'https://www.googleapis.com/auth/webmasters.readonly',
   aud: 'https://oauth2.googleapis.com/token',
   exp: currentTime + 3600, // expiration d'une heure à partir de maintenant
@@ -52,7 +52,7 @@ const encodedPayload = base64UrlEncode(JSON.stringify(payload));
 // Concaténer les parties avec un point
 const jwt = encodedHeader + '.' + encodedPayload;
 
-const secretKey = '117622678553108254207';
+const secretKey = '';
 
 // Fonction de signature HMAC-SHA256
 function signWithHmacSha256(message, secret) {
