@@ -38,13 +38,13 @@ const header = {
 };
 
 const payload = {
-  iss: 'test-projet-api@projet-api-385606.iam.gserviceaccount.com',
+  iss: '',
   scope: 'https://www.googleapis.com/auth/webmasters.readonly',
   aud: 'https://oauth2.googleapis.com/token',
   exp: currentTime + 3600, // expiration d'une heure à partir de maintenant
   iat: currentTime // émis à l'heure actuelle
 };
-
+**
 // Convertir les parties en chaînes JSON
 const encodedHeader = base64UrlEncode(JSON.stringify(header));
 const encodedPayload = base64UrlEncode(JSON.stringify(payload));
@@ -90,12 +90,12 @@ signWithHmacSha256(jwt, secretKey)
 
 //     const json = {
 //       "web": {
-//         "client_id": "974654405852-8ki5cnk9pqmoklhc5ernac6h7frc8a9o.apps.googleusercontent.com",
-//         "project_id": "projet-api-385606",
+//         "client_id": "",
+//         "project_id": "",
 //         "auth_uri": "https://accounts.google.com/o/oauth2/auth",
 //         "token_uri": "https://oauth2.googleapis.com/token",
 //         "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-//         "client_secret": "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",
+//         "client_secret": "",
 //         "javascript_origins": [
 //           "http://localhost",
 //           "http://127.0.0.1:5500"
@@ -109,7 +109,7 @@ signWithHmacSha256(jwt, secretKey)
 //      */
 
 
-//     const siteUrl = "sc-domain:la-ronde-des-nutons.fr";
+//     const siteUrl = "";
 //     const startDate = "2020-06-06";
 //     const endDate = "2023-04-04";
     
@@ -155,7 +155,7 @@ signWithHmacSha256(jwt, secretKey)
 
     
   
-  // var YOUR_CLIENT_ID = '974654405852-8ki5cnk9pqmoklhc5ernac6h7frc8a9o.apps.googleusercontent.com';
+  // var YOUR_CLIENT_ID = '';
   // var YOUR_REDIRECT_URI = 'http://localhost';
   // var fragmentString = location.hash.substring(1);
 
@@ -208,7 +208,7 @@ signWithHmacSha256(jwt, secretKey)
   //   form.setAttribute('action', oauth2Endpoint);
 
   //   // Parameters to pass to OAuth 2.0 endpoint.
-  //   var params = {'client_id': '974654405852-8ki5cnk9pqmoklhc5ernac6h7frc8a9o.apps.googleusercontent.com',
+  //   var params = {'client_id': '',
   //                 'redirect_uri': 'http://localhost',
   //                 'scope': 'https://www.googleapis.com/auth/webmasters.readonly',
   //                 'state': 'try_sample_request',
@@ -246,12 +246,12 @@ signWithHmacSha256(jwt, secretKey)
 
   const json = {
     "web": {
-      "client_id": "974654405852-8ki5cnk9pqmoklhc5ernac6h7frc8a9o.apps.googleusercontent.com",
-      "project_id": "projet-api-385606",
+      "client_id": "",
+      "project_id": "",
       "auth_uri": "https://accounts.google.com/o/oauth2/auth",
       "token_uri": "https://oauth2.googleapis.com/token",
       "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-      "client_secret": "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",
+      "client_secret": "",
       "javascript_origins": [
         "http://localhost",
         "http://127.0.0.1:5500"
@@ -259,7 +259,7 @@ signWithHmacSha256(jwt, secretKey)
     }
   }
 
-  const siteUrl = "https://www.googleapis.com/webmasters/v3/sites/sc-domain:la-ronde-des-nutons.fr/searchAnalytics/query";
+  const siteUrl = "https://www.googleapis.com/webmasters/v3/sites/'url'/searchAnalytics/query";
   const startDate = "2020-06-06";
   const endDate = "2023-04-04";
 
