@@ -19,12 +19,12 @@
   <script>
     const json = {
       "web": {
-        "client_id": "974654405852-8ki5cnk9pqmoklhc5ernac6h7frc8a9o.apps.googleusercontent.com",
-        "project_id": "projet-api-385606",
+        "client_id": "",
+        "project_id": "",
         "auth_uri": "https://accounts.google.com/o/oauth2/auth",
         "token_uri": "https://oauth2.googleapis.com/token",
         "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-        "client_secret": "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",
+        "client_secret": "",
         "javascript_origins": [
           "http://localhost",
           "http://127.0.0.1:5500"
@@ -37,7 +37,7 @@
      * https://developers.google.com/explorer-help/code-samples#javascript
      */
 
-    const siteUrl = "sc-domain:la-ronde-des-nutons.fr";
+    const siteUrl = "";
     const startDate = "2020-06-06";
     const endDate = "2023-04-04";
 
