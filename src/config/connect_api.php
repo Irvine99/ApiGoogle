@@ -55,7 +55,7 @@ class ConnectApi {
         return $request;
     }
 
-    public function setDate(timestamp $startDate, timestamp $endDate)
+    public function setDate($startDate, $endDate)
     {
         if($_POST)
         {
@@ -69,6 +69,7 @@ class ConnectApi {
 
                     $request->setStartDate("$startDate");
                     $request->setEndDate("$endDate");
+                    var_dump($request);
                     return $request;
                 }
                 else

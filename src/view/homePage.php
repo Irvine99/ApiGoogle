@@ -51,13 +51,8 @@
 
                      <div class="mx-5 w-[150px] md:flex md:justify-center md:w-auto lg:grid lg:justify-start lg:w-[150px]">
                        <form action="index.php?action=getValue" method="POST">
-                         <input class="rounded my-2" type="date" id="date" </input>
-                         <input class="rounded" type="date" id="date" </input>
-                         <select name="Coucou" id="">
-                           <?php foreach ($dates as $date) { ?>
-                             <option name="dateChoose" value="<?= $date ?>"><?= $date  ?></option>
-                           <?php } ?>
-                         </select>
+                         <input name="startDate" class="rounded my-2" type="date" id="date"></input>
+                         <input name="endDate" class="rounded" type="date" id="date"></input>
                          <button class="bg-blue-500 rounded-lg py-1 px-4 text-white hover:bg-blue-500/50 hover:transition ease-in-out duration-300 my-5" type="submit">Yo vas y envoie</button>
                        </form>
                      </div>

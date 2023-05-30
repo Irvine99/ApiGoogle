@@ -1,5 +1,5 @@
 <?php
-
+require_once ('src/config/connect_api.php');
 require_once 'src/model/Data.php';
 
 class Performances {
@@ -15,6 +15,8 @@ class PerformancesRepo extends Data {
     public function __construct(){
         parent::__construct();
     }
+
+
 
     public function getUniqueDates() {
         if($_POST) {
@@ -36,15 +38,11 @@ class PerformancesRepo extends Data {
 
     }}
 
-    public function getDate(){
-        $dates = $this->data;
-        $newDates = [];
-        foreach ($dates->performance as $key => $value) {
-            $newDate = new Performances;
-            $newDate  = $key;
-            $newDates[] = $newDate;
-            
-        }
+    public function getDate()
+    {
+    
+        $newDates = new ConnectApi;
+        $newDates->setDate($_POST["startDate"], $_POST["endDate"]); 
         return $newDates;
     }
 
