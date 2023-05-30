@@ -41,7 +41,7 @@
              <div class="block">
                <div id="" class="flex overflow-hidden">
                  <?php
-                  include('src/include/sideNav.php');
+                  // include('src/include/sideNav.php');
                   ?>
 
 
