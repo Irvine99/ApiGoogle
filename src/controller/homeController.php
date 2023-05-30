@@ -53,27 +53,17 @@ function test() {
 
     $result = new PerformancesRepo;
     $dates = $result->getDate();    
-    $clicksbydates = $result->getCliksByDate();
+    // $clicksbydates = $result->getCliksByDate();
 
     include('src/view/homePage.php');
 }
 
 function sideNavData(){
-        
+    
     require 'src/view/dataDomain.php';
 }
 
-function getUniqueDates(){
-    $result = new PerformancesRepo;
-    $dates = $result->getDate();
-    $data = $result->getUniqueDates();
-    $clicksbydates = $result->getCliksByDate();
-    $title = choiceTitle();
-    $datas = choiceData();
 
-    
-    include('src/view/homePage.php');
-}
 
 function choiceTitle(){
     $title = "";
@@ -90,6 +80,20 @@ function choiceTitle(){
         $title = "click";
     }
     return $title;
+}
+
+function baseDate()
+{
+    $request = new ConnectApi;
+    $request->getDate();
+    include('src/view/homePage.php');
+}
+
+function newDate()
+{
+    $request = new ConnectApi;
+    $request->setDate($_POST["startDate"], $_POST["endDate"]);
+    include('src/view/homePage.php');
 }
 
 function choiceData(){
@@ -155,22 +159,24 @@ function choiceData(){
     }
 }
 
-// function login(){
-//     $userRepo = new UserRepository();
-//     $user = $userRepo->getUserByEmail($_POST['email']);
-//     if($user != []){
-//         if(password_verify($_POST['pass'],$user->mdp)){
-//             $_SESSION['id_role'] = $user->id_role;
-//             $_SESSION['id_user'] = $user->id;
-//             header('Location: ?action=');
-//         }else{
-//             echo 'info pas correct';
-//             //header('Location: ?action=LoginForm');
-//         }
-//     }else{
-//         //header('Location: ?action=LoginForm');
-//     }
-// } 
+
+function login(){
+    $userRepo = new UserRepository();
+    $user = $userRepo->getUserByEmail($_POST['email']);
+    if($user != []){
+        if(password_verify($_POST['pass'],$user->mdp)){
+            $_SESSION['id_role'] = $user->id_role;
+            $_SESSION['id_user'] = $user->id;
+            header('Location: ?action=');
+        }else{
+            echo 'info pas correct';
+            //header('Location: ?action=LoginForm');
+        }
+    }else{
+        //header('Location: ?action=LoginForm');
+    }
+} 
+
 
 
 

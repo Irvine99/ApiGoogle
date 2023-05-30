@@ -16,19 +16,19 @@ if(isset($_GET['action']) && $_GET['action'] !== ''){
                 test();
                 break;
             case 'getValue':
-                getUniqueDates();
+                newDate();
                 break;
             case 'position':
-                getUniqueDates();
+                newDate();
                 break;
             case 'clics':
-                getUniqueDates();
+                newDate();
                 break;
             case 'impressions':
-                getUniqueDates();
+                newDate();
                 break;
             case 'ctr':
-                getUniqueDates();
+                newDate();
                 break;
                 case 'LoginTraitement':
                     login();

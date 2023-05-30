@@ -52,6 +52,7 @@
                    <?php include ('src/include/date.php') ?>
                    <div class="flex flex-col">
 
+
                      <div>
                        <?php include('src/include/card.php') ?>
                      <!-- //globe -->
