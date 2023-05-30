@@ -11,7 +11,7 @@
                                 ?></h2>
                 <h2 class=""></h2>
             </div>
-            <a href="index.php?action=position" class="flex justify-center items-center w-auto bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg shadow-md shadow-black/30 p-2 m-2"><i class="bi bi-caret-down-fill hover:text-sky-400"></i></a>
+            <!-- <a href="index.php?action=position" class="flex justify-center items-center w-auto bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg shadow-md shadow-black/30 p-2 m-2"><i class="bi bi-caret-down-fill hover:text-sky-400"></i></a> -->
         </div>
     </div>
     <div class="m-5 bg-gray-100 py-2 rounded-lg w-auto md:w-[160px] drop-shadow-xl">
@@ -26,7 +26,7 @@
                                 ?></h2>
                 <h2 class=""></h2>
             </div>
-            <a href="index.php?action=ctr" class=" flex justify-center items-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg shadow-md shadow-black/30 p-2 m-2"><i class="bi bi-caret-down-fill hover:text-sky-400"></i></a>
+            <!-- <a href="index.php?action=ctr" class=" flex justify-center items-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg shadow-md shadow-black/30 p-2 m-2"><i class="bi bi-caret-down-fill hover:text-sky-400"></i></a> -->
         </div>
     </div>
 </div>
@@ -43,7 +43,7 @@
                                 ?></h2>
                 <h2 class=""></h2>
             </div>
-            <a href="index.php?action=impressions" class="flex justify-center items-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg shadow-md shadow-black/30 p-2 m-2"><i class="bi bi-caret-down-fill hover:text-sky-400"></i></a>
+            <!-- <a href="index.php?action=impressions" class="flex justify-center items-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg shadow-md shadow-black/30 p-2 m-2"><i class="bi bi-caret-down-fill hover:text-sky-400"></i></a> -->
         </div>
     </div>
     <div class="m-5 bg-gray-100 py-2 rounded-lg w-auto md:w-[160px] drop-shadow-xl">
@@ -58,7 +58,7 @@
                                 ?>
                 <span> Clics</span></h2>
             </div>
-            <a href="index.php?action=clics" class=" flex justify-center items-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg shadow-md shadow-black/30 p-2 m-2"><i class="bi bi-caret-down-fill hover:text-sky-400"></i></a>
+            <!-- <a href="index.php?action=clics" class=" flex justify-center items-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg shadow-md shadow-black/30 p-2 m-2"><i class="bi bi-caret-down-fill hover:text-sky-400"></i></a> -->
         </div>
         
     </div>

@@ -23,12 +23,12 @@
     <title>Panel admin</title>
 </head>
 
-<body class="bg-gray-50 dark:bg-gray-900">
+<body class="bg-gray-100">
     <!--TailwindElement -->
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 
     <div>
-        <div class="flex flex-col text-white">
+        <div class="flex flex-col text-black">
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                     <div class="overflow-hidden">
@@ -36,20 +36,22 @@
                             <thead class="border-b font-medium dark:border-neutral-500">
                                 <tr>
                                     <th scope="col" class="px-6 py-4">id</th>
+                                    <th scope="col" class="px-6 py-4">Email</th>
                                     <th scope="col" class="px-6 py-4">Nom</th>
                                     <th scope="col" class="px-6 py-4">Projet</th>
-                                    <th scope="col" class="px-6 py-4">Handle</th>
+                                    <th scope="col" class="px-6 py-4 text-center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
                                     <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
+                                    <td class="whitespace-nowrap px-6 py-4 font-medium">bjv@hvjhv</td>
                                     <td class="whitespace-nowrap px-6 py-4">Mark</td>
                                     <td class="whitespace-nowrap px-6 py-4">Otto</td>
                                     <td class="whitespace-nowrap px-6 py-4 text-center">
-                                        <a href="../view/modifier.php" class="text-blue-500 hover:text-blue-700 text-center p-1">Modifier</a>
-                                        <hr class="bg-white"></hr>
-                                        <a href="#" class="text-red-500 hover:text-red-700 text-center">Supprimer</a>
+                                        <a href="../view/modifier.php" class="bg-green-500 rounded text-gray-900 hover:text-blue-700 text-center p-2">Modifier</a>
+                                        
+                                        <a href="#" class="bg-red-500 p-2 rounded text-gray-900 hover:text-red-700 text-center">Supprimer</a>
                                     </td>
                                 </tr>
                             </tbody>
