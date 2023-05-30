@@ -155,6 +155,25 @@ function choiceData(){
     }
 }
 
+function login(){
+    $userRepo = new UserRepository();
+    $user = $userRepo->getUserByEmail($_POST['email']);
+    if($user != []){
+        if(password_verify($_POST['pass'],$user->mdp)){
+            $_SESSION['id_role'] = $user->id_role;
+            $_SESSION['id_user'] = $user->id;
+            header('Location: ?action=');
+        }else{
+            echo 'info pas correct';
+            //header('Location: ?action=LoginForm');
+        }
+    }else{
+        //header('Location: ?action=LoginForm');
+    }
+} 
+
+
+
 
 
 

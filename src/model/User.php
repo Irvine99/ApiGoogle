@@ -53,6 +53,57 @@ public function __construct(){
 
 
 
+
+public function getUserByEmailAndPseudo($email){
+    $req = $this->bdd->prepare('SELECT * FROM user WHERE email_user = ?');
+    $req->execute([$email]);
+    $data = $req->fetch();
+    if($data != false){
+        $user = new User();
+        $user->id = $data['Id_users'] ;
+        $user->email = $data['email_user'];
+        $user->mdp = $data['psw_users'];
+        $user->id_role = $data['Id_roles'];
+        return $user;
+    }else{
+        
+        return [];
+    }
+}
+public function getUserById($getIdUser){
+    $req = $this->bdd->prepare('SELECT * FROM users WHERE Id_users = ?');
+    $req->execute([$getIdUser]);
+    $data = $req->fetch();
+    if($data != false){
+        $user = new User();
+        $user->id = $data['Id_users'] ;
+        $user->email = $data['email_users'];
+        $user->pseudo = $data['pseudo_users'];
+        $user->mdp = $data['psw_users'];
+        $user->id_role = $data['Id_roles'];
+        $user->token = $data['token_users'];
+        $user->actif = $data['actif_users'];
+
+        return $user;
+    }else{
+        
+        return [];
+    }
+}
+
+public function getUserByPseudo($pseudo){
+    $req = $this->bdd->prepare('SELECT * FROM users WHERE pseudo_users = ?');
+    $req->execute([$pseudo]);
+    $data = $req->fetch();
+    if($data != false){
+        $user = new User();
+        $user->id = $data['Id_users'] ;
+        $user->email = $data['email_users'];
+        $user->pseudo = $data['pseudo_users'];
+        $user->mdp = $data['psw_users'];
+        $user->id_role = $data['Id_roles'];
+
+
 public function insertUserWithProject (Project $project , User $user){
     $req = $this ->bdd->prepare('INSERT INTO project_user (id_project, id_user)
     SELECT p.id_project, u.id_user
