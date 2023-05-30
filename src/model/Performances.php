@@ -40,7 +40,6 @@ class PerformancesRepo extends Data {
 
     public function getDate()
     {
-    
         $newDates = new ConnectApi;
         $newDates->setDate($_POST["startDate"], $_POST["endDate"]); 
         return $newDates;
