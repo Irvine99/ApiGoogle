@@ -38,20 +38,16 @@ public function __construct(){
 }
 
 
-public function getUserByEmailAndPseudo($email,$pseudo){
-    $req = $this->bdd->prepare('SELECT * FROM users WHERE email_user = ? AND pseudo_users = ?');
-    $req->execute([$email,$pseudo]);
+public function getUserByEmailAndPseudo($email){
+    $req = $this->bdd->prepare('SELECT * FROM user WHERE email_user = ?');
+    $req->execute([$email]);
     $data = $req->fetch();
     if($data != false){
         $user = new User();
         $user->id = $data['Id_users'] ;
         $user->email = $data['email_user'];
-        $user->pseudo = $data['pseudo_users'];
         $user->mdp = $data['psw_users'];
         $user->id_role = $data['Id_roles'];
-        $user->token = $data['token_users'];
-        $user->actif = $data['actif_users'];
-
         return $user;
     }else{
         

@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require 'src/controller/homeController.php';
 require 'src/model/User.php';

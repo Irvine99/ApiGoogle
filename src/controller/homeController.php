@@ -114,20 +114,12 @@ function choiceData(){
 
 function login(){
     $userRepo = new UserRepository();
-    $user = $userRepo->getUserByEmailAndPseudo($_POST['email'],$_POST['your_name']);
+    $user = $userRepo->getUserByEmail($_POST['email']);
     if($user != []){
         if(password_verify($_POST['pass'],$user->mdp)){
             $_SESSION['id_role'] = $user->id_role;
-            $_SESSION['pseudo'] = $user->pseudo;
-            $_SESSION['actif'] = $user->actif;
             $_SESSION['id_user'] = $user->id;
-            // $_SESSION['token'] = $user->token;
-            if( $_SESSION['actif'] == 0){
-            header('Location: ?action=activationform&token='.$user->token);
-            }elseif ( $_SESSION['actif'] == 1){
-            header('Location: ?action=home');
-            }
-            
+            header('Location: ?action=');
         }else{
             echo 'info pas correct';
             //header('Location: ?action=LoginForm');
