@@ -39,6 +39,10 @@ if(isset($_GET['action']) && $_GET['action'] !== ''){
                 case 'signUp':
                     signUp();
                     break;
+                case 'signUp2':
+                    signUp();
+                    break;
+                
                     default:
                    
             
