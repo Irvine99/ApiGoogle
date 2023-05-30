@@ -13,6 +13,7 @@
 
 <body>
 
+
  
 
   <!--<button type="button">Authorize me</button>
@@ -38,7 +39,7 @@ const header = {
 };
 
 const payload = {
-  iss: 'test-projet-api@projet-api-385606.iam.gserviceaccount.com',
+  iss: '',
   scope: 'https://www.googleapis.com/auth/webmasters.readonly',
   aud: 'https://oauth2.googleapis.com/token',
   exp: currentTime + 3600, // expiration d'une heure à partir de maintenant
@@ -52,7 +53,7 @@ const encodedPayload = base64UrlEncode(JSON.stringify(payload));
 // Concaténer les parties avec un point
 const jwt = encodedHeader + '.' + encodedPayload;
 
-const secretKey = '117622678553108254207';
+const secretKey = '';
 
 // Fonction de signature HMAC-SHA256
 function signWithHmacSha256(message, secret) {
@@ -302,4 +303,74 @@ signWithHmacSha256(jwt, secretKey)
 </html>
 
 
+
+=======
+  
+  <button type="button">Authorize me</button>
+  <script src="https://accounts.google.com/gsi/client"></script>
+
+  <script>
+    const json = {
+      "web": {
+        "client_id": "",
+        "project_id": "",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_secret": "",
+        "javascript_origins": [
+          "http://localhost",
+          "http://127.0.0.1:5500"
+        ]
+      }
+    }
+    /**
+     * Sample JavaScript code for webmasters.searchanalytics.query
+     * See instructions for running APIs Explorer code samples locally:
+     * https://developers.google.com/explorer-help/code-samples#javascript
+     */
+
+    const siteUrl = "";
+    const startDate = "2020-06-06";
+    const endDate = "2023-04-04";
+
+    const fetchData = async ({
+      access_token
+    }) => {
+      const response = await fetch(`https://www.googleapis.com/webmasters/v3/sites/${siteUrl}/searchAnalytics/query`, {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer ' + access_token,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          siteUrl: siteUrl,
+          startDate: startDate,
+          endDate: endDate
+        })
+      });
+      const data = await response.json();
+      console.log(data);
+    }
+
+    const client = google.accounts.oauth2.initTokenClient({
+      client_id: json.web.client_id,
+      scope: 'https://www.googleapis.com/auth/webmasters.readonly',
+      callback: fetchData
+    });
+
+    const button = document.querySelector('button');
+    button.addEventListener('click', () => {
+      client.requestAccessToken();
+    });
+  </script>
+
+</body>
+</html>
+
+"email profile openid
+https://www.googleapis.com/auth/webmasters
+https://www.googleapis.com/auth/userinfo.profile
+https://www.googleapis.com/auth/userinfo.email
+https://www.googleapis.com/auth/webmasters.readonly"
 
