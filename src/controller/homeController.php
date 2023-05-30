@@ -1,8 +1,53 @@
 <?php
-
-
 require_once 'src/model/Performances.php';
 require_once 'src/model/Periodes.php';
+require_once 'src/model/User.php';
+require_once 'src/model/Project.php';
+
+//inscription et connexion 
+function signUpForm(){
+    require('src/view/inscription.php');
+}
+
+function signUp():void{
+    $userRepository = new UserRepository();
+    $ProjectRepository = new ProjectRepository();
+    $user = $userRepository->findByEmailAndName($_POST['email'],$_POST['name']);
+    if($user == []){
+        $user = new User();
+        $project = new Project();
+        var_dump($project);
+        $tmppro = $project->createToSignin($_POST);
+        var_dump($_POST);
+        $tmp = $user->createToSignin($_POST);
+        if($tmp && $tmppro){
+            $lastIdUser = $userRepository->insertUser($user);
+            $lastIdProject = $ProjectRepository->insertProject($project);
+            $userRepository->insertRelation($lastIdUser,$lastIdProject);
+            var_dump('good');
+        }else{
+            var_dump('pasbon');
+        }
+    }
+}
+
+function login(){
+    $userRepo = new UserRepository();
+    $user = $userRepo->findByEmailAndName($_POST['email'],$_POST['your_name']);
+    if($user != []){
+        if(password_verify($_POST['pass'],$user->mdp)){
+            $_SESSION['id_role'] = $user->id_role;
+            $_SESSION['id_user'] = $user->id;
+            // $_SESSION['token'] = $user->token;   
+        }else{
+            echo 'info pas correct';
+            //header('Location: ?action=LoginForm');
+        }
+    }else{
+        //header('Location: ?action=LoginForm');
+    }
+} 
+//FIN inscription et connexion
 
 function test() {
 
@@ -32,7 +77,7 @@ function getUniqueDates(){
 
 function choiceTitle(){
     $title = "";
-   
+
     if($_GET['action'] == "click"){
         $title = "click";
     }elseif($_GET['action'] == "position"){
@@ -53,7 +98,7 @@ function choiceData(){
         $clicksbydates = $result->getCliksByDate();
         $datas = [];
         foreach ($clicksbydates as $key => $value) {
-           
+        
             $data = $value->clicks;
             $datas[] = $data;
 
@@ -64,7 +109,7 @@ function choiceData(){
         $clicksbydates = $result->getCliksByDate();
         $datas = [];
         foreach ($clicksbydates as $key => $value) {
-           
+        
             $data = $value->position;
             $datas[] = $data;
 
@@ -76,7 +121,7 @@ function choiceData(){
         $clicksbydates = $result->getCliksByDate();
         $datas = [];
         foreach ($clicksbydates as $key => $value) {
-           
+        
             $data = $value->ctr;
             $datas[] = $data;
 
@@ -88,7 +133,7 @@ function choiceData(){
         $clicksbydates = $result->getCliksByDate();
         $datas = [];
         foreach ($clicksbydates as $key => $value) {
-           
+        
             $data = $value->impressions;
             $datas[] = $data;
 
@@ -100,7 +145,7 @@ function choiceData(){
         $clicksbydates = $result->getCliksByDate();
         $datas = [];
         foreach ($clicksbydates as $key => $value) {
-           
+        
             $data = $value->clicks;
             $datas[] = $data;
 
@@ -108,8 +153,6 @@ function choiceData(){
         }
         return $datas;
     }
-
-    
 }
 
 function login(){
@@ -131,28 +174,9 @@ function login(){
 
 
 
-function signUp(){
-    $userRepo = new UserRepository();
-    $user = new User();
-    if($user->createToSignin($_POST)){
-        // le user est créé sans attributs vide
-        $userTmpEmail = $userRepo->getUserByEmail($_POST['email']);
-        if($userTmpEmail == []){
-           
-                $user->mdp = password_hash($user->mdp, PASSWORD_BCRYPT);
-                $userRepo->insertUser($user);
-          
-            }   
-        }else{
 
-            echo 'email deja existant';
-            //header('Location: ?action=SignInForm');
-        }
-    }
 
-function signUpForm(){
-    require('src/view/inscription.php');
-}
+
 
 
 
