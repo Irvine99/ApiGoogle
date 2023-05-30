@@ -1,6 +1,8 @@
 <?php
+session_start();
 
 require 'src/controller/homeController.php';
+require 'src/model/User.php';
 
 if(isset($_GET['action']) && $_GET['action'] !== ''){
         switch($_GET['action']) {
@@ -28,6 +30,17 @@ if(isset($_GET['action']) && $_GET['action'] !== ''){
             case 'ctr':
                 getUniqueDates();
                 break;
+                case 'LoginTraitement':
+                    login();
+                    break;
+                case 'signUpForm' :
+                    signUpForm();
+                    break;
+                case 'SignupTraitement':
+                    signUp();
+                    break;
+                    default:
+                   
             
         } 
     }else{
