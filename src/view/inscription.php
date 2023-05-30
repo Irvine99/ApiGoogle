@@ -3,9 +3,8 @@
 require_once ('src/config/connect_api.php');
 
 $data = new ConnectApi();
-$client = $data->connectApi();
-$_SESSION['client'] = $client;
-var_dump($_SESSION['client']);
+$client = $data->getDate();
+var_dump($client)
 ?>
 
 <!DOCTYPE html>
