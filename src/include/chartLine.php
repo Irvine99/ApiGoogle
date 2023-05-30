@@ -1,4 +1,4 @@
-<div class="m-5 bg-gray-100 py-2 rounded-lg w-auto md:w-2/5 drop-shadow-xl">
+<div class="m-5 bg-gray-100 py-2 rounded-lg w-auto md:w-[50%] drop-shadow-xl">
     <div class="mx-5 mt-10  w-auto overflow-hidden">
     <h3 class="my-2">Nom du graphique à mettre</h3>
     <canvas
