@@ -10,15 +10,16 @@ var_dump($_SESSION['client']);
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!--Tailwind -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-      <script>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--Tailwind -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
     tailwind.config = {
       theme: {
         extend: {
@@ -31,9 +32,13 @@ var_dump($_SESSION['client']);
   </script>
   <!--TailwindElement -->
   <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
-    <title>Inscription</title>
+  <title>Inscription</title>
 </head>
-<body>
+
+
+  <div class="bg-gray-50 dark:bg-gray-900 flex justify-center p-8">
+    <img src="../../assets/img/logo_transpa.png" </img>
+
 <section class="bg-gray-50 dark:bg-gray-900">
 
   <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
@@ -82,7 +87,11 @@ var_dump($_SESSION['client']);
               </form>
           </div>
       </div>
+
   </div>
-</section>
+
+    </div>
+  </section>
 </body>
+
 </html>
