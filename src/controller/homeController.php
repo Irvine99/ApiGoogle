@@ -37,32 +37,17 @@ function signUp():void{
 }
 
 function login() {
-    $email = $_POST['email'];
+    $email = $_POST['email_user'];
     $userRepo = new UserRepository();
     $userRepo->loginUser($email);
-    $api = new ConnectAPI();
+
+    $api = new ConnectApi();
+    $data = $api->connectApi();
     $date = $api->getDate();
     $_SESSION['date'] = $date;
-    return $date;
-    include 'src/view/homepage.php';
+    $api->getInfo($data, $date);
+    header('location: index.php');
 }
-// function login(){
-//     $userRepo = new UserRepository();
-//     $user = $userRepo->findByEmailAndName($_POST['email'],$_POST['your_name']);
-//     if($user != []){
-//         if(password_verify($_POST['pass'],$user->mdp)){
-//             $_SESSION['id_role'] = $user->id_role;
-//             $_SESSION['id_user'] = $user->id;
-//             // $_SESSION['token'] = $user->token;   
-//         }else{
-//             echo 'info pas correct';
-//             //header('Location: ?action=LoginForm');
-//         }
-//     }else{
-//         //header('Location: ?action=LoginForm');
-//     }
-// } 
-// //FIN inscription et connexion
 
 function test() {
 
@@ -83,11 +68,8 @@ function test() {
 }
 
 function disconnectUser(){
-    session_start();
-    session_abort();
     session_destroy();
-    header('location:connexion.php');
-    
+    include 'src/view/connexion.php';
 }
 
 

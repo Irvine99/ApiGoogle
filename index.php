@@ -3,9 +3,15 @@ session_start();
 
 require 'src/controller/homeController.php';
 require 'src/model/User.php';
-if(isset($_SESSION['id_role'])) {
-    connect_session();
-
+var_dump($_SESSION);
+if(empty($_SESSION)) {
+    loginForm();
+    switch($_GET['action']) {
+        case 'LoginTraitement':
+            login();
+            break;
+    }
+}else if(isset($_SESSION['id_role'])) {
     if(isset($_GET['action']) && $_GET['action'] !== ''){
         switch($_GET['action']) {
             case 'test':
@@ -17,21 +23,21 @@ if(isset($_SESSION['id_role'])) {
             case 'info':
                 test();
                 break;
-            case 'getValue':
-                getDate();
-                break;
-            case 'position':
-                baseDate();
-                break;
-            case 'clics':
-                baseDate();
-                break;
-            case 'impressions':
-                baseDate();
-                break;
-            case 'ctr':
-                baseDate();
-                break;
+            // case 'getValue':
+            //     getDate();
+            //     break;
+            // case 'position':
+            //     baseDate();
+            //     break;
+            // case 'clics':
+            //     baseDate();
+            //     break;
+            // case 'impressions':
+            //     baseDate();
+            //     break;
+            // case 'ctr':
+            //     baseDate();
+            //     break;
             case 'LoginTraitement':
                 login();
                 break;
@@ -41,6 +47,7 @@ if(isset($_SESSION['id_role'])) {
             case 'signUp':
                 signUp();
                 break;
+                
             case 'signUp2':
                 signUp();
                 break;
@@ -49,13 +56,15 @@ if(isset($_SESSION['id_role'])) {
                 break;
             
                 default:
+                test();
                    
         
         } 
+    }else{
+        test();
     }
-}else{
-    loginForm();
 }
+
 // if(isset($_GET['action']) && $_GET['action'] !== ''){
 //         switch($_GET['action']) {
 //             case 'test':
