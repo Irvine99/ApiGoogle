@@ -45,7 +45,16 @@ function login() {
     $data = $api->connectApi();
     $date = $api->getDate();
     $_SESSION['date'] = $date;
-    $api->getInfo($data, $date);
+    $result = $api->getInfo($data, $date);
+    $cliks = $result->rows[0]->clicks;
+    $ctr = $result->rows[0]->ctr;
+    $impressions = $result->rows[0]->impressions;
+    $position = $result->rows[0]->position;
+    $_SESSION['impressions'] = $impressions;
+    $_SESSION['clicks'] = $cliks;
+    $_SESSION['ctr'] = $ctr;
+    $_SESSION['position'] = $position;
+    $_SESSION['result'] = $result;
     header('location: index.php');
 }
 
