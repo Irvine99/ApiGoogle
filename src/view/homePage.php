@@ -1,8 +1,4 @@
-           <?php
-           var_dump($_SESSION);
-           var_dump($date);
-           ?>
-           <!DOCTYPE html>
+          <!DOCTYPE html>
            <html lang="en">
 
            <head>

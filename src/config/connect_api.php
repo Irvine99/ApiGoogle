@@ -22,12 +22,9 @@ class ConnectApi {
         if ($client->isAccessTokenExpired()) {
             $client->fetchAccessTokenWithAssertion();
         }
-        var_dump('coucou');
         
         $access_token = $client->getAccessToken();
-        var_dump($access_token);
         $_SESSION['access_token'] = $access_token;
-        var_dump($_SESSION);
     
         return $client;
     }
@@ -70,7 +67,6 @@ class ConnectApi {
 
                     $request->setStartDate("$startDate");
                     $request->setEndDate("$endDate");
-                    var_dump($request);
                     return $request;
                 }
                 else
@@ -80,7 +76,6 @@ class ConnectApi {
 
                     $request->setStartDate("$startDate");
                     $request->setEndDate("$endDate");
-                    var_dump($request);
                     return $request;
                 }
             }
