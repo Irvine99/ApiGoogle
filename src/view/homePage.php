@@ -1,3 +1,6 @@
+          <?php var_dump($_SESSION['clicks']);
+          ?>
+
           <!DOCTYPE html>
            <html lang="en">
 

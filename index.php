@@ -3,7 +3,6 @@ session_start();
 
 require 'src/controller/homeController.php';
 require 'src/model/User.php';
-var_dump($_SESSION);
 if(empty($_SESSION)) {
     loginForm();
     switch($_GET['action']) {
