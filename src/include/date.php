@@ -1,6 +1,6 @@
 <div class="m-5 flex flex-col bg-gray-100 py-2 rounded-lg w-auto md:w-[20%] drop-shadow-xl w-[20%]">
     <h1 class="m-5 text-neutral-500">Selectionnez une date</h1>
-    <form action="" method="post">
+    <form action="index.php?action=getValue" method="post">
         <div class="relative m-3" data-te-datepicker-init data-te-input-wrapper-init>
             <input type="text"
                 name="startDate"

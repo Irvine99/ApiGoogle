@@ -7,6 +7,8 @@
     <div class="flex items-center w-full" id="navbarSupportedContent1" data-te-collapse-item>
       <!-- Logo -->
       <div class="flex w-full mx-10 justify-between items-center">
+        
+        
 
         <img class="w-[75px] h-[75px]" src="assets/img/logo_transpa.png" </img>
 

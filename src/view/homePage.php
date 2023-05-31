@@ -1,3 +1,7 @@
+           <?php
+           var_dump($_SESSION);
+           var_dump($date);
+           ?>
            <!DOCTYPE html>
            <html lang="en">
 
@@ -42,8 +46,9 @@
                <div id="" class="flex overflow-hidden">
                  <?php
                   // include('src/include/sideNav.php');
+                  
                   ?>
-
+                    <a href="index.php?action=deco">aaaaa</a>
 
                  <div id="slim-content" class="flex flex-col  w-full">
 

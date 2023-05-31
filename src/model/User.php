@@ -10,9 +10,6 @@ class User extends Project{
     public $id_role;
     public $token;
     
-    
-    
-    
     // public function __construct($username, $userlastname, $email, $mdp,$name,$json,$id){
     //     parent::__construct($name,$json,$id);
     //     $this->username = $username;
@@ -72,9 +69,6 @@ public function getUserByEmailAndPseudo($email){
 }
 
 
-
-
-
 public function insertUserWithProject (Project $project , User $user){
     $req = $this ->bdd->prepare('INSERT INTO project_user (id_project, id_user)
     SELECT p.id_project, u.id_user
@@ -89,7 +83,7 @@ $req->execute([
     
 
 ]);
-} 
+}
 public function findByEmailAndName (string $email, string $name){
     $req = $this ->bdd->prepare('SELECT id_user FROM user WHERE email_user =? AND name_user =? LIMIT 1');
     $req->execute([$email,$name]);
@@ -123,5 +117,22 @@ public function insertRelation($lastIdUser,$lastIdProject){
     $req->execute([$lastIdUser,$lastIdProject]);
     
 }
-}
 
+
+    public function loginUser($email){
+       
+        $req = $this->bdd->prepare("SELECT * FROM user WHERE email_user = ?");
+        $req->execute([$email]);
+        $data = $req->fetch();
+        if($data != false){
+            $user = new User();
+            $user->id = $data['id_user'];
+            $user->email = $data['email_user'];
+            $user->mdp = $data['password_user'];
+            $user->id_role = $data['id_role'];
+            $_SESSION['id_role'] = $user->id_role;
+        }
+    }
+
+
+}

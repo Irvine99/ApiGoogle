@@ -3,8 +3,10 @@ session_start();
 
 require 'src/controller/homeController.php';
 require 'src/model/User.php';
+if(isset($_SESSION['id_role'])) {
+    connect_session();
 
-if(isset($_GET['action']) && $_GET['action'] !== ''){
+    if(isset($_GET['action']) && $_GET['action'] !== ''){
         switch($_GET['action']) {
             case 'test':
                 test();
@@ -16,38 +18,88 @@ if(isset($_GET['action']) && $_GET['action'] !== ''){
                 test();
                 break;
             case 'getValue':
-                newDate();
+                getDate();
                 break;
             case 'position':
-                newDate();
+                baseDate();
                 break;
             case 'clics':
-                newDate();
+                baseDate();
                 break;
             case 'impressions':
-                newDate();
+                baseDate();
                 break;
             case 'ctr':
-                newDate();
+                baseDate();
                 break;
-                case 'LoginTraitement':
-                    login();
-                    break;
-                case 'signUpForm' :
-                    signUpForm();
-                    break;
-                case 'signUp':
-                    signUp();
-                    break;
-                case 'signUp2':
-                    signUp();
-                    break;
-                
-                    default:
+            case 'LoginTraitement':
+                login();
+                break;
+            case 'signUpForm' :
+                signUpForm();
+                break;
+            case 'signUp':
+                signUp();
+                break;
+            case 'signUp2':
+                signUp();
+                break;
+            case 'deco':
+                disconnectUser();
+                break;
+            
+                default:
+                   
+        
+        } 
+    }
+}else{
+    loginForm();
+}
+// if(isset($_GET['action']) && $_GET['action'] !== ''){
+//         switch($_GET['action']) {
+//             case 'test':
+//                 test();
+//                 break;
+//             case 'stan':
+//                 sideNavData();
+//                 break;
+//             case 'info':
+//                 test();
+//                 break;
+//             case 'getValue':
+//                 getDate();
+//                 break;
+//             case 'position':
+//                 baseDate();
+//                 break;
+//             case 'clics':
+//                 baseDate();
+//                 break;
+//             case 'impressions':
+//                 baseDate();
+//                 break;
+//             case 'ctr':
+//                 baseDate();
+//                 break;
+//             case 'LoginTraitement':
+//                 login();
+//                 break;
+//             case 'signUpForm' :
+//                 signUpForm();
+//                 break;
+//             case 'signUp':
+//                 signUp();
+//                 break;
+//             case 'signUp2':
+//                 signUp();
+//                 break;
+            
+//                 default:
                    
             
-        } 
-    }else{
-        test();
-    }
+//         } 
+//     }else{
+//         test();
+//     }
 
