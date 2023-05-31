@@ -1,4 +1,4 @@
-          <?php var_dump($_SESSION['clicks']);
+          <?php var_dump($_SESSION['result']->rows);
           ?>
 
           <!DOCTYPE html>

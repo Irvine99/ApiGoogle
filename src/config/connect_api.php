@@ -1,7 +1,9 @@
 <?php
-use Google\Service\AndroidPublisher\Timestamp;
 
 require_once 'vendor/autoload.php';
+use Google\Service\AndroidPublisher\Timestamp;
+
+
 
 class ConnectApi {
 
@@ -25,7 +27,6 @@ class ConnectApi {
         
         $access_token = $client->getAccessToken();
         $_SESSION['access_token'] = $access_token;
-    
         return $client;
     }
 
@@ -47,7 +48,8 @@ class ConnectApi {
         $date = date('Y-m-d');
 
         $request = new Google_Service_Webmasters_SearchAnalyticsQueryRequest();
-
+        $request->setDimensions(['date']);
+        $request->setRowLimit(10);
         $request->setStartDate("2019-01-01");
         $request->setEndDate("$date");
         return $request;
