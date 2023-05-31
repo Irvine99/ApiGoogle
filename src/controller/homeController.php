@@ -3,10 +3,15 @@ require_once 'src/model/Performances.php';
 require_once 'src/model/Periodes.php';
 require_once 'src/model/User.php';
 require_once 'src/model/Project.php';
+require_once 'src/config/connect_api.php';
 
 //inscription et connexion 
 function signUpForm(){
     require('src/view/inscription.php');
+}
+
+function loginForm(){
+    require('src/view/connexion.php');
 }
 
 function signUp():void{
@@ -31,6 +36,16 @@ function signUp():void{
     }
 }
 
+function login() {
+    $email = $_POST['email'];
+    $userRepo = new UserRepository();
+    $userRepo->loginUser($email);
+    $api = new ConnectAPI();
+    $date = $api->getDate();
+    $_SESSION['date'] = $date;
+    return $date;
+    include 'src/view/homepage.php';
+}
 // function login(){
 //     $userRepo = new UserRepository();
 //     $user = $userRepo->findByEmailAndName($_POST['email'],$_POST['your_name']);
@@ -52,10 +67,38 @@ function signUp():void{
 function test() {
 
     $result = new PerformancesRepo;
-    $dates = $result->getDate();    
-    // $clicksbydates = $result->getCliksByDate();
 
-    include('src/view/homePage.php');
+    if(isset($_POST['startDate']))
+    {
+        $result->setDate($_POST["startDate"], $_POST["endDate"]);
+        include('src/view/homepage.php');
+    }
+    else
+    {
+        $result->getDate();
+        include('src/view/homepage.php');
+    }
+
+    // $clicksbydates = $result->getCliksByDate();
+}
+
+function disconnectUser(){
+    session_start();
+    session_abort();
+    session_destroy();
+    header('location:connexion.php');
+    
+}
+
+
+function connect_session() {
+    $result= new PerformancesRepo;
+    if(isset($_SESSION['id_role'])){
+        $result->getDate();
+        include('src/view/homepage.php');
+    }else{
+        include ('src/view/connexion.php');
+    }
 }
 
 function sideNavData(){
@@ -82,30 +125,18 @@ function choiceTitle(){
     return $title;
 }
 
-function baseDate()
-{
-    $request = new ConnectApi;
-    $request->getDate();
-    include('src/view/homePage.php');
-}
 
-function newDate()
-{
-    $request = new ConnectApi;
-    $request->setDate($_POST["startDate"], $_POST["endDate"]);
-    include('src/view/homePage.php');
-}
+
 
 function choiceData(){
     if($_GET['action'] == "clics"){
         $result = new PerformancesRepo;
         $clicksbydates = $result->getCliksByDate();
         $datas = [];
-        foreach ($clicksbydates as $key => $value) {
-        
+        foreach ($clicksbydates as $key => $value) 
+        {
             $data = $value->clicks;
             $datas[] = $data;
-
         }
         return $datas;
     }elseif($_GET['action'] == "position"){

@@ -1,12 +1,9 @@
 <?php
-
 use Google\Service\AndroidPublisher\Timestamp;
 
 require_once 'vendor/autoload.php';
 
 class ConnectApi {
-
-
 
     public function connectApi() {
 
@@ -25,23 +22,27 @@ class ConnectApi {
         if ($client->isAccessTokenExpired()) {
             $client->fetchAccessTokenWithAssertion();
         }
-
-        $access_token = $client->getAccessToken();
+        var_dump('coucou');
         
-        // $client->setApplicationName("sc-domain:la-ronde-des-nutons.fr");
+        $access_token = $client->getAccessToken();
+        var_dump($access_token);
+        $_SESSION['access_token'] = $access_token;
+        var_dump($_SESSION);
+    
+        return $client;
+    }
+
+    public function getInfo($client, $request) {
+
+        $client->setApplicationName("sc-domain:la-ronde-des-nutons.fr");
         
         $webmastersService = new Google_Service_Webmasters($client);
 
         $searchanalytics = $webmastersService->searchanalytics;
-        
 
-        // replace 'siteUrl' with the actual site URL
         $response = $searchanalytics->query('sc-domain:la-ronde-des-nutons.fr', $request);
-    
-        $data = [];
-        $data[] = $client;
-        $data[] = $response;
-        return $data;
+
+        return $response;
     }
 
     public function getDate()
@@ -57,7 +58,7 @@ class ConnectApi {
 
     public function setDate($startDate, $endDate)
     {
-        if($_POST)
+        if($_POST['startDate'])
         {
             if($_POST['startDate'] != "") {
                 $startDate = $_POST['startDate'];
@@ -79,6 +80,7 @@ class ConnectApi {
 
                     $request->setStartDate("$startDate");
                     $request->setEndDate("$endDate");
+                    var_dump($request);
                     return $request;
                 }
             }
@@ -93,5 +95,13 @@ class ConnectApi {
         }
     }
 }
+
+// $api = new ConnectApi();
+
+// $data = $api->connectApi();
+// $date = $api->getDate();
+// var_dump($info = $api->getInfo($data, $date));
+
+
 
 ?>
