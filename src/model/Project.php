@@ -3,7 +3,7 @@ require_once 'src/config/connect_bddClass.php';
 
 class Project {
 
-    public $id;
+    public $id_pro;
     public $name;
     public  $json;
     public $logo;

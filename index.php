@@ -39,6 +39,23 @@ if(isset($_GET['action']) && $_GET['action'] !== ''){
                 case 'signUp':
                     signUp();
                     break;
+                
+                case 'addForm':
+                    addForm();
+                    break;
+                
+                case 'adminPage':
+                    adminPage();
+                    break;
+                case 'deleteUser':
+                    deleteUser();
+                    break;
+                case 'updateUser':
+                    updateUserById();
+                    break;
+                case 'modifPage':
+                    modifPage();
+                    break;
                     default:
                    
             

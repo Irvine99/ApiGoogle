@@ -1,63 +1,121 @@
+<?php
+require_once 'src/model/User.php';
+require_once 'src/model/Project.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+             <meta charset="UTF-8">
+             <meta http-equiv="X-UA-Compatible" content="IE=edge">
+             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
+             <!--FontAwesome-->
+             <script src="https://kit.fontawesome.com/bebee1fedc.js" crossorigin="anonymous"></script>
+             <!--VantaJs-->
+             <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+             <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
 
-    <!--Tailwind -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        clifford: '#da373d',
-                    }
-                }
-            }
-        }
-    </script>
-    <title>Panel admin</title>
-</head>
 
-<body class="bg-gray-50 dark:bg-gray-900">
+             <!--Tailwind -->
+             <script src="https://cdn.tailwindcss.com"></script>
+             <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+             <script>
+               tailwind.config = {
+                 theme: {
+                   extend: {
+                     colors: {
+                       clifford: '#da373d',
+                     }
+                   }
+                 }
+               }
+             </script>
+
+
+             <title>Vos Statistiques</title>
+           </head>
+
+<body class="bg-gray-100">
     <!--TailwindElement -->
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
-
+    <?php
+                  include('src/include/sideNav.php');
+                  ?>
+                  <div class='h-screen' id="slim-content" class="">
+                  <?php include('src/include/navbar.php') ?>
+                   <?php include('src/include/header.php') ?>
     <div>
-        <div class="flex flex-col text-white">
+        <div class="flex flex-col text-black">
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                     <div class="overflow-hidden">
                         <table class="min-w-full text-left text-sm font-light">
                             <thead class="border-b font-medium dark:border-neutral-500">
+                            
+                                    
                                 <tr>
                                     <th scope="col" class="px-6 py-4">id</th>
-                                    <th scope="col" class="px-6 py-4">Nom</th>
-                                    <th scope="col" class="px-6 py-4">Projet</th>
-                                    <th scope="col" class="px-6 py-4">Handle</th>
+                                    <th scope="col" class="px-6 py-4">prénom</th>
+                                    <th scope="col" class="px-6 py-4">nom</th>
+                                    <th scope="col" class="px-6 py-4">email</th>
+                                    <th scope="col" class="px-6 py-4">nom du projet</th>
+                                    <th scope="col" class="px-6 py-4">json</th>
+                                    <th scope="col" class="px-6 py-4">logo</th>
+                                    <th scope="col" class="px-6 py-4 text-center">Actions</th>
                                 </tr>
+                                
                             </thead>
+                            <?php if (is_array($allUsers)) {
+                             foreach ($allUsers as $user)  {?>
                             <tbody>
                                 <tr class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
-                                    <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
-                                    <td class="whitespace-nowrap px-6 py-4">Mark</td>
-                                    <td class="whitespace-nowrap px-6 py-4">Otto</td>
+                                    <td class="whitespace-nowrap px-6 py-4 font-medium"><?php echo $user->id ?></td>
+                                    <td class="whitespace-nowrap px-6 py-4 font-medium"><?php echo $user->username ?></td>
+                                    <td class="whitespace-nowrap px-6 py-4"><?php echo $user->userlastname ?></td>
+                                    <td class="whitespace-nowrap px-6 py-4"><?php echo $user->email ?></td>
+                                    <td class="whitespace-nowrap px-6 py-4"><?php echo $user->name ?></td>
+                                    <td class="whitespace-nowrap px-6 py-4"><?php echo $user->json ?></td>
+                                    <td class="whitespace-nowrap px-6 py-4"><?php echo $user->logo ?></td>
                                     <td class="whitespace-nowrap px-6 py-4 text-center">
-                                        <a href="../view/modifier.php" class="text-blue-500 hover:text-blue-700 text-center p-1">Modifier</a>
-                                        <hr class="bg-white"></hr>
-                                        <a href="#" class="text-red-500 hover:text-red-700 text-center">Supprimer</a>
+                                        
+                                        
+                                        
+                                        
+                                        <form method="POST" action="?action=deleteUser">
+                                        <input type="hidden" name="projectId" value="<?php echo $user->id_pro ?>">
+                                        <input type="hidden" name="userId" value="<?php echo $user->id ?>">
+                                        <button type="submit">Supprimer</button>
+                                        </form>
+                                        
+                                        
+                            
+                                        <form method="POST" action="?action=modifPage">
+                                        <input type="hidden" name="username" value="<?php echo $user->username ?>">
+                                        <input type="hidden" name="userlastname" value="<?php echo $user->userlastname ?>">
+                                        <input type="hidden" name="useremail" value="<?php echo $user->email ?>">
+                                        <input type="hidden" name="projectName" value="<?php echo $user->name ?>">
+                                        <input type="hidden" name="projectJson" value="<?php echo $user->json ?>">
+                                        <input type="hidden" name="projectLogo" value="<?php echo $user->logo ?>">
+                                        <input type="hidden" name="projectId" value="<?php echo $user->id_pro ?>">
+                                        <input type="hidden" name="userId" value="<?php echo $user->id ?>">
+                                        <button type="submit">Modifier</button>
+                                        </form>
+
+                                       
                                     </td>
                                 </tr>
                             </tbody>
+                            <?php } } ?>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </div>
+    <?php include('src/include/footer.php') ?>
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 
 </body>
