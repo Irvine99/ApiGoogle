@@ -1,7 +1,5 @@
-          <?php var_dump($_SESSION['result']->rows);
-          ?>
 
-          <!DOCTYPE html>
+<!DOCTYPE html>
            <html lang="en">
 
            <head>
@@ -44,10 +42,10 @@
              <div class="block">
                <div id="" class="flex overflow-hidden">
                  <?php
-                  // include('src/include/sideNav.php');
+                  include('src/include/sideNav.php');
                   
                   ?>
-                    <a href="index.php?action=deco">aaaaa</a>
+                    
 
                  <div id="slim-content" class="flex flex-col  w-full">
 
@@ -59,6 +57,9 @@
 
                      <div>
                        <?php include('src/include/card.php') ?>
+                       
+                       <div class="f"><?= $_SESSION['startDateFormatted'] ?></div>
+                       <div class="f"><?= $_SESSION['endDateFormatted'] ?></div>
                      <!-- //globe -->
                      <!-- <canvas id="scene"></canvas>
                      <button>Export</button> -->
@@ -96,6 +97,9 @@
              
              <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
              <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+
+             <script src="assets/js/disableFuture.js"></script>
+
 
             
            </body>

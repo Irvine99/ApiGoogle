@@ -5,11 +5,7 @@
                 <div class="flex flex-col">
                     <h3 class="p-2 text-start">Position</h3>
                     <h2 class="p-2">
-                        <?php if (!$_POST) {
-                            echo 'Aucun';
-                        } else {
-                            echo $data->average_position;
-                        }
+                        <?php echo $_SESSION['resultTotal']->rows[0]['position'];
                         ?>
                     </h2>
                     <h2 class=""></h2>
@@ -24,11 +20,7 @@
                 <div class="flex flex-col">
                     <h3 class="p-2 text-start">CTR</h3>
                     <h2 class="p-2">
-                        <?php if (!$_POST) {
-                            echo 'Aucun';
-                        } else {
-                            echo $data->ctr;
-                        }
+                        <?php echo $_SESSION['resultTotal']->rows[0]['ctr']
                         ?>
                     </h2>
                     <h2 class=""></h2>
@@ -43,11 +35,7 @@
                 <div class="flex flex-col">
                     <h3 class="p-2 text-start">Impressions</h3>
                     <h2 class="p-2">
-                        <?php if (!$_POST) {
-                            echo 'Aucun';
-                        } else {
-                            echo $data->impressions;
-                        }
+                        <?php echo $_SESSION['resultTotal']->rows[0]['impressions']
                         ?>
                     </h2>
                     <h2 class=""></h2>
@@ -62,11 +50,7 @@
                 <div class="flex flex-col">
                     <h3 class="p-2 text-start">Clics</h3>
                     <h2 class="p-2">
-                        <?php if (!$_POST) {
-                            echo 'Aucun';
-                        } else {
-                            echo $data->clicks;
-                        }
+                        <?php echo $_SESSION['resultTotal']->rows[0]['clicks']
                         ?>
                         <span> Clics</span>
                     </h2>

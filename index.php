@@ -23,6 +23,9 @@ if(empty($_SESSION)) {
             case 'info':
                 test();
                 break;
+            case 'getDate':
+                setDate();
+                break;
             // case 'getValue':
             //     getDate();
             //     break;
