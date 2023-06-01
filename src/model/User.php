@@ -149,27 +149,45 @@ public function createToSignin(array $userForm):bool{
             }
         
             return $users;
-            var_dump($users);
-                    die();
+           
+
+        }
+
+        public function loginUser($email){
+
+            $req = $this->bdd->prepare("SELECT * FROM user WHERE email_user = ?");
+            $req->execute([$email]);
+            $data = $req->fetch();
+            if($data != false){
+                $user = new User();
+                $user->id = $data['id_user'];
+                $user->email = $data['email_user'];
+                $user->mdp = $data['password_user'];
+                $user->id_role = $data['id_role'];
+                $_SESSION['id_role'] = $user->id_role;
+            }
         }
                 
-        public function Login(User $user){
-            $req = $this->bdd->prepare('SELECT * FROM user WHERE email_user =?');
-            $req->execute([$user->email]);
-            $data = $req->fetch();
-            if($data!= false){
-                $user = new User();
-                $user->id = $data['Id_users'] ;
-                $user->email = $data['email_user'];
-                $user->mdp = $data['psw_users'];
-                $user->id_role = $data['Id_roles'];
-                $api = new ConnectApi();
-                $connectapi = $api->connectApi();
-
-                return $user;
-            }else{
-                return [];
-            }
+     public  function login() {
+            $email = $_POST['email_user'];
+            $userRepo = new UserRepository();
+            $userRepo->loginUser($email);
+        
+            $api = new ConnectApi();
+            $data = $api->connectApi();
+        
+            $date = $api->getDate();
+            $dateTotal = $api->getDateTotal();
+        
+            $_SESSION['date'] = $date;
+            $result = $api->getInfo($data, $date);
+            $resultTotal = $api->getInfo($data, $dateTotal);
+            // $_SESSION['test'] = $data;
+        
+            $_SESSION['result'] = $result;
+            $_SESSION['resultTotal'] = $resultTotal;
+            dateFormat();
+            header('location: index.php');
         }
     
 

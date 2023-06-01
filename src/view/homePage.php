@@ -41,10 +41,11 @@
              <!--mobile-->
              <div class="block">
                <div id="" class="flex overflow-hidden">
-                 <?php
-                  include('src/include/sideNav.php');
+                <div class="hidden md:block"> <?php 
+                    include('src/include/sideNav.php');
                   
-                  ?>
+                  ?></div>
+                
                     
 
                  <div id="slim-content" class="flex flex-col  w-full">
@@ -52,14 +53,23 @@
                    <?php include('src/include/navbar.php') ?>
                    <?php include('src/include/header.php') ?>
                    <?php include ('src/include/date.php') ?>
+
                    <div class="flex flex-col">
 
 
                      <div>
                        <?php include('src/include/card.php') ?>
-                       
-                       <div class="f"><?= $_SESSION['startDateFormatted'] ?></div>
-                       <div class="f"><?= $_SESSION['endDateFormatted'] ?></div>
+                       <div class="flex justify-center mt-5">
+                        <div class="py-1 bg-gray-100 drop-shadow-xl px-2 rounded-lg ">
+                          <div class="flex gap-4">
+                          <div class="text-xl"><?= $_SESSION['startDateFormatted'] ?></div>
+                          <div class="text-xl">au</div>
+                          <div class="text-xl"><?= $_SESSION['endDateFormatted'] ?></div>
+                          </div>
+
+                        </div>
+                       </div>
+
                      <!-- //globe -->
                      <!-- <canvas id="scene"></canvas>
                      <button>Export</button> -->
