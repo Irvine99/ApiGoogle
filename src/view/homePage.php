@@ -31,9 +31,10 @@
 
 
              <title>Vos Statistiques</title>
+
            </head>
 
-           <body>
+           <body class="bg-[url('assets/img/bg.jpg')] bg-cover bg-no-repeat bg-center bg-fixed">
 
              <!--mobile-->
              <div class="block">
@@ -41,39 +42,40 @@
                  <?php
                   include('src/include/sideNav.php');
                   ?>
+                </div>
 
-
-                 <div id="slim-content" class="flex flex-col  w-full">
+                 <div id="slim-content" class="flex flex-col w-full">
 
                    <?php include('src/include/navbar.php') ?>
                    <?php include('src/include/header.php') ?>
                    <div class="flex flex-col">
 
-                     <div class="mx-5 w-[150px] md:flex md:justify-center md:w-auto lg:grid lg:justify-start lg:w-[150px]">
+                    <div class="m-6 w-[150px] md:flex md:justify-center md:w-auto">
                        <form action="index.php?action=getValue" method="POST">
-                         <input class="rounded my-2" type="date" id="date" </input>
-                         <input class="rounded" type="date" id="date" </input>
+                         <input class="rounded my-2" type="date" id="date">
+                         <input class="rounded" type="date" id="date">
                          <select name="Coucou" id="">
                            <?php foreach ($dates as $date) { ?>
                              <option name="dateChoose" value="<?= $date ?>"><?= $date  ?></option>
                            <?php } ?>
                          </select>
-                         <button class="bg-blue-500 rounded-lg py-1 px-4 text-white hover:bg-blue-500/50 hover:transition ease-in-out duration-300 my-5" type="submit">Yo vas y envoie</button>
+                         <button class="bg-blue-500 rounded-lg py-1 px-4 text-white hover:bg-blue-500/50 hover:transition ease-in-out duration-300 my-5" type="submit">Chercher</button>
                        </form>
                      </div>
-                     <div>
-                       <?php include('src/include/card.php') ?>
+
+                     <?php include('src/include/card.php') ?>
                      <!-- //globe -->
                      <!-- <canvas id="scene"></canvas>
                      <button>Export</button> -->
-                     <div class="block md:flex justify-center lg:justify-start lg:">
+
+                     <div class="block md:flex justify-center">
                        <?php include('src/include/chartBar.php') ?>
                        <?php include('src/include/chartLine.php') ?>
                      </div>
                      <?php include('src/include/tabs.php') ?>
                    </div>
                  </div>
-               </div>
+               
              </div>
              <!--desktop-->
              <!-- <div class="md:hidden">
