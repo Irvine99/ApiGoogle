@@ -98,7 +98,7 @@ function signUp():void{
 
 
 //FIN inscription et connexion
-=======
+
 function login() {
     $email = $_POST['email_user'];
     $userRepo = new UserRepository();

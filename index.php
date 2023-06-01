@@ -88,7 +88,7 @@ if(empty($_SESSION)) {
                    
 
             
-                default:
+       
                 test();
                    
         
