@@ -1,7 +1,7 @@
 <div class="m-5 flex flex-col bg-gray-100 py-2 rounded-lg w-auto md:w-[20%] drop-shadow-xl w-[20%]">
     <h1 class="m-5 text-neutral-500">Selectionnez une date</h1>
-    <form action="index.php?action=getValue" method="post">
-        <div class="relative m-3" data-te-datepicker-init data-te-input-wrapper-init>
+    <form action="index.php?action=getDate" method="post">
+        <div id="datepicker-disable-future" class="relative m-3 " data-te-datepicker-init data-te-input-wrapper-init  >
             <input type="text"
                 name="startDate"
                 id="startDate"
@@ -10,7 +10,7 @@
             <label for="floatingInput"
                 class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">Date de début</label>
         </div>
-        <div class="relative m-3" data-te-datepicker-init data-te-input-wrapper-init>
+        <div class="relative m-3" data-te-datepicker-init data-te-input-wrapper-init  >
             <input type="text"
                 name="endDate"
                 id="endDate"
@@ -22,3 +22,4 @@
         <button type="submit">AAAAA</button>
     </form>
 </div>
+

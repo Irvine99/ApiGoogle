@@ -49,24 +49,64 @@ class ConnectApi {
 
         $request = new Google_Service_Webmasters_SearchAnalyticsQueryRequest();
         $request->setDimensions(['date']);
-        $request->setRowLimit(10);
-        $request->setStartDate("2019-01-01");
+        // $request->setRowLimit(10);
+        $request->setStartDate("2023-01-01");
+        $request->setEndDate("$date");
+        return $request;
+    }
+    public function getDateTotal()
+    {
+        $date = date('Y-m-d');
+
+        $request = new Google_Service_Webmasters_SearchAnalyticsQueryRequest();
+
+        // $request->setRowLimit(10);
+        $request->setStartDate("2023-01-01");
         $request->setEndDate("$date");
         return $request;
     }
 
     public function setDate($startDate, $endDate)
     {
-        if($_POST['startDate'])
+        if($startDate)
         {
-            if($_POST['startDate'] != "") {
-                $startDate = $_POST['startDate'];
-                if($_POST['endDate'] != "")
+            if($startDate < $endDate) {
+                
+                if($endDate > $startDate)
                 {
-                    $endDate = $_POST['endDate'];
 
                     $request = new Google_Service_Webmasters_SearchAnalyticsQueryRequest();
+                    $request->setDimensions(['date']);
+                    $request->setStartDate("$startDate");
+                    $request->setEndDate("$endDate");
+                    return $request;
+                }
+                else
+                {
+                    echo 'Wesh gros tu sais pas lire';
+                }
+            }
+            else
+            {
+                $this->getDate();
+            }
+        }
+        else
+        {
+            $this->getDate();
+        }
+    }
+    public function setDateTotal($startDate, $endDate)
+    {
+        if($startDate)
+        {
+            if($startDate < $endDate) {
+                
+                if($endDate > $startDate)
+                {
 
+                    $request = new Google_Service_Webmasters_SearchAnalyticsQueryRequest();
+                  
                     $request->setStartDate("$startDate");
                     $request->setEndDate("$endDate");
                     return $request;
@@ -75,7 +115,7 @@ class ConnectApi {
                 {
                     $endDate = date('Y-m-d');
                     $request = new Google_Service_Webmasters_SearchAnalyticsQueryRequest();
-
+                   
                     $request->setStartDate("$startDate");
                     $request->setEndDate("$endDate");
                     return $request;

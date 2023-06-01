@@ -43,18 +43,18 @@ function login() {
 
     $api = new ConnectApi();
     $data = $api->connectApi();
+    
     $date = $api->getDate();
+    $dateTotal = $api->getDateTotal();
+    
     $_SESSION['date'] = $date;
     $result = $api->getInfo($data, $date);
-    $cliks = $result->rows[0]->clicks;
-    $ctr = $result->rows[0]->ctr;
-    $impressions = $result->rows[0]->impressions;
-    $position = $result->rows[0]->position;
-    $_SESSION['impressions'] = $impressions;
-    $_SESSION['clicks'] = $cliks;
-    $_SESSION['ctr'] = $ctr;
-    $_SESSION['position'] = $position;
+    $resultTotal = $api->getInfo($data, $dateTotal);
+    // $_SESSION['test'] = $data;
+    
     $_SESSION['result'] = $result;
+    $_SESSION['resultTotal'] = $resultTotal;
+    dateFormat();
     header('location: index.php');
 }
 
@@ -181,7 +181,40 @@ function choiceData(){
     }
 }
 
+function setDate(){
+    $api = new ConnectApi();
+    $data = $api->connectApi();
+    $startDate = date_create_from_format("d/m/Y", $_POST['startDate']);
+    $startDate = date_format($startDate, "Y-m-d");
+    
+    $endDate = date_create_from_format("d/m/Y", $_POST['endDate']);
+    $endDate = date_format($endDate, "Y-m-d");
 
+    $date = $api->setDate($startDate, $endDate);
+    $dateTotal = $api->setDateTotal($startDate, $endDate);
+ 
+    $result = $api->getInfo($data, $date);
+    $resultTotal = $api->getInfo($data, $dateTotal);
+    $_SESSION['date'] = $dateTotal;
+    $_SESSION['result'] = $result;
+    $_SESSION['resultTotal'] = $resultTotal;
+    dateFormat();
+    
+    header('location: index.php');
+
+    
+}
+
+function dateFormat(){
+    $startDate = date_create_from_format("Y-m-d", $_SESSION['date']['startDate']);
+    $startDate = date_format($startDate, "d/m/Y");
+    
+    $endDate = date_create_from_format("Y-m-d", $_SESSION['date']['endDate']);
+    $endDate = date_format($endDate, "d/m/Y");
+
+    $_SESSION['startDateFormatted'] = $startDate;
+    $_SESSION['endDateFormatted'] = $endDate;
+}
 
 
 
