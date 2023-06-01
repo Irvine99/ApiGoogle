@@ -27,7 +27,7 @@
 
 <body>
   <div class="bg-gray-50 dark:bg-gray-900 flex justify-center">
-    <img src="../../assets/img/logo_transpa.png" </img>
+    <img class="w-[75px] h-[75px]" src="assets/img/logo_transpa.png" />
   </div>
   <section class="bg-gray-50 dark:bg-gray-900">
     <div class="flex flex-col h-screen items-center justify-center py-8 mx-auto md:h-screen lg:py-0">

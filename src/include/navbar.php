@@ -10,7 +10,7 @@
         
         
 
-        <img class="w-[75px] h-[75px]" src="assets/img/logo_transpa.png" </img>
+        <img class="w-[75px] h-[75px]" src="assets/img/logo.png" />
 
         <!-- Second dropdown container -->
         <div class="relative" data-te-dropdown-ref>
@@ -27,7 +27,7 @@
               <?php 
               
               if($_SESSION['id_role'] == 1){ ?>
-                <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30" href="index.php?action=deco" data-te-dropdown-item-ref>Panel Admin</a>
+                <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30" href="index.php?action=adminPage" data-te-dropdown-item-ref>Panel Admin</a>
             <?php  }
               
               ?>

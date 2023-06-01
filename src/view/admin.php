@@ -37,7 +37,7 @@ require_once 'src/model/Project.php';
              <title>Vos Statistiques</title>
            </head>
 
-<body class="bg-gray-100">
+<body class="overflow-x-hidden">
     <!--TailwindElement -->
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
     <?php
@@ -86,7 +86,7 @@ require_once 'src/model/Project.php';
                                         <form method="POST" action="?action=deleteUser">
                                         <input type="hidden" name="projectId" value="<?php echo $user->id_pro ?>">
                                         <input type="hidden" name="userId" value="<?php echo $user->id ?>">
-                                        <button type="submit">Supprimer</button>
+                                        <button class="mb-2 bg-red-500 rounded-lg py-1 px-2 text-white hover:bg-red-800 w-[100px]  " type="submit">Supprimer</button>
                                         </form>
                                         
                                         
@@ -100,7 +100,7 @@ require_once 'src/model/Project.php';
                                         <input type="hidden" name="projectLogo" value="<?php echo $user->logo ?>">
                                         <input type="hidden" name="projectId" value="<?php echo $user->id_pro ?>">
                                         <input type="hidden" name="userId" value="<?php echo $user->id ?>">
-                                        <button type="submit">Modifier</button>
+                                        <button class="bg-blue-500 rounded-lg py-1 px-2 w-[100px] text-white hover:bg-blue-800" type="submit">Modifier</button>
                                         </form>
 
                                        

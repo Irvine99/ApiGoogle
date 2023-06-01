@@ -55,7 +55,7 @@
         <span
           class="group-[&[data-te-sidenav-slim-collapsed='true']]:data-[te-sidenav-slim='false']:hidden"
           data-te-sidenav-slim="false"
-          >Category 1</span
+          >Nom de domain</span
         >
         <span
           class="absolute right-0 ml-auto mr-[0.5rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
@@ -76,10 +76,10 @@
         class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
         data-te-sidenav-collapse-ref>
         <li class="relative">
-          <a href="index.php?action=stan"
+          <a href="index.php?action=test"
             class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
             data-te-sidenav-link-ref
-            >Stan.com</a
+            >Ronde Des Nutons</a
           >
         </li>
         <li class="relative">
