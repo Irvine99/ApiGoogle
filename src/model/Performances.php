@@ -1,4 +1,5 @@
 <?php
+require_once 'src/config/connect_api.php';
 
 require_once 'src/model/Data.php';
 

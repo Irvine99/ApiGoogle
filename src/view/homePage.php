@@ -1,4 +1,5 @@
-           <!DOCTYPE html>
+
+<!DOCTYPE html>
            <html lang="en">
 
            <head>
@@ -13,6 +14,8 @@
              <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
              <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
 
+              <!--FLowbite-->
+              <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
 
              <!--Tailwind -->
              <script src="https://cdn.tailwindcss.com"></script>
@@ -40,29 +43,23 @@
                <div id="" class="flex overflow-hidden">
                  <?php
                   include('src/include/sideNav.php');
+                  
                   ?>
-
+                    
 
                  <div id="slim-content" class="flex flex-col  w-full">
 
                    <?php include('src/include/navbar.php') ?>
                    <?php include('src/include/header.php') ?>
+                   <?php include ('src/include/date.php') ?>
                    <div class="flex flex-col">
 
-                     <div class="mx-5 w-[150px] md:flex md:justify-center md:w-auto lg:grid lg:justify-start lg:w-[150px]">
-                       <form action="index.php?action=getValue" method="POST">
-                         <input class="rounded my-2" type="date" id="date" </input>
-                         <input class="rounded" type="date" id="date" </input>
-                         <select name="Coucou" id="">
-                           <?php foreach ($dates as $date) { ?>
-                             <option name="dateChoose" value="<?= $date ?>"><?= $date  ?></option>
-                           <?php } ?>
-                         </select>
-                         <button class="bg-blue-500 rounded-lg py-1 px-4 text-white hover:bg-blue-500/50 hover:transition ease-in-out duration-300 my-5" type="submit">Yo vas y envoie</button>
-                       </form>
-                     </div>
+
                      <div>
                        <?php include('src/include/card.php') ?>
+                       
+                       <div class="f"><?= $_SESSION['startDateFormatted'] ?></div>
+                       <div class="f"><?= $_SESSION['endDateFormatted'] ?></div>
                      <!-- //globe -->
                      <!-- <canvas id="scene"></canvas>
                      <button>Export</button> -->
@@ -96,8 +93,15 @@
 </div> -->
              <!--TailwindElement -->
              <?php include('src/include/footer.php') ?>
+
+             
              <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
-             <script src="assets/js/vanta.js"></script>
+             <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+
+             <script src="assets/js/disableFuture.js"></script>
+
+
+            
            </body>
 
            </html>

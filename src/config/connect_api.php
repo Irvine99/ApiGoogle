@@ -1,12 +1,11 @@
 <?php
 
+require_once 'vendor/autoload.php';
 use Google\Service\AndroidPublisher\Timestamp;
 
-require_once 'vendor/autoload.php';
+
 
 class ConnectApi {
-
-
 
     public function connectApi() {
 
@@ -25,23 +24,23 @@ class ConnectApi {
         if ($client->isAccessTokenExpired()) {
             $client->fetchAccessTokenWithAssertion();
         }
-
-        $access_token = $client->getAccessToken();
         
-        // $client->setApplicationName("sc-domain:la-ronde-des-nutons.fr");
+        $access_token = $client->getAccessToken();
+        $_SESSION['access_token'] = $access_token;
+        return $client;
+    }
+
+    public function getInfo($client, $request) {
+
+        $client->setApplicationName("sc-domain:la-ronde-des-nutons.fr");
         
         $webmastersService = new Google_Service_Webmasters($client);
 
         $searchanalytics = $webmastersService->searchanalytics;
-        
 
-        // replace 'siteUrl' with the actual site URL
         $response = $searchanalytics->query('sc-domain:la-ronde-des-nutons.fr', $request);
-    
-        $data = [];
-        $data[] = $client;
-        $data[] = $response;
-        return $data;
+
+        return $response;
     }
 
     public function getDate()
@@ -49,24 +48,65 @@ class ConnectApi {
         $date = date('Y-m-d');
 
         $request = new Google_Service_Webmasters_SearchAnalyticsQueryRequest();
+        $request->setDimensions(['date']);
+        // $request->setRowLimit(10);
+        $request->setStartDate("2023-01-01");
+        $request->setEndDate("$date");
+        return $request;
+    }
+    public function getDateTotal()
+    {
+        $date = date('Y-m-d');
 
-        $request->setStartDate("2019-01-01");
+        $request = new Google_Service_Webmasters_SearchAnalyticsQueryRequest();
+
+        // $request->setRowLimit(10);
+        $request->setStartDate("2023-01-01");
         $request->setEndDate("$date");
         return $request;
     }
 
-    public function setDate(timestamp $startDate, timestamp $endDate)
+    public function setDate($startDate, $endDate)
     {
-        if($_POST)
+        if($startDate)
         {
-            if($_POST['startDate'] != "") {
-                $startDate = $_POST['startDate'];
-                if($_POST['endDate'] != "")
+            if($startDate < $endDate) {
+                
+                if($endDate > $startDate)
                 {
-                    $endDate = $_POST['endDate'];
 
                     $request = new Google_Service_Webmasters_SearchAnalyticsQueryRequest();
+                    $request->setDimensions(['date']);
+                    $request->setStartDate("$startDate");
+                    $request->setEndDate("$endDate");
+                    return $request;
+                }
+                else
+                {
+                    echo 'Wesh gros tu sais pas lire';
+                }
+            }
+            else
+            {
+                $this->getDate();
+            }
+        }
+        else
+        {
+            $this->getDate();
+        }
+    }
+    public function setDateTotal($startDate, $endDate)
+    {
+        if($startDate)
+        {
+            if($startDate < $endDate) {
+                
+                if($endDate > $startDate)
+                {
 
+                    $request = new Google_Service_Webmasters_SearchAnalyticsQueryRequest();
+                  
                     $request->setStartDate("$startDate");
                     $request->setEndDate("$endDate");
                     return $request;
@@ -75,7 +115,7 @@ class ConnectApi {
                 {
                     $endDate = date('Y-m-d');
                     $request = new Google_Service_Webmasters_SearchAnalyticsQueryRequest();
-
+                   
                     $request->setStartDate("$startDate");
                     $request->setEndDate("$endDate");
                     return $request;
@@ -92,5 +132,13 @@ class ConnectApi {
         }
     }
 }
+
+// $api = new ConnectApi();
+
+// $data = $api->connectApi();
+// $date = $api->getDate();
+// var_dump($info = $api->getInfo($data, $date));
+
+
 
 ?>
