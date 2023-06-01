@@ -9,7 +9,7 @@ class User extends Project{
     public $mdp;
     public $id_role;
     public $token;
-
+   
 public function createToSignin(array $userForm):bool{
    
     if(!isset($userForm['email']) OR $userForm['email'] == ''){
@@ -79,7 +79,6 @@ public function createToSignin(array $userForm):bool{
         return $lastId;
     }
 
-
     public function getLastIdUser($lastId){
         $req = $this->bdd->prepare("SELECT id_user FROM user WHERE id_user=? LIMIT 1");
         $req->execute([$lastId]);
@@ -106,56 +105,7 @@ public function createToSignin(array $userForm):bool{
             return false;
         }
         }
-
-}
-
-
-public function insertUserWithProject (Project $project , User $user){
-    $req = $this ->bdd->prepare('INSERT INTO project_user (id_project, id_user)
-    SELECT p.id_project, u.id_user
-    FROM user u
-    JOIN project p ON p.name_project = ?
-    WHERE u.name_user = ?
-    VALUES (?,?)');
-
-$req->execute([
-    $project->name,
-    $user->name 
-    
-
-]);
-}
-public function findByEmailAndName (string $email, string $name){
-    $req = $this ->bdd->prepare('SELECT id_user FROM user WHERE email_user =? AND name_user =? LIMIT 1');
-    $req->execute([$email,$name]);
-    return $req->fetch(PDO::FETCH_ASSOC);
-}
-
-
-public function insertUser(User $user){
-    $token = bin2hex(random_bytes(25));
-    $req = $this->bdd->prepare("INSERT INTO user (email_user,name_user,last_name_user,token_user,id_role)
-    VALUES (?,?,?,?,?)");
-    $req->execute([
-        $user->email,
-        $user->username,
-        $user->userlastname,
-        $token , 
-        2
-
         
-
-        function getUserAndProjectbyId($id_User, $id_Project) {
-            $req = $this->bdd->prepare('SELECT * FROM user WHERE id_user = ?');
-            $req->execute([$id_User]);
-            $user = $req->fetch(PDO::FETCH_ASSOC);
-        
-            $req = $this->bdd->prepare('SELECT * FROM project WHERE  id_project = ?');
-            $req->execute([$id_Project]);
-            $project = $req->fetch(PDO::FETCH_ASSOC);
-        
-            return array('user' => $user, 'project' => $project);
-        }
         public function updateUserandProject($new_name, $new_lastname,$new_json,$new_proname,$new_email,$id_User,$id_Project){
             try {
             $req = $this->bdd->prepare('UPDATE user SET email_user = ?, name_user =?, last_name_user =? WHERE id_user =?');
@@ -223,27 +173,4 @@ public function insertUser(User $user){
         }
     
 
-
     }
-
-}
-
-
-    public function loginUser($email){
-       
-        $req = $this->bdd->prepare("SELECT * FROM user WHERE email_user = ?");
-        $req->execute([$email]);
-        $data = $req->fetch();
-        if($data != false){
-            $user = new User();
-            $user->id = $data['id_user'];
-            $user->email = $data['email_user'];
-            $user->mdp = $data['password_user'];
-            $user->id_role = $data['id_role'];
-            $_SESSION['id_role'] = $user->id_role;
-        }
-    }
-
-
-}
-
