@@ -57,6 +57,36 @@ if(empty($_SESSION)) {
             case 'deco':
                 disconnectUser();
                 break;
+
+                case 'LoginTraitement':
+                    login();
+                    break;
+                case 'signUpForm' :
+                    signUpForm();
+                    break;
+                case 'signUp':
+                    signUp();
+                    break;
+                
+                case 'addForm':
+                    addForm();
+                    break;
+                
+                case 'adminPage':
+                    adminPage();
+                    break;
+                case 'deleteUser':
+                    deleteUser();
+                    break;
+                case 'updateUser':
+                    updateUserById();
+                    break;
+                case 'modifPage':
+                    modifPage();
+                    break;
+                    default:
+                   
+
             
                 default:
                 test();

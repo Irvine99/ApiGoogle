@@ -1,10 +1,17 @@
 
 <?php
 require_once ('src/config/connect_api.php');
+require_once 'src/model/User.php';
+require_once 'src/model/Project.php';
+// Create a UserRepository object
+$userRepo = new UserRepository();
 
-$data = new ConnectApi();
-$client = $data->getDate();
-var_dump($client)
+// Call getAllUsers() and store the result in $allUsers
+$allUsers = $userRepo->getAllUsers();
+
+// Output the contents of $allUsers for debugging
+var_dump($allUsers);
+
 ?>
 
 <!DOCTYPE html>

@@ -10,6 +10,65 @@ function signUpForm(){
     require('src/view/inscription.php');
 }
 
+
+function addForm(){
+    require('src/view/add.php');
+}
+
+function adminPage(){
+    $user = new User();
+    $userRepo = new UserRepository();
+    $allUsers = $userRepo->getAllUsers($user);
+    require('src/view/admin.php');
+}
+function modifPage(){
+    $user = new User();
+    require('src/view/modifier.php');
+}
+
+function deleteUser(){
+    $id_User = isset($_POST['userId']) ? $_POST['userId'] : null;
+    $id_Project = isset($_POST['projectId']) ? $_POST['projectId'] : null;
+    var_dump($id_Project);
+    var_dump($id_User);
+    $userRepository = new UserRepository();
+    $delete = $userRepository->deleteAll($id_User,$id_Project);
+      
+      if ($delete) {
+        echo "Deletion was successful.";
+      } else {
+        echo "Deletion failed.";
+      }
+    }
+
+    function updateUserById(){
+        $id_User = isset($_POST['userId'])? $_POST['userId'] : null;
+        $id_Project = isset($_POST['projectId'])? $_POST['projectId'] : null;
+        $new_name = isset($_POST['name'])? $_POST['name'] : null;
+        $new_lastname = isset($_POST['lastname'])? $_POST['lastname'] : null;
+        $new_email = isset($_POST['email'])? $_POST['email'] : null;
+        //$new_logo = isset($_POST['logo_client'])? $_POST['logo_client'] : null;
+        $new_json = isset($_POST['projet_json'])? $_POST['projet_json'] : null;
+        $new_proname = isset($_POST['nom_projet'])? $_POST['nom_projet'] : null;
+        var_dump($id_Project);
+        var_dump($id_User);
+        var_dump($new_lastname);
+        var_dump($new_json);
+        var_dump($new_proname);
+        
+        $userRepository = new UserRepository();
+        $update = $userRepository->updateUserandProject($new_name,$new_lastname,$new_json,$new_proname,$new_email,$id_User,$id_Project);
+        if ($update) {
+            echo "Update was successful.";
+        } else {
+            echo "Update failed.";
+        }
+    }
+
+  
+
+
+
 function loginForm(){
     require('src/view/connexion.php');
 }
@@ -26,7 +85,7 @@ function signUp():void{
         var_dump($_POST);
         $tmp = $user->createToSignin($_POST);
         if($tmp && $tmppro){
-            $lastIdUser = $userRepository->insertUser($user);
+            $lastIdUser= $userRepository->insertUser($user);
             $lastIdProject = $ProjectRepository->insertProject($project);
             $userRepository->insertRelation($lastIdUser,$lastIdProject);
             var_dump('good');
@@ -36,6 +95,10 @@ function signUp():void{
     }
 }
 
+
+
+//FIN inscription et connexion
+=======
 function login() {
     $email = $_POST['email_user'];
     $userRepo = new UserRepository();
@@ -57,6 +120,7 @@ function login() {
     dateFormat();
     header('location: index.php');
 }
+
 
 function test() {
 
@@ -181,6 +245,9 @@ function choiceData(){
     }
 }
 
+
+
+
 function setDate(){
     $api = new ConnectApi();
     $data = $api->connectApi();
@@ -201,6 +268,7 @@ function setDate(){
     dateFormat();
     
     header('location: index.php');
+
 
     
 }
