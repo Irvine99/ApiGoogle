@@ -4,12 +4,18 @@ session_start();
 
 require 'src/controller/homeController.php';
 require 'src/model/User.php';
-if(empty($_SESSION)) {
+if($_GET['action']) {
     loginForm();
     switch($_GET['action']) {
         case 'LoginTraitement':
             login();
             break;
+            case 'setPsw':
+                setPsw();
+                break;
+            case 'setPswForm':
+                setPswForm();
+                break;
     }
 }else if(isset($_SESSION['id_role'])) {
     if(isset($_GET['action']) && $_GET['action'] !== ''){
@@ -69,11 +75,7 @@ if(empty($_SESSION)) {
                 case 'modifPage':
                     modifPage();
                     break;
-                case 'setPsw':
-                    setPsw();
-                case 'setPswForm':
-                    setPswForm();
-                    break;
+                
                     default:
                    
 
