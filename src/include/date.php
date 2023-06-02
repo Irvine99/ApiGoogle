@@ -1,5 +1,5 @@
-<div class="flex justify-center">
-<div class="m-5 flex flex-col bg-gray-100 py-2 rounded-lg w-auto md:w-[20%] drop-shadow-xl w-[20%]">
+
+<div class="m-5 flex flex-col bg-gray-100 py-2 rounded-lg w-auto md:w-1/2 drop-shadow-xl w-[20%]">
     <h1 class="m-5 text-black-500">Selectionnez une date</h1>
     <form action="index.php?action=getDate" method="post">
         <div id="datepicker-disable-future" class="relative m-3 "   >
@@ -25,5 +25,5 @@
         </div>
     </form>
 </div>
-</div>
+
 

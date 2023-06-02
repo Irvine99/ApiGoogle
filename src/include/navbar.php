@@ -1,23 +1,23 @@
 <!-- Main navigation container -->
 <nav class="flex relative flex w-full items-center bg-gray-800 py-2 shadow-md shadow-black/5" data-te-navbar-ref>
-  <div class="flex w-full items-center px-3">
+  <div class="flex justify-end w-full items-center px-3">
 
 
     <!-- Collapsible navigation container -->
-    <div class="flex items-center w-full" id="navbarSupportedContent1" data-te-collapse-item>
+    <div class="flex justify-end items-center w-full" id="navbarSupportedContent1" data-te-collapse-item>
       <!-- Logo -->
-      <div class="flex w-full mx-10 justify-between items-center">
+      <div class="flex w-full mx-10 items-center">
         
         
 
-        <img class="w-[75px] h-[75px]" src="assets/img/logo.png" />
+  
 
         <!-- Second dropdown container -->
-        <div class="relative" data-te-dropdown-ref>
+        <div class="w-full relative" data-te-dropdown-ref>
           <!-- Second dropdown trigger -->
-          <a class="hidden-arrow flex justify-end items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none" href="#" id="dropdownMenuButton2" role="button" data-te-dropdown-toggle-ref aria-expanded="false">
+          <a class="flex w-full justify-end hidden-arrow flex justify-end items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none" href="#" id="dropdownMenuButton2" role="button" data-te-dropdown-toggle-ref aria-expanded="false">
             <!-- User avatar -->
-            <img src="https://tecdn.b-cdn.net/img/new/avatars/2.jpg" class="rounded-full align-middle w-[12%] md:w-[16%]" alt="" loading="lazy" />
+            <img src="https://tecdn.b-cdn.net/img/new/avatars/2.jpg" class="rounded-full align-middle w-[50px] md:w-[50px]" alt="" loading="lazy" />
           </a>
           <!-- Second dropdown menu -->
           <ul class="absolute left-auto right-0 z-[1000] float-left m-0 mt-1 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block" aria-labelledby="dropdownMenuButton2" data-te-dropdown-menu-ref>

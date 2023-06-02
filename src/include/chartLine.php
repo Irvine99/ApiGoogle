@@ -20,7 +20,7 @@
       $count = count($results);
       foreach($results as $key=>$data) {
         
-        echo "'".$data->ctr."'";
+        echo "'".$data->position."'";
         if($key !== $count - 1) {
           echo ',';
         }
