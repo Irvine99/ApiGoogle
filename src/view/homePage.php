@@ -63,14 +63,16 @@
             <!-- //globe -->
             <!-- <canvas id="scene"></canvas>
                      <button>Export</button> -->
-            <div class="block md:flex justify-center lg:justify-start lg:">
+<div class="bg-zinc-100/50 mt-10">
+<div class="block md:flex justify-center lg:justify-start lg:">
               <?php include('src/include/chartBar.php') ?>
               <?php include('src/include/chartLine.php') ?>
             </div>
-            <div class="block md:flex justify-center lg:justify-start lg:">
+            <div class="mt-10 block md:flex justify-center lg:justify-start lg:">
               <?php include('src/include/chartBarClicks.php') ?>
               <?php include('src/include/chartLineImpressions.php') ?>
             </div>
+</div>
 
           </div>
         </div>

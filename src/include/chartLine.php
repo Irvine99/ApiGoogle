@@ -3,7 +3,7 @@
     <h3 class="my-2">Nom du graphique à mettre</h3>
     <canvas
         data-te-chart="line"
-        data-te-dataset-label="Wesh le CTR !!!!"
+        data-te-dataset-label="position"
         data-te-labels="[      <?php 
       $count = count($results);
 
