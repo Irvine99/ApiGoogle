@@ -26,21 +26,6 @@ if(empty($_SESSION)) {
             case 'getDate':
                 setDate();
                 break;
-            // case 'getValue':
-            //     getDate();
-            //     break;
-            // case 'position':
-            //     baseDate();
-            //     break;
-            // case 'clics':
-            //     baseDate();
-            //     break;
-            // case 'impressions':
-            //     baseDate();
-            //     break;
-            // case 'ctr':
-            //     baseDate();
-            //     break;
             case 'LoginTraitement':
                 login();
                 break;
@@ -83,6 +68,11 @@ if(empty($_SESSION)) {
                     break;
                 case 'modifPage':
                     modifPage();
+                    break;
+                case 'setPsw':
+                    setPsw();
+                case 'setPswForm':
+                    setPswForm();
                     break;
                     default:
                    
