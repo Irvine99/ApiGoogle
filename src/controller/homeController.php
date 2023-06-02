@@ -10,6 +10,10 @@ function signUpForm(){
     require('src/view/inscription.php');
 }
 
+function setPswForm(){
+    require('src/view/setpsw.php');
+}
+
 
 function addForm(){
     require('src/view/add.php');
@@ -88,12 +92,15 @@ function signUp():void{
             $lastIdUser= $userRepository->insertUser($user);
             $lastIdProject = $ProjectRepository->insertProject($project);
             $userRepository->insertRelation($lastIdUser,$lastIdProject);
-            var_dump('good');
+            $token = $user->token;
+            require_once'src/config/mail.php';   
         }else{
             var_dump('pasbon');
         }
     }
 }
+
+
 
 
 
@@ -283,6 +290,16 @@ function dateFormat(){
     $_SESSION['startDateFormatted'] = $startDate;
     $_SESSION['endDateFormatted'] = $endDate;
 }
+
+function setPsw() {
+    $setpsw = $_POST['setpsw'];
+    $getToken = $_GET['getToken'];
+    if(isset($_GET['token']) && !empty($_GET['token'])) {
+    $userRepository = new UserRepository();
+    $userRepository->verifPsw($getToken,$setpsw);
+}
+}
+
 
 
 

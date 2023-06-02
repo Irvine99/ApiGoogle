@@ -189,6 +189,30 @@ public function createToSignin(array $userForm):bool{
             dateFormat();
             header('location: index.php');
         }
+
+        public function verifPsw($getToken,$setpsw) {
+            if(isset($_GET['token']) && !empty($_GET['token'])) {
+
+                $recupUser = $this->bdd->prepare('SELECT * FROM user WHERE token_user = ?');
+                $recupUser->execute($getToken);
+                if($recupUser) {
+                    $userInfo = $recupUser->fetch();
+                    if($userInfo) {
+                        $confirmation = $this->bdd->prepare('INSERT INTO user password_user = ? WHERE token_user = ?');
+                        $confirmation->execute([$setpsw,$getToken]);
+                        header('location:connexion.php');
+                    }else{
+                        echo "Compte déjà actif";
+                    }
+            
+                }else {
+                    echo "Token ou id incorect";
+                }
+            
+            }else {
+                echo "Aucun utilisateur trouvé";
+            }
+        }            
     
 
     }
