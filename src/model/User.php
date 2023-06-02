@@ -76,7 +76,7 @@ public function createToSignin(array $userForm):bool{
             
         ]);
         $lastId = $this->bdd->lastInsertId();
-        return $lastId;
+        return ['id'=>$lastId,'token'=>$token];
     }
 
     public function getLastIdUser($lastId){
@@ -144,6 +144,7 @@ public function createToSignin(array $userForm):bool{
                 $user->logo = $data['logo_project'];
                 $user->json = $data['json_project'];
                 $user->id_pro = $data['id_project'];
+                $user->token = $data['token_user'];
                 $users[] = $user;
                 
             }

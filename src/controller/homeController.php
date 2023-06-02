@@ -84,16 +84,16 @@ function signUp():void{
     if($user == []){
         $user = new User();
         $project = new Project();
-        var_dump($project);
         $tmppro = $project->createToSignin($_POST);
-        var_dump($_POST);
         $tmp = $user->createToSignin($_POST);
         if($tmp && $tmppro){
-            $lastIdUser= $userRepository->insertUser($user);
+            $idUserAndToken= $userRepository->insertUser($user);
             $lastIdProject = $ProjectRepository->insertProject($project);
-            $userRepository->insertRelation($lastIdUser,$lastIdProject);
-            $token = $user->token;
-            require_once'src/config/mail.php';   
+            $userRepository->insertRelation($idUserAndToken['id'],$lastIdProject);
+            $token =  $idUserAndToken['token'];
+            $email_user = $user->email;
+            require_once'src/config/mail.php';
+               
         }else{
             var_dump('pasbon');
         }
@@ -293,7 +293,7 @@ function dateFormat(){
 
 function setPsw() {
     $setpsw = $_POST['setpsw'];
-    $getToken = $_GET['getToken'];
+    $getToken = $_GET['token'];
     if(isset($_GET['token']) && !empty($_GET['token'])) {
     $userRepository = new UserRepository();
     $userRepository->verifPsw($getToken,$setpsw);
