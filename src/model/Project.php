@@ -22,7 +22,7 @@ class Project {
         }
     
         // Move file to destination path
-        $destinationPath = 'credentials/';
+        $destinationPath = 'json/';
         $newFilename = uniqid() . '.json'; // generate unique filename
         $uploadPath = $destinationPath . $newFilename;
 
