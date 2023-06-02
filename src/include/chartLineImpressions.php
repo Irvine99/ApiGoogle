@@ -1,14 +1,10 @@
-<?php $results = $_SESSION['result']; ?>
-
-<div class="m-5 bg-gray-100 py-2 rounded-lg w-auto  md:w-[50%] drop-shadow-xl">
-<div class="ml-5 w-auto overflow-hidden">
+<div class="m-5 bg-gray-100 py-2 rounded-lg w-auto md:w-[50%] drop-shadow-xl">
+    <div class="ml-5  w-auto overflow-hidden">
     <h3 class="my-2">Nom du graphique à mettre</h3>
-
     <canvas
-    data-te-chart="bar"
-    data-te-dataset-label="Wesh Ma gueuele"
-    data-te-labels="[
-      <?php 
+        data-te-chart="line"
+        data-te-dataset-label="Wesh le CTR !!!!"
+        data-te-labels="[      <?php 
       $count = count($results);
 
       foreach($results as $key=>$value) {
@@ -19,10 +15,8 @@
           echo ',';
         }
       } 
-    ?>
-      
-      ]"
-    data-te-dataset-data="[<?php 
+    ?>]"
+        data-te-dataset-data="[<?php 
       $count = count($results);
       foreach($results as $key=>$data) {
         
@@ -31,7 +25,6 @@
           echo ',';
         }
       } ?>]">
-  </canvas>
+    </canvas>
+    </div>
 </div>
-</div>
-

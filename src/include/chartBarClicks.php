@@ -26,7 +26,7 @@
       $count = count($results);
       foreach($results as $key=>$data) {
         
-        echo "'".$data->impressions."'";
+        echo "'".$data->clicks."'";
         if($key !== $count - 1) {
           echo ',';
         }

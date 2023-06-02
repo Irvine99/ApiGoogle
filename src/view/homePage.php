@@ -1,89 +1,83 @@
-
 <!DOCTYPE html>
-           <html lang="en">
+<html lang="en">
 
-           <head>
-             <meta charset="UTF-8">
-             <meta http-equiv="X-UA-Compatible" content="IE=edge">
-             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
-             <!--FontAwesome-->
-             <script src="https://kit.fontawesome.com/bebee1fedc.js" crossorigin="anonymous"></script>
-             <!--VantaJs-->
-             <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-             <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
+  <!--FontAwesome-->
+  <script src="https://kit.fontawesome.com/bebee1fedc.js" crossorigin="anonymous"></script>
+  <!--VantaJs-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
 
-              <!--FLowbite-->
-              <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+  <!--FLowbite-->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
 
-             <!--Tailwind -->
-             <script src="https://cdn.tailwindcss.com"></script>
-             <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
-             <script>
-               tailwind.config = {
-                 theme: {
-                   extend: {
-                     colors: {
-                       clifford: '#da373d',
-                     }
-                   }
-                 }
-               }
-             </script>
-
-
-             <title>Vos Statistiques</title>
-           </head>
-
-           <body>
-
-             <!--mobile-->
-             <div class="block">
-               <div id="" class="flex overflow-hidden">
-                <div class="hidden md:block"> <?php 
-                    include('src/include/sideNav.php');
-                  
-                  ?></div>
-                
-                    
-
-                 <div id="slim-content" class="flex flex-col  w-full">
-
-                   <?php include('src/include/navbar.php') ?>
-                   <?php include('src/include/header.php') ?>
-                   <?php include ('src/include/date.php') ?>
-
-                   <div class="flex flex-col">
+  <!--Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            clifford: '#da373d',
+          }
+        }
+      }
+    }
+  </script>
 
 
-                     <div>
-                       <?php include('src/include/card.php') ?>
-                       <div class="flex justify-center mt-5">
-                        <div class="py-1 bg-gray-100 drop-shadow-xl px-2 rounded-lg ">
-                          <div class="flex gap-4">
-                          <div class="text-xl"><?= $_SESSION['startDateFormatted'] ?></div>
-                          <div class="text-xl">au</div>
-                          <div class="text-xl"><?= $_SESSION['endDateFormatted'] ?></div>
-                          </div>
+  <title>Vos Statistiques</title>
+</head>
 
-                        </div>
-                       </div>
+<body>
 
-                     <!-- //globe -->
-                     <!-- <canvas id="scene"></canvas>
+  <!--mobile-->
+  <div class="block">
+    <div id="" class="flex overflow-hidden">
+      <div class="hidden md:block">
+        <?php
+        include('src/include/sideNav.php');
+
+        ?>
+      </div>
+
+
+
+      <div id="slim-content" class="flex flex-col w-full">
+
+        <?php include('src/include/navbar.php') ?>
+        <?php include('src/include/header.php') ?>
+        <div class="flex justify-between">
+          <?php include('src/include/datePicker.php') ?>
+          <?php include('src/include/card.php') ?>
+
+        </div>
+
+
+            <!-- //globe -->
+            <!-- <canvas id="scene"></canvas>
                      <button>Export</button> -->
-                     <div class="block md:flex justify-center lg:justify-start lg:">
-                       <?php include('src/include/chartBar.php') ?>
-                       <?php include('src/include/chartLine.php') ?>
-                     </div>
-                     <?php include('src/include/tabs.php') ?>
-                   </div>
-                 </div>
-               </div>
-             </div>
-             <!--desktop-->
-             <!-- <div class="md:hidden">
+            <div class="block md:flex justify-center lg:justify-start lg:">
+              <?php include('src/include/chartBar.php') ?>
+              <?php include('src/include/chartLine.php') ?>
+            </div>
+            <div class="block md:flex justify-center lg:justify-start lg:">
+              <?php include('src/include/chartBarClicks.php') ?>
+              <?php include('src/include/chartLineImpressions.php') ?>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--desktop-->
+    <!-- <div class="md:hidden">
 
     <div class="flex flex-col  w-full">
       <?php //include('src/include/navbar.php') 
@@ -101,17 +95,22 @@
     </div>
   </div>
 </div> -->
-             <!--TailwindElement -->
-             <?php include('src/include/footer.php') ?>
-
-             
-             <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
-             <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
-
-             <script src="assets/js/disableFuture.js"></script>
+    <!--TailwindElement -->
+    <?php include('src/include/footer.php') ?>
 
 
-            
-           </body>
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/datepicker.min.js"></script>
 
-           </html>
+
+
+
+
+
+</body>
+
+</html>
