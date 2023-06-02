@@ -6,7 +6,7 @@
 
     <canvas
     data-te-chart="bar"
-    data-te-dataset-label="Wesh Ma gueuele"
+    data-te-dataset-label="impressions"
     data-te-labels="[
       <?php 
       $count = count($results);
