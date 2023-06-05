@@ -64,6 +64,7 @@ function updateUserById()
     $new_proname = isset($_POST['nom_projet'])? $_POST['nom_projet'] : null;
     $userRepository = new UserRepository();
     $update = $userRepository->updateUserandProject($new_name,$new_lastname,$new_json,$new_proname,$new_email,$id_User,$id_Project);
+    
     if ($update) 
     {
         echo "Update was successful.";
@@ -131,8 +132,6 @@ function login()
 
 function home() 
 {
-    $result = new PerformancesRepo;
-    $result->getDate();
     include('src/view/homepage.php');
 }
 
@@ -142,23 +141,6 @@ function disconnectUser()
     session_destroy();
     include 'src/view/connexion.php';
 }
-
-
-function connect_session() 
-{
-    $result= new PerformancesRepo;
-    if(isset($_SESSION['id_role']))
-    {
-        $result->getDate();
-        include('src/view/homepage.php');
-    }
-    else
-    {
-        include ('src/view/connexion.php');
-    }
-}
-
-
 
 function choiceTitle()
 {
@@ -187,7 +169,8 @@ function choiceTitle()
     return $title;
 }
 
-function setDate(){
+function setDate()
+{
     $api = new ConnectApi();
     $data = $api->connectApi();
     $startDate = date_create_from_format("d/m/Y", $_POST['startDate']);

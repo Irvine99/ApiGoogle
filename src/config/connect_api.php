@@ -133,12 +133,4 @@ class ConnectApi {
     }
 }
 
-// $api = new ConnectApi();
-
-// $data = $api->connectApi();
-// $date = $api->getDate();
-// var_dump($info = $api->getInfo($data, $date));
-
-
-
 ?>

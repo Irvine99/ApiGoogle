@@ -28,5 +28,3 @@ $request->setEndDate("2023-04-04");
 
 // replace 'siteUrl' with the actual site URL
 $response = $searchanalytics->query('sc-domain:la-ronde-des-nutons.fr', $request);
-
-var_dump($response);
