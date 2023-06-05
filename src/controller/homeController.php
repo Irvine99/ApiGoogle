@@ -1,6 +1,4 @@
 <?php
-require_once 'src/model/Performances.php';
-require_once 'src/model/Periodes.php';
 require_once 'src/model/User.php';
 require_once 'src/model/Project.php';
 require_once 'src/config/connect_api.php';
