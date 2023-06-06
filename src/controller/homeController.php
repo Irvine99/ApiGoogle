@@ -6,14 +6,7 @@ require_once 'src/config/connect_api.php';
 //inscription et connexion 
 function signUpForm()
 {
-    if($_SESSION['id_role'] === 1) 
-    {
-        require('src/view/inscription.php');
-    }
-    else
-    {
-        header('location:index.php?action=home');
-    }
+    require('src/view/inscription.php');
 }
 
 function setPswForm()
@@ -23,136 +16,140 @@ function setPswForm()
 
 function addForm()
 {
-    if($_SESSION['id_role'])
-    {
-        require('src/view/add.php');
-    }
-    else
-    {
-        header('location:index.php?action=home');
-    }
+    require('src/view/add.php');
 }
 
 function adminPage()
 {
-    if($_SESSION['id_role'] === 1) {
-        $user = new User();
-        $userRepo = new UserRepository();
-        $allUsers = $userRepo->getAllUsers($user);
-        require('src/view/admin.php');
-    }
-    else 
-    {
-        header('location:index.php?action=home');
-    }
-
+    $user = new User();
+    $userRepo = new UserRepository();
+    $allUsers = $userRepo->getAllUsers($user);
+    require('src/view/admin.php');
 }
 
 function modifPage()
 {
-    if($_SESSION['id_role'] === 1)
-    {
-        $user = new User();
-        require('src/view/modifier.php');
-    }
-    else
-    {
-        header('location:index.php?action=home');
-    }
+    $user = new User();
+    require('src/view/modifier.php');
 }
 
 function deleteUser()
 {
     $id_User = isset($_POST['userId']) ? $_POST['userId'] : null;
     $id_Project = isset($_POST['projectId']) ? $_POST['projectId'] : null;
+    var_dump($id_Project);
+    var_dump($id_User);
     $userRepository = new UserRepository();
-    $delete = $userRepository->deleteAll($id_User,$id_Project);
-    
-    if ($delete) 
-    {
+    $delete = $userRepository->deleteAll($id_User, $id_Project);
+
+    if ($delete) {
         echo "Deletion was successful.";
-    } 
-    else 
-    {
+    } else {
         echo "Deletion failed.";
     }
 }
 
 function updateUserById()
 {
-    $id_User = isset($_POST['userId'])? $_POST['userId'] : null;
-    $id_Project = isset($_POST['projectId'])? $_POST['projectId'] : null;
-    $new_name = isset($_POST['name'])? $_POST['name'] : null;
-    $new_lastname = isset($_POST['lastname'])? $_POST['lastname'] : null;
-    $new_email = isset($_POST['email'])? $_POST['email'] : null;
-    $new_json = isset($_POST['projet_json'])? $_POST['projet_json'] : null;
-    $new_proname = isset($_POST['nom_projet'])? $_POST['nom_projet'] : null;
+    $id_User = isset($_POST['userId']) ? $_POST['userId'] : null;
+    $id_Project = isset($_POST['projectId']) ? $_POST['projectId'] : null;
+    $new_name = isset($_POST['name']) ? $_POST['name'] : null;
+    $new_lastname = isset($_POST['lastname']) ? $_POST['lastname'] : null;
+    $new_email = isset($_POST['email']) ? $_POST['email'] : null;
+    //$new_logo = isset($_POST['logo_client'])? $_POST['logo_client'] : null;
+    $new_json = isset($_POST['projet_json']) ? $_POST['projet_json'] : null;
+    $new_proname = isset($_POST['nom_projet']) ? $_POST['nom_projet'] : null;
+    var_dump($id_Project);
+    var_dump($id_User);
+    var_dump($new_lastname);
+    var_dump($new_json);
+    var_dump($new_proname);
+
     $userRepository = new UserRepository();
-    $update = $userRepository->updateUserandProject($new_name,$new_lastname,$new_json,$new_proname,$new_email,$id_User,$id_Project);
-    
-    if ($update) 
-    {
+    $update = $userRepository->updateUserandProject($new_name, $new_lastname, $new_json, $new_proname, $new_email, $id_User, $id_Project);
+    if ($update) {
         echo "Update was successful.";
-    } 
-    else 
-    {
+    } else {
         echo "Update failed.";
     }
 }
+
+
+
+
 
 function loginForm()
 {
     require('src/view/connexion.php');
 }
 
-function signUp():void
+function signUp(): void
 {
     $userRepository = new UserRepository();
     $ProjectRepository = new ProjectRepository();
-    $user = $userRepository->findByEmailAndName($_POST['email'],$_POST['name']);
-    if($user == [])
-    {
+    $user = $userRepository->findByEmailAndName($_POST['email'], $_POST['name']);
+    if ($user == []) {
         $user = new User();
         $project = new Project();
         $tmppro = $project->createToSignin($_POST);
         $tmp = $user->createToSignin($_POST);
-        if($tmp && $tmppro)
-        {
-            $idUserAndToken= $userRepository->insertUser($user);
-            $lastIdProject = $ProjectRepository->insertProject($project);
-            $userRepository->insertRelation($idUserAndToken['id'],$lastIdProject);
-            $token =  $idUserAndToken['token'];
-            $email_user = $user->email;
-            require_once'src/config/mail.php';   
-        }
-        else
-        {
-            echo 'Erreur lors de l\'inscription';
+        if ($tmp && $tmppro) {
+            if (preg_match('/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/i', $tmp) && preg_match('/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/i', $tmppro)) {
+                $idUserAndToken = $userRepository->insertUser($user);
+                $lastIdProject = $ProjectRepository->insertProject($project);
+                $userRepository->insertRelation($idUserAndToken['id'], $lastIdProject);
+                $token =  $idUserAndToken['token'];
+                $email_user = $user->email;
+                require_once 'src/config/mail.php';
+            }
+        } else {
+            var_dump('les informations sont incorrects');
         }
     }
 }
 
-function login() 
-{
-    $email = $_POST['email_user'];
-    $userRepo = new UserRepository();
-    $userRepo->loginUser($email);
 
-    $api = new ConnectApi();
-    $data = $api->connectApi();
+
+
+
+//FIN inscription et connexion
+
+function login()
+{
+
+    $psw = $_POST['password_user'];
+    $email = $_POST['email_user'];
+        $userRepo = new UserRepository();
+        $user = $userRepo->getUserByEmail($email);
+            if ($user) {
+                var_dump($user);
+                var_dump($psw);
+                
+                if (password_verify($psw,$user->mdp)) {
+                    
+                $_SESSION['id_role'] = $user->id_role;
+                var_dump('cest goofd'); 
+                
+                $api = new ConnectApi();
+                $data = $api->connectApi();
+
+                $date = $api->getDate();
+                $dateTotal = $api->getDateTotal();
+
+                $_SESSION['date'] = $date;
+                $result = $api->getInfo($data, $date);
+                $resultTotal = $api->getInfo($data, $dateTotal);
+                // $_SESSION['test'] = $data;
+
+                $_SESSION['result'] = $result;
+                $_SESSION['resultTotal'] = $resultTotal;
+                dateFormat();
+                header('location: index.php');
+                }
+            }
     
-    $date = $api->getDate();
-    $dateTotal = $api->getDateTotal();
-    
-    $_SESSION['date'] = $date;
-    $result = $api->getInfo($data, $date);
-    $resultTotal = $api->getInfo($data, $dateTotal);
-    
-    $_SESSION['result'] = $result;
-    $_SESSION['resultTotal'] = $resultTotal;
-    dateFormat();
-    header('location: index.php');
 }
+
 
 function home() 
 {
@@ -165,42 +162,60 @@ function disconnectUser()
     include 'src/view/connexion.php';
 }
 
+function sideNavData()
+{
+
+    require 'src/view/dataDomain.php';
+}
+
+
+
+function choiceTitle()
+{
+    $title = "";
+
+    if ($_GET['action'] == "click") {
+        $title = "click";
+    } elseif ($_GET['action'] == "position") {
+        $title = "position";
+    } elseif ($_GET['action'] == "ctr") {
+        $title = "ctr";
+    } elseif ($_GET['action'] == "impressions") {
+        $title = "impression";
+    } else {
+        $title = "click";
+    }
+    return $title;
+}
+
 function setDate()
 {
-    if(isset($_POST['startDate']) && isset($_POST['endDate']))
-    {
-        $api = new ConnectApi();
-        $data = $api->connectApi();
-        $startDate = date_create_from_format("d/m/Y", $_POST['startDate']);
-        $startDate = date_format($startDate, "Y-m-d");
-        
-        $endDate = date_create_from_format("d/m/Y", $_POST['endDate']);
-        $endDate = date_format($endDate, "Y-m-d");
-    
-        $date = $api->setDate($startDate, $endDate);
-        $dateTotal = $api->setDateTotal($startDate, $endDate);
-     
-        $result = $api->getInfo($data, $date);
-        $resultTotal = $api->getInfo($data, $dateTotal);
-        $_SESSION['date'] = $dateTotal;
-        $_SESSION['result'] = $result;
-        $_SESSION['resultTotal'] = $resultTotal;
-        dateFormat();
-        
-        header('location: index.php');
-    }
-    else
-    {
-        getDate();
-    }
- 
+    $api = new ConnectApi();
+    $data = $api->connectApi();
+    $startDate = date_create_from_format("d/m/Y", $_POST['startDate']);
+    $startDate = date_format($startDate, "Y-m-d");
+
+    $endDate = date_create_from_format("d/m/Y", $_POST['endDate']);
+    $endDate = date_format($endDate, "Y-m-d");
+
+    $date = $api->setDate($startDate, $endDate);
+    $dateTotal = $api->setDateTotal($startDate, $endDate);
+
+    $result = $api->getInfo($data, $date);
+    $resultTotal = $api->getInfo($data, $dateTotal);
+    $_SESSION['date'] = $dateTotal;
+    $_SESSION['result'] = $result;
+    $_SESSION['resultTotal'] = $resultTotal;
+    dateFormat();
+
+    header('location: index.php');
 }
 
 function dateFormat()
 {
     $startDate = date_create_from_format("Y-m-d", $_SESSION['date']['startDate']);
     $startDate = date_format($startDate, "d/m/Y");
-    
+
     $endDate = date_create_from_format("Y-m-d", $_SESSION['date']['endDate']);
     $endDate = date_format($endDate, "d/m/Y");
 
@@ -208,13 +223,21 @@ function dateFormat()
     $_SESSION['endDateFormatted'] = $endDate;
 }
 
-function setPsw() 
+function setPsw()
 {
-    $setpsw = $_POST['setpsw'];
-    $getToken = $_GET['token'];
-    if(isset($_GET['token']) && !empty($_GET['token'])) 
-    {
-        $userRepository = new UserRepository();
-        $userRepository->verifPsw($getToken,$setpsw);
+
+    $setpsw = htmlspecialchars($_POST['setpsw']);
+    $confirmPsw = htmlspecialchars($_POST['confirm_setpsw']);
+    $getToken = $_POST['userToken'];
+    if (isset($getToken) && isset($setpsw)) {
+        if ($setpsw == $confirmPsw) {
+            $newpsw = password_hash($setpsw, PASSWORD_DEFAULT);
+            $userRepository = new UserRepository();
+            $userRepository->verifPsw($getToken, $newpsw);
+        }else {
+            echo 'mot de passe non comforme';
+        }
+    }else {
+        echo 'informations incorrects';
     }
 }
