@@ -1,12 +1,3 @@
-<?php
-// require_once ('src/config/connect_api.php');
-
-// $data = new ConnectApi();
-// $client = $data->getDate();
-// var_dump($client)
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 

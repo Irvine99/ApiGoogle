@@ -27,10 +27,10 @@
 
 <body>
 
-  <section class="bg-gray-50 dark:bg-gray-900">
+  <section class="bg-gray-50">
     <div class="flex flex-col h-screen items-center justify-center py-8 mx-auto md:h-screen lg:py-0">
       <div
-        class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
+        class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
         <div class="bg-gray-50 flex justify-center">
           <div class="bg-black rounded-full w-[100px] h-[100px] flex justify-center items-center">
             <img class="w-[75px] h-[75px]" src="assets/img/logo.png" />
@@ -40,7 +40,6 @@
           <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">
             Connexion
           </h1>
-          <a href="index.php?action=setPswForm">aaaaaaaa</a>
           <form class="space-y-4 md:space-y-6" action="index.php?action=LoginTraitement" method="post">
             <div>
               <label for="email_user" class="block mb-2 text-sm font-medium text-gray-900 ">Votre
@@ -57,7 +56,7 @@
                 required="">
             </div>
             <button type="submit"
-              class="w-full bg-blue-600 text-white  hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Créer
+              class="w-full bg-blue-600 text-white  hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Créer
               votre compte</button>
             <p class="text-sm font-light text-gray-500 ">
               Pas de compte ? <a href="/apigoogle/src/view/inscription.php"
