@@ -1,4 +1,4 @@
-<div class="flex justify-center items-center mx-5 w-1/2">
+<div class="flex justify-center items-center mx-5 w-2/5">
     <form action="index.php?action=getDate" method="post">
         <h2 class="text-2xl mb-5 text-center">Choississez vos dates</h2>
         <div class="flex items-center">
@@ -11,7 +11,7 @@
             datepicker-format="d/m/Y" name="endDate" type="text" placeholder="Date de fin">
         </div>
         <div class="flex justify-center mt-5">
-            <button class="bg-blue-500 rounded-lg py-1 px-4 text-white" type="submit">Valider</button>
+            <button class="bg-blue-600 rounded-lg py-1 px-4 text-white" type="submit">Valider</button>
         </div>
     </form>
 </div>

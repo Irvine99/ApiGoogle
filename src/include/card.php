@@ -1,7 +1,7 @@
-<div class="m-5 w-1/2 justify-between flex flex-col">
+<div class="m-5 w-3/4 justify-between flex flex-col">
     <div class="flex">
         <div
-            class="mb-5 mr-5 bg-gradient-to-r from-zinc-500 via-zinc-700 to-zinc-800	 py-2 rounded-lg w-auto md:w-full drop-shadow-xl">
+            class="mb-5 mr-5 bg-gradient-to-r from-zinc-500 via-zinc-700 to-zinc-800 py-2 rounded-lg w-auto md:w-full drop-shadow-xl">
             <div class="flex justify-center h-full">
                 <div class="py-2 flex justify-between ">
                     <div class="flex flex-col justify-between w-full">
@@ -14,7 +14,7 @@
                     </div>
                     <div class="flex w-1/2">
                         <h2
-                            class="text-3xl  bg-slate-300 rounded-full w-[100px] h-[100px] flex justify-center items-center">
+                            class="text-2xl bg-slate-300 rounded-full w-[90px] h-[90px] flex justify-center items-center">
                             <?php $number = $_SESSION['resultTotal']->rows[0]['position'];
                             $formattedNumber = number_format($number, 2, '.', ',');
                             echo $formattedNumber;
@@ -43,7 +43,7 @@
                     </div>
                     <div class="flex w-1/2">
                         <h2
-                            class="text-3xl  bg-slate-300 rounded-full w-[100px] h-[100px] flex justify-center items-center">
+                            class="text-2xl bg-slate-300 rounded-full w-[90px] h-[90px] flex justify-center items-center">
                             <?php $number = $_SESSION['resultTotal']->rows[0]['ctr'];
                             $formattedNumber = number_format($number, 2, '.', ',');
                             echo $formattedNumber;
@@ -74,7 +74,7 @@
                     </div>
                     <div class="flex w-1/2">
                         <h2
-                            class="text-3xl  bg-slate-300 rounded-full w-[100px] h-[100px] flex justify-center items-center">
+                            class="text-2xl  bg-slate-300 rounded-full w-[90px] h-[90px] flex justify-center items-center">
                             <?php echo $_SESSION['resultTotal']->rows[0]['impressions'];
 
                             ?>
@@ -102,7 +102,7 @@
                     </div>
                     <div class="flex w-1/2">
                         <h2
-                            class="text-3xl  bg-slate-300 rounded-full w-[100px] h-[100px] flex justify-center items-center">
+                            class="text-2xl  bg-slate-300 rounded-full w-[90px] h-[90px] flex justify-center items-center">
                             <?php echo $_SESSION['resultTotal']->rows[0]['clicks'];
 
                             ?>
