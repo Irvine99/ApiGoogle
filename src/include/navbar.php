@@ -7,11 +7,6 @@
     <div class="flex justify-end items-center" id="navbarSupportedContent1" data-te-collapse-item>
       <!-- Logo -->
       <div class="flex w-full mx-10 items-center">
-        
-        
-
-  
-
         <!-- Second dropdown container -->
         <div class="w-full relative" data-te-dropdown-ref>
           <!-- Second dropdown trigger -->
