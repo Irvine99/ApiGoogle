@@ -1,7 +1,3 @@
-    <!-- <?php 
-    $_SESSION['projet_id']= $_POST['projectId'] ;
-    var_dump($_SESSION['projet_id']);
-    ?> -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,12 +64,7 @@
                         </div>
                         <input type="hidden" name="projectId" value="<?php echo $_POST['projectId'] ?>">
                         <input type="hidden" name="userId" value="<?php echo $_POST['userId'] ?>">
-                        <?php var_dump($user);?>
-                        <?php var_dump($_POST);?>
-                        
                         <button type"submit" >submit</button>
-
-
                     </form>
                 </div>
             </div>

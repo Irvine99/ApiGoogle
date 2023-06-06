@@ -37,8 +37,6 @@ function deleteUser()
 {
     $id_User = isset($_POST['userId']) ? $_POST['userId'] : null;
     $id_Project = isset($_POST['projectId']) ? $_POST['projectId'] : null;
-    var_dump($id_Project);
-    var_dump($id_User);
     $userRepository = new UserRepository();
     $delete = $userRepository->deleteAll($id_User, $id_Project);
 
@@ -59,12 +57,6 @@ function updateUserById()
     //$new_logo = isset($_POST['logo_client'])? $_POST['logo_client'] : null;
     $new_json = isset($_POST['projet_json']) ? $_POST['projet_json'] : null;
     $new_proname = isset($_POST['nom_projet']) ? $_POST['nom_projet'] : null;
-    var_dump($id_Project);
-    var_dump($id_User);
-    var_dump($new_lastname);
-    var_dump($new_json);
-    var_dump($new_proname);
-
     $userRepository = new UserRepository();
     $update = $userRepository->updateUserandProject($new_name, $new_lastname, $new_json, $new_proname, $new_email, $id_User, $id_Project);
     if ($update) {
@@ -73,10 +65,6 @@ function updateUserById()
         echo "Update failed.";
     }
 }
-
-
-
-
 
 function loginForm()
 {
@@ -103,55 +91,42 @@ function signUp(): void
                 require_once 'src/config/mail.php';
             }
         } else {
-            var_dump('les informations sont incorrects');
+            echo 'les informations sont incorrects';
         }
     }
 }
-
-
-
-
-
-//FIN inscription et connexion
 
 function login()
 {
 
     $psw = $_POST['password_user'];
     $email = $_POST['email_user'];
-        $userRepo = new UserRepository();
-        $user = $userRepo->getUserByEmail($email);
-            if ($user) {
-                var_dump($user);
-                var_dump($psw);
-                
-                if (password_verify($psw,$user->mdp)) {
-                    
-                $_SESSION['id_role'] = $user->id_role;
-                var_dump('cest goofd'); 
-                
-                $api = new ConnectApi();
-                $data = $api->connectApi();
+    $userRepo = new UserRepository();
+    $user = $userRepo->getUserByEmail($email);
+    if ($user) {
+        if (password_verify($psw, $user->mdp)) {
+            $_SESSION['id_role'] = $user->id_role;
 
-                $date = $api->getDate();
-                $dateTotal = $api->getDateTotal();
+            $api = new ConnectApi();
+            $data = $api->connectApi();
 
-                $_SESSION['date'] = $date;
-                $result = $api->getInfo($data, $date);
-                $resultTotal = $api->getInfo($data, $dateTotal);
-                // $_SESSION['test'] = $data;
+            $date = $api->getDate();
+            $dateTotal = $api->getDateTotal();
 
-                $_SESSION['result'] = $result;
-                $_SESSION['resultTotal'] = $resultTotal;
-                dateFormat();
-                header('location: index.php');
-                }
-            }
-    
+            $_SESSION['date'] = $date;
+            $result = $api->getInfo($data, $date);
+            $resultTotal = $api->getInfo($data, $dateTotal);
+
+            $_SESSION['result'] = $result;
+            $_SESSION['resultTotal'] = $resultTotal;
+            dateFormat();
+            header('location: index.php');
+        }
+    }
 }
 
 
-function home() 
+function home()
 {
     include('src/view/homepage.php');
 }
@@ -164,28 +139,7 @@ function disconnectUser()
 
 function sideNavData()
 {
-
     require 'src/view/dataDomain.php';
-}
-
-
-
-function choiceTitle()
-{
-    $title = "";
-
-    if ($_GET['action'] == "click") {
-        $title = "click";
-    } elseif ($_GET['action'] == "position") {
-        $title = "position";
-    } elseif ($_GET['action'] == "ctr") {
-        $title = "ctr";
-    } elseif ($_GET['action'] == "impressions") {
-        $title = "impression";
-    } else {
-        $title = "click";
-    }
-    return $title;
 }
 
 function setDate()
@@ -234,10 +188,10 @@ function setPsw()
             $newpsw = password_hash($setpsw, PASSWORD_DEFAULT);
             $userRepository = new UserRepository();
             $userRepository->verifPsw($getToken, $newpsw);
-        }else {
+        } else {
             echo 'mot de passe non comforme';
         }
-    }else {
+    } else {
         echo 'informations incorrects';
     }
 }
