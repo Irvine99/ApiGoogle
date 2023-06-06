@@ -1,7 +1,7 @@
 <footer class="grid bg-gray-800 place-content-around">
     
     <div class="flex p-2 justify-center mb-2     ">
-        <img class="w-[32%] object-contain justify-center" src="assets/img/logo_transpa.png"></img>
+        <img class="w-[32%] object-contain justify-center" src="assets/img/logo.png"></img>
     </div>
 
     <div class="">

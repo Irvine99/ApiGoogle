@@ -1,5 +1,6 @@
 <?php
-class Connect_bdd{
+class Connect_bdd
+{
     public $bdd;
 
     public function __construct(){

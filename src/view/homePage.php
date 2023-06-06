@@ -30,30 +30,37 @@
       }
     }
   </script>
-
-
+  <!-- Date Picker flatpickr -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  
   <title>Vos Statistiques</title>
 </head>
 
 <body>
 
   <!--mobile-->
+  <?php
+  if($_SESSION['id_role'] === 1)
+  { 
+  ?>
   <div class="block">
     <div id="" class="flex overflow-hidden">
       <div class="hidden md:block">
         <?php
         include('src/include/sideNav.php');
-
         ?>
       </div>
-
+  <?php 
+  }
+  ?>
 
 
       <div id="slim-content" class="flex flex-col w-full">
 
         <?php include('src/include/navbar.php') ?>
         <?php include('src/include/header.php') ?>
-        <div class="flex justify-between">
+        <div class="flex flex-col lg:flex-row justify-between">
           <?php include('src/include/datePicker.php') ?>
           <?php include('src/include/card.php') ?>
 
@@ -100,7 +107,7 @@
     <!--TailwindElement -->
     <?php include('src/include/footer.php') ?>
 
-
+    <script src="assets/js/dataPickerN.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -108,11 +115,5 @@
     <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/datepicker.min.js"></script>
 
-
-
-
-
-
 </body>
-
 </html>
