@@ -64,7 +64,8 @@
             <!-- <canvas id="scene"></canvas>
                      <button>Export</button> -->
             <div class="block md:flex justify-center lg:justify-start lg:">
-              <?php include('src/include/chartBar.php') ?>
+            
+            <?php include('src/include/chartBar.php') ?>
               <?php include('src/include/chartLine.php') ?>
             </div>
             <div class="block md:flex justify-center lg:justify-start lg:">
