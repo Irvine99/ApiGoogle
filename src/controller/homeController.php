@@ -6,7 +6,14 @@ require_once 'src/config/connect_api.php';
 //inscription et connexion 
 function signUpForm()
 {
-    require('src/view/inscription.php');
+    if($_SESSION['id_role'] === 1) 
+    {
+        require('src/view/inscription.php');
+    }
+    else
+    {
+        header('location:index.php?action=home');
+    }
 }
 
 function setPswForm()
@@ -14,24 +21,44 @@ function setPswForm()
     require('src/view/setpsw.php');
 }
 
-
 function addForm()
 {
-    require('src/view/add.php');
+    if($_SESSION['id_role'])
+    {
+        require('src/view/add.php');
+    }
+    else
+    {
+        header('location:index.php?action=home');
+    }
 }
 
 function adminPage()
 {
-    $user = new User();
-    $userRepo = new UserRepository();
-    $allUsers = $userRepo->getAllUsers($user);
-    require('src/view/admin.php');
+    if($_SESSION['id_role'] === 1) {
+        $user = new User();
+        $userRepo = new UserRepository();
+        $allUsers = $userRepo->getAllUsers($user);
+        require('src/view/admin.php');
+    }
+    else 
+    {
+        header('location:index.php?action=home');
+    }
+
 }
 
 function modifPage()
 {
-    $user = new User();
-    require('src/view/modifier.php');
+    if($_SESSION['id_role'] === 1)
+    {
+        $user = new User();
+        require('src/view/modifier.php');
+    }
+    else
+    {
+        header('location:index.php?action=home');
+    }
 }
 
 function deleteUser()
@@ -127,12 +154,10 @@ function login()
     header('location: index.php');
 }
 
-
 function home() 
 {
     include('src/view/homepage.php');
 }
-
 
 function disconnectUser()
 {
@@ -140,54 +165,35 @@ function disconnectUser()
     include 'src/view/connexion.php';
 }
 
-function choiceTitle()
+function setDate()
 {
-    $title = "";
-
-    if($_GET['action'] == "click")
+    if(isset($_POST['startDate']) && isset($_POST['endDate']))
     {
-        $title = "click";
-    }
-    elseif($_GET['action'] == "position")
-    {
-        $title = "position";
-    }
-    elseif($_GET['action'] == "ctr")
-    {
-        $title = "ctr";
-    }
-    elseif($_GET['action'] == "impressions")
-    {
-        $title = "impression";
+        $api = new ConnectApi();
+        $data = $api->connectApi();
+        $startDate = date_create_from_format("d/m/Y", $_POST['startDate']);
+        $startDate = date_format($startDate, "Y-m-d");
+        
+        $endDate = date_create_from_format("d/m/Y", $_POST['endDate']);
+        $endDate = date_format($endDate, "Y-m-d");
+    
+        $date = $api->setDate($startDate, $endDate);
+        $dateTotal = $api->setDateTotal($startDate, $endDate);
+     
+        $result = $api->getInfo($data, $date);
+        $resultTotal = $api->getInfo($data, $dateTotal);
+        $_SESSION['date'] = $dateTotal;
+        $_SESSION['result'] = $result;
+        $_SESSION['resultTotal'] = $resultTotal;
+        dateFormat();
+        
+        header('location: index.php');
     }
     else
     {
-        $title = "click";
+        getDate();
     }
-    return $title;
-}
-
-function setDate()
-{
-    $api = new ConnectApi();
-    $data = $api->connectApi();
-    $startDate = date_create_from_format("d/m/Y", $_POST['startDate']);
-    $startDate = date_format($startDate, "Y-m-d");
-    
-    $endDate = date_create_from_format("d/m/Y", $_POST['endDate']);
-    $endDate = date_format($endDate, "Y-m-d");
-
-    $date = $api->setDate($startDate, $endDate);
-    $dateTotal = $api->setDateTotal($startDate, $endDate);
  
-    $result = $api->getInfo($data, $date);
-    $resultTotal = $api->getInfo($data, $dateTotal);
-    $_SESSION['date'] = $dateTotal;
-    $_SESSION['result'] = $result;
-    $_SESSION['resultTotal'] = $resultTotal;
-    dateFormat();
-    
-    header('location: index.php');
 }
 
 function dateFormat()
