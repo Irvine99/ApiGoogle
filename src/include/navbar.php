@@ -1,10 +1,10 @@
 <!-- Main navigation container -->
-<nav class="flex relative flex w-full items-center bg-gray-800 py-2 shadow-md shadow-black/5" data-te-navbar-ref>
+<nav class="flex relative flex items-center bg-gray-800 py-2 shadow-md shadow-black/5" data-te-navbar-ref>
   <div class="flex justify-end w-full items-center px-3">
 
 
     <!-- Collapsible navigation container -->
-    <div class="flex justify-end items-center w-full" id="navbarSupportedContent1" data-te-collapse-item>
+    <div class="flex justify-end items-center" id="navbarSupportedContent1" data-te-collapse-item>
       <!-- Logo -->
       <div class="flex w-full mx-10 items-center">
         
