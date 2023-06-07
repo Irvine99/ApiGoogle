@@ -14,12 +14,18 @@ passwordInput.addEventListener("keyup", (e) => {
 
             if (isValid) {
                 requirementItem.firstElementChild.className ="fa-solid fa-square-check";
-                requirementItem.classList.add("valid");            
+                requirementItem.classList.add("valid");
+                requirementItem.classList.remove("text-red-500");
+
+                requirementItem.classList.add("text-green-500");
+
 
                            
         }else {
             requirementItem.firstElementChild.className ="fa-sharp fa-solid fa-xmark";
             requirementItem.classList.remove("valid");
+            requirementItem.classList.remove("text-green-500");
+            requirementItem.classList.add("text-red-500");
            
         }
     });
@@ -43,10 +49,6 @@ passwordInput.addEventListener("keyup", (e) => {
     // }
     // });
 
-        }else {
-            requirementItem.firstElementChild.className ="fa-sharp fa-solid fa-xmark";
-            requirementItem.classList.remove("valid");
-        }
-    });
-});
+      
+
 
