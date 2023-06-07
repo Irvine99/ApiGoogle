@@ -170,7 +170,7 @@ public function createToSignin(array $userForm):bool{
                         if($userInfo) {
                             $confirmation = $this->bdd->prepare('UPDATE user SET password_user = ? WHERE token_user = ?');
                             $confirmation->execute([$setpsw,$getToken]);
-                            header('location:');
+                           
                         }else{
                             echo "Compte déjà actif";
                         }
@@ -180,5 +180,35 @@ public function createToSignin(array $userForm):bool{
                 }else {
                     echo "Aucun utilisateur trouvé";
                 }
-            }        
-        }
+            }
+            
+            public function verifToken ($getToken){
+                $req = $this->bdd->prepare("SELECT token_user FROM user WHERE token_user=?");
+                 $req->execute([$getToken]);
+                $data = $req->fetchAll();
+                
+                if (count($data) > 0) {
+                    return true; // token found
+                 } else {
+                    return false; // token not found
+                 }
+              }
+
+            function verifyPassword($setpsw) {
+                $regexArray = array(
+                  array("regex" => '/.{8,}/', "index" => 2),
+                  array("regex" => '/[0-9]/', "index" => 0),
+                  array("regex" => '/[^A-Za-z0-9]/', "index" => 1)
+                );
+              
+                foreach ($regexArray as $regex) {
+                  if (!preg_match($regex["regex"], $setpsw)) {
+                    return false;
+                  }
+                }
+              
+                return true;
+              }  
+
+            }
+        

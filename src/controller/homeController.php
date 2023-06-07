@@ -11,7 +11,20 @@ function signUpForm()
 
 function setPswForm()
 {
-    require('src/view/setpsw.php');
+    session_destroy();
+
+
+    $getToken = $_GET['token'];
+
+    $userRepository = new UserRepository();
+    $tokenTrue = $userRepository->verifToken($getToken);
+
+    if ($tokenTrue === true) {
+        $_SESSION['userToken'] = $getToken;
+        require('src/view/setpsw.php');
+    } else {
+        require('src/view/setpsw.php');
+    }
 }
 
 function addForm()
@@ -104,8 +117,14 @@ function login()
     $userRepo = new UserRepository();
     $user = $userRepo->getUserByEmail($email);
     if ($user) {
+
+
+
         if (password_verify($psw, $user->mdp)) {
+
             $_SESSION['id_role'] = $user->id_role;
+
+
 
             $api = new ConnectApi();
             $data = $api->connectApi();
@@ -116,6 +135,9 @@ function login()
             $_SESSION['date'] = $date;
             $result = $api->getInfo($data, $date);
             $resultTotal = $api->getInfo($data, $dateTotal);
+
+            // $_SESSION['test'] = $data;
+
 
             $_SESSION['result'] = $result;
             $_SESSION['resultTotal'] = $resultTotal;
@@ -183,15 +205,31 @@ function setPsw()
     $setpsw = htmlspecialchars($_POST['setpsw']);
     $confirmPsw = htmlspecialchars($_POST['confirm_setpsw']);
     $getToken = $_POST['userToken'];
+    $userRepo = new UserRepository();
+    $verifRegex = $userRepo->verifyPassword($setpsw);
     if (isset($getToken) && isset($setpsw)) {
-        if ($setpsw == $confirmPsw) {
-            $newpsw = password_hash($setpsw, PASSWORD_DEFAULT);
-            $userRepository = new UserRepository();
-            $userRepository->verifPsw($getToken, $newpsw);
+
+        if ($verifRegex) {
+            if ($setpsw == $confirmPsw) {
+                if ($setpsw !== '' && $setpsw != '') {
+                    $newpsw = password_hash($setpsw, PASSWORD_DEFAULT);
+                    $userRepository = new UserRepository();
+                    $userRepository->verifPsw($getToken, $newpsw);
+                    
+                } else {
+                    header("Location:index.php?action=setPswForm&message=Un des champs est vide&token=$getToken");
+                    exit();
+                }
+            } else {
+                header("Location:index.php?action=setPswForm&message=Un des mots de passe est incorrect&token=$getToken");
+                exit();
+            }
         } else {
-            echo 'mot de passe non comforme';
+            header("Location:index.php?action=setPswForm&message=Regex pas bon&token=$getToken");
         }
     } else {
-        echo 'informations incorrects';
+        header("Location:index.php?action=setPswForm&message=Un des mots de passe est incorrect&token=$getToken");
+        exit();
+
     }
 }
