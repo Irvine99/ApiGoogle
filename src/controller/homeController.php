@@ -54,7 +54,7 @@ function deleteUser()
     $delete = $userRepository->deleteAll($id_User, $id_Project);
 
     if ($delete) {
-        echo "Deletion was successful.";
+        header("Location: index.php?action=adminPage");
     } else {
         echo "Deletion failed.";
     }
@@ -102,6 +102,7 @@ function signUp(): void
                 $token =  $idUserAndToken['token'];
                 $email_user = $user->email;
                 require_once 'src/config/mail.php';
+                header('Location: index.php?action=adminPage');
             
         } else {
             echo 'les informations sont incorrects';
