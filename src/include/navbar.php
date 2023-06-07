@@ -15,10 +15,10 @@
             <img src="https://tecdn.b-cdn.net/img/new/avatars/2.jpg" class="rounded-full align-middle w-[50px] md:w-[50px]" alt="" loading="lazy" />
           </a>
           <!-- Second dropdown menu -->
-          <ul class="absolute left-auto right-0 z-[1000] float-left m-0 mt-1 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block" aria-labelledby="dropdownMenuButton2" data-te-dropdown-menu-ref>
+          <ul class="absolute left-auto right-0 z-[1000] float-left m-0 mt-1 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg [&[data-te-dropdown-show]]:block" aria-labelledby="dropdownMenuButton2" data-te-dropdown-menu-ref>
             <!-- Second dropdown menu items -->
             <li>
-              <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30" href="index.php?action=deco" data-te-dropdown-item-ref>Déconnexion</a>
+              <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400" href="index.php?action=deco" data-te-dropdown-item-ref>Déconnexion</a>
               <?php 
               
               if($_SESSION['id_role'] == 1){ ?>

@@ -50,8 +50,6 @@ function deleteUser()
 {
     $id_User = isset($_POST['userId']) ? $_POST['userId'] : null;
     $id_Project = isset($_POST['projectId']) ? $_POST['projectId'] : null;
-    var_dump($id_Project);
-    var_dump($id_User);
     $userRepository = new UserRepository();
     $delete = $userRepository->deleteAll($id_User, $id_Project);
 
@@ -72,12 +70,6 @@ function updateUserById()
     //$new_logo = isset($_POST['logo_client'])? $_POST['logo_client'] : null;
     $new_json = isset($_POST['projet_json']) ? $_POST['projet_json'] : null;
     $new_proname = isset($_POST['nom_projet']) ? $_POST['nom_projet'] : null;
-    var_dump($id_Project);
-    var_dump($id_User);
-    var_dump($new_lastname);
-    var_dump($new_json);
-    var_dump($new_proname);
-
     $userRepository = new UserRepository();
     $update = $userRepository->updateUserandProject($new_name, $new_lastname, $new_json, $new_proname, $new_email, $id_User, $id_Project);
     if ($update) {
@@ -86,10 +78,6 @@ function updateUserById()
         echo "Update failed.";
     }
 }
-
-
-
-
 
 function loginForm()
 {
@@ -116,16 +104,10 @@ function signUp(): void
                 require_once 'src/config/mail.php';
             
         } else {
-            var_dump('les informations sont incorrects');
+            echo 'les informations sont incorrects';
         }
     }
 }
-
-
-
-
-
-//FIN inscription et connexion
 
 function login()
 {
@@ -137,9 +119,11 @@ function login()
     if ($user) {
 
 
+
         if (password_verify($psw, $user->mdp)) {
 
             $_SESSION['id_role'] = $user->id_role;
+
 
 
             $api = new ConnectApi();
@@ -151,7 +135,9 @@ function login()
             $_SESSION['date'] = $date;
             $result = $api->getInfo($data, $date);
             $resultTotal = $api->getInfo($data, $dateTotal);
+
             // $_SESSION['test'] = $data;
+
 
             $_SESSION['result'] = $result;
             $_SESSION['resultTotal'] = $resultTotal;
@@ -175,28 +161,7 @@ function disconnectUser()
 
 function sideNavData()
 {
-
     require 'src/view/dataDomain.php';
-}
-
-
-
-function choiceTitle()
-{
-    $title = "";
-
-    if ($_GET['action'] == "click") {
-        $title = "click";
-    } elseif ($_GET['action'] == "position") {
-        $title = "position";
-    } elseif ($_GET['action'] == "ctr") {
-        $title = "ctr";
-    } elseif ($_GET['action'] == "impressions") {
-        $title = "impression";
-    } else {
-        $title = "click";
-    }
-    return $title;
 }
 
 function setDate()
@@ -243,6 +208,7 @@ function setPsw()
     $userRepo = new UserRepository();
     $verifRegex = $userRepo->verifyPassword($setpsw);
     if (isset($getToken) && isset($setpsw)) {
+
         if ($verifRegex) {
             if ($setpsw == $confirmPsw) {
                 if ($setpsw !== '' && $setpsw != '') {
@@ -264,5 +230,6 @@ function setPsw()
     } else {
         header("Location:index.php?action=setPswForm&message=Un des mots de passe est incorrect&token=$getToken");
         exit();
+
     }
 }

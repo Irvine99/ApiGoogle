@@ -166,9 +166,7 @@ public function createToSignin(array $userForm):bool{
                     $recupUser->execute([$getToken]);
                     
                     if($recupUser) {
-                        var_dump($recupUser);
                         $userInfo = $recupUser->fetch();
-                        var_dump($userInfo);
                         if($userInfo) {
                             $confirmation = $this->bdd->prepare('UPDATE user SET password_user = ? WHERE token_user = ?');
                             $confirmation->execute([$setpsw,$getToken]);
