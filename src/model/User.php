@@ -204,7 +204,7 @@ public function createToSignin(array $userForm):bool{
                 );
               
                 foreach ($regexArray as $regex) {
-                  if (!preg_match($regex["regex"], $password)) {
+                  if (!preg_match($regex["regex"], $setpsw)) {
                     return false;
                   }
                 }
