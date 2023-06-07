@@ -218,18 +218,18 @@ function setPsw()
                     header('Location: index.php');
                     
                 } else {
-                    header("Location:index.php?action=setPswForm&message=Un des champs est vide&token=$getToken");
+                    header("Location:index.php?action=setPswForm&message1=Un des champs est vide&token=$getToken");
                     exit();
                 }
             } else {
-                header("Location:index.php?action=setPswForm&message=Un des mots de passe est incorrect&token=$getToken");
+                header("Location:index.php?action=setPswForm&message2=Un des mots de passe est incorrect&token=$getToken");
                 exit();
             }
         } else {
-            header("Location:index.php?action=setPswForm&message=Regex pas bon&token=$getToken");
+            header("Location:index.php?action=setPswForm&message3=Regex pas bon&token=$getToken");
         }
     } else {
-        header("Location:index.php?action=setPswForm&message=Un des mots de passe est incorrect&token=$getToken");
+        header("Location:index.php?action=setPswForm&message4=Un des mots de passe est incorrect&token=$getToken");
         exit();
 
     }
