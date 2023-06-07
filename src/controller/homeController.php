@@ -55,6 +55,7 @@ function deleteUser()
 
     if ($delete) {
         echo "Deletion was successful.";
+        header('Location: index.php?action=adminPage');
     } else {
         echo "Deletion failed.";
     }
@@ -74,8 +75,10 @@ function updateUserById()
     $update = $userRepository->updateUserandProject($new_name, $new_lastname, $new_json, $new_proname, $new_email, $id_User, $id_Project);
     if ($update) {
         echo "Update was successful.";
+        header('Location: index.php?action=adminPage');
     } else {
         echo "Update failed.";
+        header('Location: src/view/modifier.php');
     }
 }
 

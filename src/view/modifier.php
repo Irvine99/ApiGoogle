@@ -27,7 +27,9 @@
 
 <body class="bg-gray-50 dark:bg-gray-900">
     <div class="bg-gray-50 dark:bg-gray-900 flex justify-center px-6 m-8">
-        <img src="../../assets/img/logo_transpa.png" </img>
+    <div class="bg-black rounded-full w-[100px] h-[100px] flex justify-center items-center">
+            <img class="w-[75px] h-[75px]" src="assets/img/logo.png" />
+          </div>
     </div>
     <section>
         <div class="flex flex-col items-center justify-center px-6 py-8 m-8 mx-auto md:p-12 lg:py-0">
@@ -51,7 +53,7 @@
                             <input value = "<?php echo  $_POST['userlastname'] ?>" type="text" name="lastname" id="lastname" placeholder="Robert" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
                         </div>
                         <div>
-                            <label  for="nom_projet" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nom du projet</label>
+                            <label  for="nom_projet" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nom du domain</label>
                             <input value = "<?php echo $_POST['projectName'] ?>" type="text" name="nom_projet" id="nom_projet" placeholder="Nom du projet" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
                         </div>
                             <!-- <div>
@@ -64,7 +66,9 @@
                         </div>
                         <input type="hidden" name="projectId" value="<?php echo $_POST['projectId'] ?>">
                         <input type="hidden" name="userId" value="<?php echo $_POST['userId'] ?>">
-                        <button type"submit" >submit</button>
+                        <div class="flex justify-center">
+                        <button class="bg-blue-500 py-1 px-4 text-white hover:bg-blue-900  rounded-lg flex justify-center" type"submit" >Modifier</button>
+                        </div>
                     </form>
                 </div>
             </div>
