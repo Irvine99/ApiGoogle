@@ -124,6 +124,7 @@ function login()
             $_SESSION['id_role'] = $user->id_role;
             $userData = $user->id;
             $dataID = $userRepo->getInfoById($userData);
+
             $_SESSION['name_project'] = $dataID->name;
            
 
