@@ -67,11 +67,11 @@ function updateUserById()
     $new_name = isset($_POST['name']) ? $_POST['name'] : null;
     $new_lastname = isset($_POST['lastname']) ? $_POST['lastname'] : null;
     $new_email = isset($_POST['email']) ? $_POST['email'] : null;
-    $new_logo = isset($_POST['logo_client'])? $_POST['logo_client'] : null;
+    $new_logo = isset($_POST['logo_client']) ? $_POST['logo_client'] : null;
     $new_json = isset($_POST['projet_json']) ? $_POST['projet_json'] : null;
     $new_proname = isset($_POST['nom_projet']) ? $_POST['nom_projet'] : null;
     $userRepository = new UserRepository();
-    $update = $userRepository->updateUserandProject($new_name, $new_lastname, $new_json, $new_proname, $new_email, $id_User,$new_logo, $id_Project);
+    $update = $userRepository->updateUserandProject($new_name, $new_lastname, $new_json, $new_proname, $new_email, $id_User, $new_logo, $id_Project);
     if ($update) {
         echo "Update was successful.";
     } else {
@@ -95,14 +95,13 @@ function signUp(): void
         $tmppro = $project->createToSignin($_POST);
         $tmp = $user->createToSignin($_POST);
         if ($tmp && $tmppro) {
-            
-                $idUserAndToken = $userRepository->insertUser($user);
-                $lastIdProject = $ProjectRepository->insertProject($project);
-                $userRepository->insertRelation($idUserAndToken['id'], $lastIdProject);
-                $token =  $idUserAndToken['token'];
-                $email_user = $user->email;
-                require_once 'src/config/mail.php';
-            
+
+            $idUserAndToken = $userRepository->insertUser($user);
+            $lastIdProject = $ProjectRepository->insertProject($project);
+            $userRepository->insertRelation($idUserAndToken['id'], $lastIdProject);
+            $token =  $idUserAndToken['token'];
+            $email_user = $user->email;
+            require_once 'src/config/mail.php';
         } else {
             echo 'les informations sont incorrects';
         }
@@ -116,34 +115,34 @@ function login()
     $email = $_POST['email_user'];
     $userRepo = new UserRepository();
     $user = $userRepo->getUserByEmail($email);
-    if ($user) {
+    if ($psw !== "" && $email !== "") {
+        if ($user) {
 
+            if (password_verify($psw, $user->mdp)) {
 
+                $_SESSION['id_role'] = $user->id_role;
+                $api = new ConnectApi();
+                $data = $api->connectApi();
 
-        if (password_verify($psw, $user->mdp)) {
+                $date = $api->getDate();
+                $dateTotal = $api->getDateTotal();
 
-            $_SESSION['id_role'] = $user->id_role;
+                $_SESSION['date'] = $date;
+                $result = $api->getInfo($data, $date);
+                $resultTotal = $api->getInfo($data, $dateTotal);
 
-
-
-            $api = new ConnectApi();
-            $data = $api->connectApi();
-
-            $date = $api->getDate();
-            $dateTotal = $api->getDateTotal();
-
-            $_SESSION['date'] = $date;
-            $result = $api->getInfo($data, $date);
-            $resultTotal = $api->getInfo($data, $dateTotal);
-
-            // $_SESSION['test'] = $data;
-
-
-            $_SESSION['result'] = $result;
-            $_SESSION['resultTotal'] = $resultTotal;
-            dateFormat();
-            header('location: index.php');
+                $_SESSION['result'] = $result;
+                $_SESSION['resultTotal'] = $resultTotal;
+                dateFormat();
+                header('location: index.php');
+            }else {
+                header("Location:index.php?&message1=Une des informations est incorrectes");
+            }
+        } else {
+            header("Location:index.php?&message2=Une des informations est incorrectes");
         }
+    } else {
+        header("Location:index.php?&message3=Un des champ est vide");
     }
 }
 
@@ -215,7 +214,6 @@ function setPsw()
                     $newpsw = password_hash($setpsw, PASSWORD_DEFAULT);
                     $userRepository = new UserRepository();
                     $userRepository->verifPsw($getToken, $newpsw);
-                    
                 } else {
                     header("Location:index.php?action=setPswForm&message1=Un des champs est vide&token=$getToken");
                     exit();
@@ -230,6 +228,5 @@ function setPsw()
     } else {
         header("Location:index.php?action=setPswForm&message4=Un des mots de passe est incorrect&token=$getToken");
         exit();
-
     }
 }
