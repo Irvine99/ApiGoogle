@@ -10,8 +10,22 @@ function signUpForm()
 }
 
 function setPswForm()
-{
-    require('src/view/setpsw.php');
+{   
+    session_destroy();
+    
+    
+    $getToken = $_GET['token'];
+    
+    $userRepository = new UserRepository();
+    $tokenTrue=$userRepository->verifToken($getToken);
+    
+    if ($tokenTrue === true) {
+        $_SESSION['userToken'] = $getToken;
+        require('src/view/setpsw.php');
+    }else {
+        require('src/view/setpsw.php');
+        
+    }
 }
 
 function addForm()
@@ -119,39 +133,37 @@ function login()
 
     $psw = $_POST['password_user'];
     $email = $_POST['email_user'];
-        $userRepo = new UserRepository();
-        $user = $userRepo->getUserByEmail($email);
-            if ($user) {
-                var_dump($user);
-                var_dump($psw);
-                
-                if (password_verify($psw,$user->mdp)) {
-                    
-                $_SESSION['id_role'] = $user->id_role;
-                var_dump('cest goofd'); 
-                
-                $api = new ConnectApi();
-                $data = $api->connectApi();
+    $userRepo = new UserRepository();
+    $user = $userRepo->getUserByEmail($email);
+    if ($user) {
+        
 
-                $date = $api->getDate();
-                $dateTotal = $api->getDateTotal();
+        if (password_verify($psw, $user->mdp)) {
 
-                $_SESSION['date'] = $date;
-                $result = $api->getInfo($data, $date);
-                $resultTotal = $api->getInfo($data, $dateTotal);
-                // $_SESSION['test'] = $data;
+            $_SESSION['id_role'] = $user->id_role;
+       
 
-                $_SESSION['result'] = $result;
-                $_SESSION['resultTotal'] = $resultTotal;
-                dateFormat();
-                header('location: index.php');
-                }
-            }
-    
+            $api = new ConnectApi();
+            $data = $api->connectApi();
+
+            $date = $api->getDate();
+            $dateTotal = $api->getDateTotal();
+
+            $_SESSION['date'] = $date;
+            $result = $api->getInfo($data, $date);
+            $resultTotal = $api->getInfo($data, $dateTotal);
+            // $_SESSION['test'] = $data;
+
+            $_SESSION['result'] = $result;
+            $_SESSION['resultTotal'] = $resultTotal;
+            dateFormat();
+            header('location: index.php');
+        }
+    }
 }
 
 
-function home() 
+function home()
 {
     include('src/view/homepage.php');
 }
@@ -231,13 +243,20 @@ function setPsw()
     $getToken = $_POST['userToken'];
     if (isset($getToken) && isset($setpsw)) {
         if ($setpsw == $confirmPsw) {
-            $newpsw = password_hash($setpsw, PASSWORD_DEFAULT);
-            $userRepository = new UserRepository();
-            $userRepository->verifPsw($getToken, $newpsw);
-        }else {
-            echo 'mot de passe non comforme';
+            if ($setpsw !== '' && $setpsw != '') {
+                $newpsw = password_hash($setpsw, PASSWORD_DEFAULT);
+                $userRepository = new UserRepository();
+                $userRepository->verifPsw($getToken, $newpsw);
+            } else {
+                header("Location:index.php?action=setPswForm&message=Un des champs est vide");
+                exit();
+            }
+        } else {
+            header("Location:index.php?action=setPswForm&message=Un des mots de passe est incorrect");
+            exit();
         }
-    }else {
-        echo 'informations incorrects';
+    } else {
+        header("Location:index.php?action=setPswForm&message=Un des mots de passe est incorrect");
+        exit();
     }
 }

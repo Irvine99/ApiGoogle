@@ -52,6 +52,14 @@
                 <label for="confirm_setpsw" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Vérification de mot de passe</label>
                 <input type="password" name="confirm_setpsw" id="confirm_setpsw" placeholder="Confirmez votre nouveau mot de passe" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
               </div>
+              <?php
+                      if (isset($_GET['message'])) {
+                echo '<div class="text-red-400 text-xs m-0">' . $_GET['message'] . '</div>';
+              }       
+              ?>
+
+
+
               <div class="content text-slate-300">
                 <p>Le mot de passe doit contennir au moins</p>
                 <ul class="requirement-list">
