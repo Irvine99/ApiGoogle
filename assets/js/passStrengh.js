@@ -48,7 +48,3 @@ passwordInput.addEventListener("keyup", (e) => {
     //     requirementItem.classList.toggle("valid", isValid);
     // }
     // });
-
-      
-
-

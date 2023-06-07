@@ -208,7 +208,45 @@ public function createToSignin(array $userForm):bool{
                 }
               
                 return true;
-              }  
+              }
+              
+              public function getInfoById($idUser) {
+                $query = '
+                    SELECT u.*, p.*, pu.*
+                    FROM user AS u
+                    INNER JOIN project_user AS pu ON u.id_user = pu.id_user
+                    INNER JOIN project AS p ON pu.id_project = p.id_project WHERE u.id_user = ?
+                ';
+                
+                $req = $this->bdd->prepare($query);
+                $req->execute([$idUser]);
+                $data = $req->fetch();
+               
+            
+      
+                    // Create a new User object and set its properties from the row data
+                    $user = new User(); 
+                    $user->id = $data['id_user'];
+                    $user->username = $data['name_user'];
+                    $user->userlastname = $data['last_name_user'];
+                    $user->email = $data['email_user'];
+                    $user->mdp = $data['password_user'];
+                    $user->id_role = $data['id_role'];
+                    $user->name = $data['name_project'];
+                    $user->logo = $data['logo_project'];
+                    $user->json = $data['json_project'];
+                    $user->id_pro = $data['id_project'];
+                    $user->token = $data['token_user'];
+                  
+                    
+  
+            
+                return $user;
+            
 
             }
+
+            }
+
+            
         

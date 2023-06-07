@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,20 +41,19 @@
 <body>
 
   <!--mobile-->
-  <?php
-  if($_SESSION['id_role'] === 1)
-  { 
-  ?>
   <div class="block">
     <div id="" class="flex overflow-hidden">
       <div class="hidden md:block">
-        <?php
-        include('src/include/sideNav.php');
-        ?>
+    
+      
+        <?php include('src/include/sideNav.php'); ?>
+    
+        
       </div>
-  <?php 
-  }
-  ?>
+
+
+
+      
 
 
       <div id="slim-content" class="flex flex-col w-full">
@@ -63,7 +63,6 @@
         <div class="flex flex-col lg:flex-row justify-between">
           <?php include('src/include/datePicker.php') ?>
           <?php include('src/include/card.php') ?>
-
         </div>
 
 

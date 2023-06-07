@@ -54,7 +54,7 @@ function deleteUser()
     $delete = $userRepository->deleteAll($id_User, $id_Project);
 
     if ($delete) {
-        echo "Deletion was successful.";
+        header("Location: index.php?action=adminPage");
     } else {
         echo "Deletion failed.";
     }
@@ -96,12 +96,16 @@ function signUp(): void
         $tmp = $user->createToSignin($_POST);
         if ($tmp && $tmppro) {
 
-            $idUserAndToken = $userRepository->insertUser($user);
-            $lastIdProject = $ProjectRepository->insertProject($project);
-            $userRepository->insertRelation($idUserAndToken['id'], $lastIdProject);
-            $token =  $idUserAndToken['token'];
-            $email_user = $user->email;
-            require_once 'src/config/mail.php';
+            
+                $idUserAndToken = $userRepository->insertUser($user);
+                $lastIdProject = $ProjectRepository->insertProject($project);
+                $userRepository->insertRelation($idUserAndToken['id'], $lastIdProject);
+                $token =  $idUserAndToken['token'];
+                $email_user = $user->email;
+                require_once 'src/config/mail.php';
+                header('Location: index.php?action=adminPage');
+            
+
         } else {
             echo 'les informations sont incorrects';
         }
@@ -115,21 +119,38 @@ function login()
     $email = $_POST['email_user'];
     $userRepo = new UserRepository();
     $user = $userRepo->getUserByEmail($email);
+
     if ($psw !== "" && $email !== "") {
         if ($user) {
 
-            if (password_verify($psw, $user->mdp)) {
 
-                $_SESSION['id_role'] = $user->id_role;
+    
+
+        if (password_verify($psw, $user->mdp)) {
+
+            $_SESSION['id_role'] = $user->id_role;
+            $userData = $user->id;
+            $dataID = $userRepo->getInfoById($userData);
+
+            $_SESSION['name_project'] = $dataID->name;
+           
+
+
+
+           
+
+               
                 $api = new ConnectApi();
                 $data = $api->connectApi();
 
                 $date = $api->getDate();
                 $dateTotal = $api->getDateTotal();
 
+
                 $_SESSION['date'] = $date;
                 $result = $api->getInfo($data, $date);
                 $resultTotal = $api->getInfo($data, $dateTotal);
+
 
                 $_SESSION['result'] = $result;
                 $_SESSION['resultTotal'] = $resultTotal;
@@ -214,6 +235,10 @@ function setPsw()
                     $newpsw = password_hash($setpsw, PASSWORD_DEFAULT);
                     $userRepository = new UserRepository();
                     $userRepository->verifPsw($getToken, $newpsw);
+
+                    header('Location: index.php');
+                    
+
                 } else {
                     header("Location:index.php?action=setPswForm&message1=Un des champs est vide&token=$getToken");
                     exit();
