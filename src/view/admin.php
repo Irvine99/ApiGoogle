@@ -45,8 +45,11 @@ require_once 'src/model/Project.php';
                   ?>
                   <div class='h-screen' id="slim-content" class="">
                   <?php include('src/include/navbar.php') ?>
-                   <?php include('src/include/header.php') ?>
-    <div>
+                 
+                  <div class="flex justify-center mt-10">
+                  <?php include('src/include/modalAdd.php') ?>
+                  </div>
+    <div class="mt-5">
         <div class="flex flex-col text-black">
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">

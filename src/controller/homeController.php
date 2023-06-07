@@ -82,14 +82,14 @@ function signUp(): void
         $tmppro = $project->createToSignin($_POST);
         $tmp = $user->createToSignin($_POST);
         if ($tmp && $tmppro) {
-            if (preg_match('/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/i', $tmp) && preg_match('/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/i', $tmppro)) {
+            
                 $idUserAndToken = $userRepository->insertUser($user);
                 $lastIdProject = $ProjectRepository->insertProject($project);
                 $userRepository->insertRelation($idUserAndToken['id'], $lastIdProject);
                 $token =  $idUserAndToken['token'];
                 $email_user = $user->email;
                 require_once 'src/config/mail.php';
-            }
+            
         } else {
             echo 'les informations sont incorrects';
         }
