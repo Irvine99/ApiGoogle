@@ -67,11 +67,11 @@ function updateUserById()
     $new_name = isset($_POST['name']) ? $_POST['name'] : null;
     $new_lastname = isset($_POST['lastname']) ? $_POST['lastname'] : null;
     $new_email = isset($_POST['email']) ? $_POST['email'] : null;
-    //$new_logo = isset($_POST['logo_client'])? $_POST['logo_client'] : null;
+    $new_logo = isset($_POST['logo_client'])? $_POST['logo_client'] : null;
     $new_json = isset($_POST['projet_json']) ? $_POST['projet_json'] : null;
     $new_proname = isset($_POST['nom_projet']) ? $_POST['nom_projet'] : null;
     $userRepository = new UserRepository();
-    $update = $userRepository->updateUserandProject($new_name, $new_lastname, $new_json, $new_proname, $new_email, $id_User, $id_Project);
+    $update = $userRepository->updateUserandProject($new_name, $new_lastname, $new_json, $new_proname, $new_email, $id_User,$new_logo, $id_Project);
     if ($update) {
         echo "Update was successful.";
     } else {

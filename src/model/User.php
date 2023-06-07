@@ -111,13 +111,13 @@ public function createToSignin(array $userForm):bool{
             }
             }
             
-            public function updateUserandProject($new_name, $new_lastname,$new_json,$new_proname,$new_email,$id_User,$id_Project){
+            public function updateUserandProject($new_name, $new_lastname,$new_json,$new_proname,$new_email,$id_User,$id_Project,$new_logo){
                 try {
                 $req = $this->bdd->prepare('UPDATE user SET email_user = ?, name_user =?, last_name_user =? WHERE id_user =?');
                 $req->execute([$new_email,$new_name,$new_lastname,$id_User]);
 
-                $req = $this->bdd->prepare('UPDATE project SET name_project =?, json_project=? WHERE id_project =?');
-                $req->execute([$new_proname,$new_json,$id_Project]);
+                $req = $this->bdd->prepare('UPDATE project SET name_project =?, json_project=?, logo_project=? WHERE id_project =?');
+                $req->execute([$new_proname,$new_json,$new_logo,$id_Project]);
 
                 return true;
                 
