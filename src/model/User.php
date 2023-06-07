@@ -195,5 +195,22 @@ public function createToSignin(array $userForm):bool{
                     return false; // token not found
                  }
               }
+
+            function verifyPassword($setpsw) {
+                $regexArray = array(
+                  array("regex" => '/.{8,}/', "index" => 2),
+                  array("regex" => '/[0-9]/', "index" => 0),
+                  array("regex" => '/[^A-Za-z0-9]/', "index" => 1)
+                );
+              
+                foreach ($regexArray as $regex) {
+                  if (!preg_match($regex["regex"], $password)) {
+                    return false;
+                  }
+                }
+              
+                return true;
+              }  
+
             }
         

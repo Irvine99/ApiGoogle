@@ -10,21 +10,20 @@ function signUpForm()
 }
 
 function setPswForm()
-{   
+{
     session_destroy();
-    
-    
+
+
     $getToken = $_GET['token'];
-    
+
     $userRepository = new UserRepository();
-    $tokenTrue=$userRepository->verifToken($getToken);
-    
+    $tokenTrue = $userRepository->verifToken($getToken);
+
     if ($tokenTrue === true) {
         $_SESSION['userToken'] = $getToken;
         require('src/view/setpsw.php');
-    }else {
+    } else {
         require('src/view/setpsw.php');
-        
     }
 }
 
@@ -136,12 +135,12 @@ function login()
     $userRepo = new UserRepository();
     $user = $userRepo->getUserByEmail($email);
     if ($user) {
-        
+
 
         if (password_verify($psw, $user->mdp)) {
 
             $_SESSION['id_role'] = $user->id_role;
-       
+
 
             $api = new ConnectApi();
             $data = $api->connectApi();
@@ -241,19 +240,25 @@ function setPsw()
     $setpsw = htmlspecialchars($_POST['setpsw']);
     $confirmPsw = htmlspecialchars($_POST['confirm_setpsw']);
     $getToken = $_POST['userToken'];
+    $userRepo = new UserRepository();
+    $verifRegex = $userRepo->verifyPassword($setpsw);
     if (isset($getToken) && isset($setpsw)) {
-        if ($setpsw == $confirmPsw) {
-            if ($setpsw !== '' && $setpsw != '') {
-                $newpsw = password_hash($setpsw, PASSWORD_DEFAULT);
-                $userRepository = new UserRepository();
-                $userRepository->verifPsw($getToken, $newpsw);
+        if ($verifRegex) {
+            if ($setpsw == $confirmPsw) {
+                if ($setpsw !== '' && $setpsw != '') {
+                    $newpsw = password_hash($setpsw, PASSWORD_DEFAULT);
+                    $userRepository = new UserRepository();
+                    $userRepository->verifPsw($getToken, $newpsw);
+                } else {
+                    header("Location:index.php?action=setPswForm&message=Un des champs est vide");
+                    exit();
+                }
             } else {
-                header("Location:index.php?action=setPswForm&message=Un des champs est vide");
+                header("Location:index.php?action=setPswForm&message=Un des mots de passe est incorrect");
                 exit();
             }
         } else {
-            header("Location:index.php?action=setPswForm&message=Un des mots de passe est incorrect");
-            exit();
+            header("Location:index.php?action=setPswForm&message=Regex pas bon&token=.$getToken.");
         }
     } else {
         header("Location:index.php?action=setPswForm&message=Un des mots de passe est incorrect");

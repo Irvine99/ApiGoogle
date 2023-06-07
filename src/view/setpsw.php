@@ -48,7 +48,7 @@
                 <input type="password" name="setpsw" id="setpsw" placeholder="Votre mot de passe" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
               </div>
 
-              <div class="pass-field">
+              <div class="pass-field2">
                 <label for="confirm_setpsw" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Vérification de mot de passe</label>
                 <input type="password" name="confirm_setpsw" id="confirm_setpsw" placeholder="Confirmez votre nouveau mot de passe" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
               </div>
@@ -64,15 +64,15 @@
                 <p>Le mot de passe doit contennir au moins</p>
                 <ul class="requirement-list">
                   <li>
-                  <i class="fa-sharp fa-solid fa-xmark"></i>
+                  <i class="fa-sharp fa-solid fa-xmark "></i>
                     <span>Un nombre</span>
                   </li>
                   <li>
-                  <i class="fa-sharp fa-solid fa-xmark"></i>
+                  <i class="fa-sharp fa-solid fa-xmark "></i>
                     <span>Un symbol spécial</span>
                   </li>
                   <li>
-                  <i class="fa-sharp fa-solid fa-xmark"></i>
+                  <i class="fa-sharp fa-solid fa-xmark "></i>
                     <span> 8 charactères minimum</span>
                   </li>
                 </ul>
