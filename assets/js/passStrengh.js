@@ -43,10 +43,3 @@ passwordInput.addEventListener("keyup", (e) => {
     // }
     // });
 
-        }else {
-            requirementItem.firstElementChild.className ="fa-sharp fa-solid fa-xmark";
-            requirementItem.classList.remove("valid");
-        }
-    });
-});
-
