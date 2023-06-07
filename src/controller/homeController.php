@@ -249,6 +249,8 @@ function setPsw()
                     $newpsw = password_hash($setpsw, PASSWORD_DEFAULT);
                     $userRepository = new UserRepository();
                     $userRepository->verifPsw($getToken, $newpsw);
+                    $userRepository->destroyToken($getToken);
+                    header('Location: index.php');
                     
                 } else {
                     header("Location:index.php?action=setPswForm&message=Un des champs est vide&token=$getToken");
