@@ -221,7 +221,7 @@ public function createToSignin(array $userForm):bool{
                 $req = $this->bdd->prepare($query);
                 $req->execute([$idUser]);
                 $data = $req->fetch();
-                $users = [];
+               
             
       
                     // Create a new User object and set its properties from the row data
@@ -237,11 +237,11 @@ public function createToSignin(array $userForm):bool{
                     $user->json = $data['json_project'];
                     $user->id_pro = $data['id_project'];
                     $user->token = $data['token_user'];
-                    $users[] = $user;
+                  
                     
   
             
-                return $users;
+                return $user;
             
 
             }
