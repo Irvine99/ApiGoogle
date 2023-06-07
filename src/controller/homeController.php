@@ -116,13 +116,16 @@ function login()
     $email = $_POST['email_user'];
     $userRepo = new UserRepository();
     $user = $userRepo->getUserByEmail($email);
+
     if ($user) {
-
-
 
         if (password_verify($psw, $user->mdp)) {
 
             $_SESSION['id_role'] = $user->id_role;
+            $userData = $user->id;
+            $dataID = $userRepo->getInfoById($userData);
+            $_SESSION['name_project'] = $dataID->name;
+           
 
 
 
@@ -135,6 +138,7 @@ function login()
             $_SESSION['date'] = $date;
             $result = $api->getInfo($data, $date);
             $resultTotal = $api->getInfo($data, $dateTotal);
+            
 
             // $_SESSION['test'] = $data;
 
