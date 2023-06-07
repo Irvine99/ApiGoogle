@@ -3,7 +3,7 @@
     <h3 class="my-2">Nom du graphique à mettre</h3>
     <canvas
         data-te-chart="line"
-        data-te-dataset-label="position"
+        data-te-dataset-label="ctr"
         data-te-labels="[      <?php 
       $count = count($results);
 
@@ -20,7 +20,7 @@
       $count = count($results);
       foreach($results as $key=>$data) {
         
-        echo "'".$data->position."'";
+        echo "'".$data->ctr."'";
         if($key !== $count - 1) {
           echo ',';
         }

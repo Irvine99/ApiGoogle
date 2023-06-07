@@ -1,10 +1,14 @@
-<div class="m-5 bg-gray-100 py-2 rounded-lg w-auto md:w-[50%] drop-shadow-xl">
-    <div class="ml-5  w-auto overflow-hidden">
-    <h3 class="my-2">Nom du graphique à mettre</h3>
+<?php $results = $_SESSION['result']; ?>
+
+<div class="m-5 bg-gray-100 py-2 rounded-lg w-auto  md:w-[50%] drop-shadow-xl">
+<div class="ml-5 w-auto overflow-hidden">
+    <h3 class="my-2">Clicks</h3>
+
     <canvas
-        data-te-chart="line"
-        data-te-dataset-label="position"
-        data-te-labels="[      <?php 
+    data-te-chart="bar"
+    data-te-dataset-label="Clicks"
+    data-te-labels="[
+      <?php 
       $count = count($results);
 
       foreach($results as $key=>$value) {
@@ -15,16 +19,19 @@
           echo ',';
         }
       } 
-    ?>]"
-        data-te-dataset-data="[<?php 
+    ?>
+      
+      ]"
+    data-te-dataset-data="[<?php 
       $count = count($results);
       foreach($results as $key=>$data) {
         
-        echo "'".$data->position."'";
+        echo "'".$data->clicks."'";
         if($key !== $count - 1) {
           echo ',';
         }
       } ?>]">
-    </canvas>
-    </div>
+  </canvas>
 </div>
+</div>
+

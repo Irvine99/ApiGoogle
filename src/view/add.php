@@ -26,32 +26,32 @@
 </head>
 
 <body>
-    <div class="bg-gray-50 dark:bg-gray-900 flex justify-center p-8">
+    <div class="bg-gray-50 dark:bg-gray-900 flex justify-center p-1 mb-2">
         <img src="../../assets/img/logo_transpa.png" </img>
     </div>
-    <section class="bg-gray-50 dark:bg-gray-900 pb-8">
+    <section class="bg-white">
         <div class=" flex flex-col items-center justify-center px-6 py-8 mx-auto md:p-12 lg:py-0">
-            <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+            <div class="w-full bg-gray-50 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-                    <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                    <h1 class="text-sm text-center font-thin leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                         Ajouter un utilisateur et son projet
                     </h1>
                     <form class="space-y-4 md:space-y-6" action="#">
                         <div>
-                            <label for="nom_projet" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nom du projet</label>
+                            <label for="nom_projet" class="block mb-2 text-sm font-medium text-gray-900">Nom du projet</label>
                             <input type="text" name="nom_projet" id="nom_projet" placeholder="Nom du projet" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
                         </div>
 
                         <div>
-                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Votre email</label>
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
                             <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="exemple@exemple.com" required="">
                         </div>
                         <div>
-                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Votre nom</label>
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nom</label>
                             <input type="text" name="name" id="name" placeholder="André" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
                         </div>
                         <div>
-                            <label for="lastname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Votre prenom</label>
+                            <label for="lastname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Prenom</label>
                             <input type="text" name="lastname" id="lastname" placeholder="Robert" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
                         </div>
 
@@ -71,6 +71,7 @@
             </div>
         </div>
     </section>
+    <?php include ('../include/footer.php'); ?>
 </body>
 
 </html>
