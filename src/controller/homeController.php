@@ -67,11 +67,11 @@ function updateUserById()
     $new_name = isset($_POST['name']) ? $_POST['name'] : null;
     $new_lastname = isset($_POST['lastname']) ? $_POST['lastname'] : null;
     $new_email = isset($_POST['email']) ? $_POST['email'] : null;
-    //$new_logo = isset($_POST['logo_client'])? $_POST['logo_client'] : null;
+    $new_logo = isset($_POST['logo_client'])? $_POST['logo_client'] : null;
     $new_json = isset($_POST['projet_json']) ? $_POST['projet_json'] : null;
     $new_proname = isset($_POST['nom_projet']) ? $_POST['nom_projet'] : null;
     $userRepository = new UserRepository();
-    $update = $userRepository->updateUserandProject($new_name, $new_lastname, $new_json, $new_proname, $new_email, $id_User, $id_Project);
+    $update = $userRepository->updateUserandProject($new_name, $new_lastname, $new_json, $new_proname, $new_email, $id_User,$new_logo, $id_Project);
     if ($update) {
         echo "Update was successful.";
     } else {
@@ -116,13 +116,16 @@ function login()
     $email = $_POST['email_user'];
     $userRepo = new UserRepository();
     $user = $userRepo->getUserByEmail($email);
+
     if ($user) {
-
-
 
         if (password_verify($psw, $user->mdp)) {
 
             $_SESSION['id_role'] = $user->id_role;
+            $userData = $user->id;
+            $dataID = $userRepo->getInfoById($userData);
+            $_SESSION['name_project'] = $dataID->name;
+           
 
 
 
@@ -135,6 +138,7 @@ function login()
             $_SESSION['date'] = $date;
             $result = $api->getInfo($data, $date);
             $resultTotal = $api->getInfo($data, $dateTotal);
+            
 
             // $_SESSION['test'] = $data;
 
@@ -215,20 +219,21 @@ function setPsw()
                     $newpsw = password_hash($setpsw, PASSWORD_DEFAULT);
                     $userRepository = new UserRepository();
                     $userRepository->verifPsw($getToken, $newpsw);
+                    header('Location: index.php');
                     
                 } else {
-                    header("Location:index.php?action=setPswForm&message=Un des champs est vide&token=$getToken");
+                    header("Location:index.php?action=setPswForm&message1=Un des champs est vide&token=$getToken");
                     exit();
                 }
             } else {
-                header("Location:index.php?action=setPswForm&message=Un des mots de passe est incorrect&token=$getToken");
+                header("Location:index.php?action=setPswForm&message2=Un des mots de passe est incorrect&token=$getToken");
                 exit();
             }
         } else {
-            header("Location:index.php?action=setPswForm&message=Regex pas bon&token=$getToken");
+            header("Location:index.php?action=setPswForm&message3=Regex pas bon&token=$getToken");
         }
     } else {
-        header("Location:index.php?action=setPswForm&message=Un des mots de passe est incorrect&token=$getToken");
+        header("Location:index.php?action=setPswForm&message4=Un des mots de passe est incorrect&token=$getToken");
         exit();
 
     }
