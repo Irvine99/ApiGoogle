@@ -129,6 +129,7 @@ function login()
         if (password_verify($psw, $user->mdp)) {
 
             $_SESSION['id_role'] = $user->id_role;
+            $_SESSION['id_user'] = $user->id;
             $userData = $user->id;
             $dataID = $userRepo->getInfoById($userData);
 
@@ -170,6 +171,9 @@ function login()
 
 function home()
 {
+    $idUser = $_SESSION['id_user'];
+    $userRepo = new UserRepository;
+    $getData = $userRepo->getInfoById($idUser);
     include('src/view/homepage.php');
 }
 

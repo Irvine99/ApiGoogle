@@ -12,7 +12,7 @@
           <!-- Second dropdown trigger -->
           <a class="flex w-full justify-end hidden-arrow flex justify-end items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none" href="#" id="dropdownMenuButton2" role="button" data-te-dropdown-toggle-ref aria-expanded="false">
             <!-- User avatar -->
-            <img src="https://tecdn.b-cdn.net/img/new/avatars/2.jpg" class="rounded-full align-middle w-[50px] md:w-[50px]" alt="" loading="lazy" />
+            <img src="<?= $getData->logo ?>" class="rounded-full align-middle w-[50px] md:w-[50px]" alt="" loading="lazy" />
           </a>
           <!-- Second dropdown menu -->
           <ul class="absolute left-auto right-0 z-[1000] float-left m-0 mt-2 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg [&[data-te-dropdown-show]]:block" aria-labelledby="dropdownMenuButton2" data-te-dropdown-menu-ref>
