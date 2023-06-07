@@ -60,7 +60,7 @@ public function createToSignin(array $userForm):bool{
             }
         }
         
-
+        
         public function findByEmailAndName (string $email, string $name){
             $req = $this ->bdd->prepare('SELECT id_user FROM user WHERE email_user =? AND name_user =? LIMIT 1');
             $req->execute([$email,$name]);
