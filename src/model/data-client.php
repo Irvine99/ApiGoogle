@@ -14,8 +14,6 @@ if ($client->isAccessTokenExpired()) {
 
 $access_token = $client->getAccessToken();
 
-var_dump($access_token);
-
 // $client->setApplicationName("sc-domain:la-ronde-des-nutons.fr");
 
 $webmastersService = new Google_Service_Webmasters($client);

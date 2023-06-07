@@ -165,43 +165,40 @@ class UserRepository extends connect_bdd
         return $users;
     }
 
-    public function verifPsw($getToken, $setpsw)
-    {
-
-        if (isset($getToken) && isset($setpsw)) {
-            $recupUser = $this->bdd->prepare('SELECT * FROM user WHERE token_user =?');
-            $recupUser->execute([$getToken]);
-
-            if ($recupUser) {
-                var_dump($recupUser);
-                $userInfo = $recupUser->fetch();
-                var_dump($userInfo);
-                if ($userInfo) {
-                    $confirmation = $this->bdd->prepare('UPDATE user SET password_user = ? WHERE token_user = ?');
-                    $confirmation->execute([$setpsw, $getToken]);
-                } else {
-                    echo "Compte déjà actif";
+            public function verifPsw($getToken,$setpsw) {
+                
+                if(isset($getToken) && isset($setpsw)) {
+                    $recupUser = $this->bdd->prepare('SELECT * FROM user WHERE token_user =?');
+                    $recupUser->execute([$getToken]);
+                    
+                    if($recupUser) {
+                        $userInfo = $recupUser->fetch();
+                        if($userInfo) {
+                            $confirmation = $this->bdd->prepare('UPDATE user SET password_user = ? WHERE token_user = ?');
+                            $confirmation->execute([$setpsw,$getToken]);
+                           
+                        }else{
+                            echo "Compte déjà actif";
+                        }
+                    }else {
+                        echo "Token ou id incorect";
+                    }
+                }else {
+                    echo "Aucun utilisateur trouvé";
                 }
-            } else {
-                echo "Token ou id incorect";
             }
-        } else {
-            echo "Aucun utilisateur trouvé";
-        }
-    }
-
-    public function verifToken($getToken)
-    {
-        $req = $this->bdd->prepare("SELECT token_user FROM user WHERE token_user=?");
-        $req->execute([$getToken]);
-        $data = $req->fetchAll();
-
-        if (count($data) > 0) {
-            return true; // token found
-        } else {
-            return false; // token not found
-        }
-    }
+            
+            public function verifToken ($getToken){
+                $req = $this->bdd->prepare("SELECT token_user FROM user WHERE token_user=?");
+                 $req->execute([$getToken]);
+                $data = $req->fetchAll();
+                
+                if (count($data) > 0) {
+                    return true; // token found
+                 } else {
+                    return false; // token not found
+                 }
+              }
 
     function verifyPassword($setpsw)
     {

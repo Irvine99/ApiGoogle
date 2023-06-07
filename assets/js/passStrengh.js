@@ -15,6 +15,7 @@ passwordInput.addEventListener("keyup", (e) => {
             if (isValid) {
                 requirementItem.firstElementChild.className ="fa-solid fa-square-check";
                 requirementItem.classList.add("valid");            
+
                            
         }else {
             requirementItem.firstElementChild.className ="fa-sharp fa-solid fa-xmark";
@@ -41,3 +42,11 @@ passwordInput.addEventListener("keyup", (e) => {
     //     requirementItem.classList.toggle("valid", isValid);
     // }
     // });
+
+        }else {
+            requirementItem.firstElementChild.className ="fa-sharp fa-solid fa-xmark";
+            requirementItem.classList.remove("valid");
+        }
+    });
+});
+
