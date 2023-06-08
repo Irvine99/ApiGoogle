@@ -39,15 +39,15 @@
 
 <body>
 
-  <!--mobile-->
-  <div class="block">
+  <!--desktop-->
+  <div class="hidden md:block">
     <div id="" class="flex overflow-hidden">
       <div class="hidden md:block">
 
         <?php include('src/include/sideNav.php'); ?>
 
       </div>
-      <div id="slim-content" class="flex flex-col w-full">
+      <div id="slim-content" class=" flex flex-col w-full">
 
         <?php include('src/include/navbar.php') ?>
         <?php include('src/include/header.php') ?>
@@ -73,25 +73,40 @@
     </div>
   </div>
   </div>
-  <!--desktop-->
-  <!-- <div class="md:hidden">
 
-    <div class="flex flex-col  w-full">
-      <?php //include('src/include/navbar.php') 
-      ?>
-      <?php //include ('src/include/header.php') 
-      ?>
-      <div class="flex flex-col mt-10">
-      <?php //include ('src/include/card.php') 
-      ?>
-      <?php //include ('src/include/chartBar.php') 
-      ?>
-      <?php //include ('src/include/chartLine.php') 
-      ?>     
+    <!--desktop-->
+    <div class="md:hidden block">
+    <div id="" class="flex overflow-hidden">
+
+      <div id="" class=" flex flex-col w-full">
+
+        <?php include('src/include/navbar.php') ?>
+        <?php include('src/include/header.php') ?>
+        <div class="flex flex-col lg:flex-row justify-between">
+          <?php include('src/include/datePicker.php') ?>
+          <?php include('src/include/card.php') ?>
+        </div>
+        <!-- //globe -->
+        <!-- <canvas id="scene"></canvas>
+                     <button>Export</button> -->
+        <div class="bg-zinc-100/50 mt-10">
+          <div class="block md:flex justify-center lg:justify-start lg:">
+            <?php include('src/include/chartBar.php') ?>
+            <?php include('src/include/chartLine.php') ?>
+          </div>
+          <div class="mt-10 block md:flex justify-center lg:justify-start lg:">
+            <?php include('src/include/chartBarClicks.php') ?>
+            <?php include('src/include/chartLineImpressions.php') ?>
+          </div>
+        </div>
+        <?php include('src/include/footer.php') ?>
       </div>
     </div>
   </div>
-</div> -->
+  </div>
+
+
+
   <!--TailwindElement -->
   
 
