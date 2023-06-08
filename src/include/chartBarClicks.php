@@ -2,7 +2,7 @@
 
 <div class="m-5 bg-gray-100 py-2 rounded-lg w-auto  md:w-[50%] drop-shadow-xl">
 <div class="ml-5 w-auto overflow-hidden">
-    <h3 class="my-2">Clicks</h3>
+<h3 class="my-2">Clics du <?= $_SESSION['startDateFormatted'] ?> au <?= $_SESSION['endDateFormatted']  ?> </h3>
 
     <canvas
     data-te-chart="bar"

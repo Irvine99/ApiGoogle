@@ -1,28 +1,29 @@
-<div class="m-auto lg:m-5 w-3/4 justify-between flex flex-col mt-16">
-    <div class="flex flex-col lg:flex-row">
+<div class=" lg:m-5 w-1/2 justify-between flex flex-col mt-16">
+    <div class="gap-4 flex flex-col w-full lg:flex-row">
         <div
-            class="mb-5 lg:mr-5 bg-gradient-to-r from-zinc-500 via-zinc-700 to-zinc-800 py-2 rounded-lg w-auto lg:w-full drop-shadow-xl">
+            class="w-1/2 mb-5 bg-gradient-to-r from-zinc-500 via-zinc-700 to-zinc-800 py-2 rounded-lg w-auto lg:w-full drop-shadow-xl">
             <div class="flex w-full h-full">
-                <div class="py-2 w-full mx-5  lg:flex flex-col  ">
-                    <div class="flex  items-center justify-between w-full">
+                <div class="py-2 w-full mx-2  lg:flex flex-col  ">
+                    <div class=" gap-4 flex flex-col  items-center justify-between w-full">
                         <div class="flex">
-                            <h3 class="text-5xl text-zinc-300">Position</h3>
+                            <h3 class="text-3xl text-zinc-300">Position</h3>
                         </div>
                         <div class="flex">
                             <h2
-                                class="mt-4 lg:mt-0 text-2xl bg-slate-300 rounded-full w-[100px] h-[100px] flex justify-center items-center">
+                                class="mt-4 lg:mt-0 text-2xl bg-slate-300 rounded-full w-[75px] h-[75px] flex justify-center items-center">
                                 <?php $number = $_SESSION['resultTotal']->rows[0]['position'];
                                 $formattedNumber = number_format($number, 2, '.', ',');
                                 echo $formattedNumber;
                                 ?>
                             </h2>
                         </div>
-                    </div>
-                    <div class="flex justify-center mt-5">
+                        <div class="flex justify-center items-end mb-1 h-full">
                         <button data-modal-target="defaultModal" data-modal-toggle="defaultModal"
                             class="bg-blue-700 py-1 px-4 rounded-lg rounded-lg  transition ease-in-out duration-300 hover:bg-blue-500 text-white"
                             type="button">
                             En savoir plus</button>
+                    </div>
+
                     </div>
 
 
@@ -33,29 +34,30 @@
             </div>
         </div>
         <div
-            class="mb-5 lg:mr-5 bg-gradient-to-r from-zinc-500 via-zinc-700 to-zinc-800 py-2 rounded-lg w-auto lg:w-full drop-shadow-xl">
+            class="w-1/2 mb-5  bg-gradient-to-r from-zinc-500 via-zinc-700 to-zinc-800 py-2 rounded-lg w-auto lg:w-full drop-shadow-xl">
             <div class="flex w-full h-full">
                 <div class="py-2 w-full mx-5 lg:flex flex-col  ">
-                    <div class="flex  items-center justify-between w-full">
+                    <div class="flex flex-col gap-4  items-center justify-between w-full">
                         <div class="flex">
-                            <h3 class="text-5xl text-zinc-300">CTR</h3>
+                            <h3 class="text-3xl text-zinc-300">CTR</h3>
                         </div>
                         <div class="flex">
                             <h2
-                                class="mt-4 lg:mt-0 text-2xl bg-slate-300 rounded-full w-[100px] h-[100px] flex justify-center items-center">
+                                class="mt-4 lg:mt-0 text-2xl bg-slate-300 rounded-full w-[75px] h-[75px] flex justify-center items-center">
                                 <?php $number = $_SESSION['resultTotal']->rows[0]['ctr'];
                                 $formattedNumber = number_format($number, 2, '.', ',');
                                 echo $formattedNumber;
                                 ?>
                             </h2>
                         </div>
-                    </div>
-                    <div class="flex justify-center mt-5">
+                        <div class="flex justify-center items-end mb-1 h-full">
                         <button data-modal-target="defaultModal1" data-modal-toggle="defaultModal1"
                             class="bg-blue-700 py-1 px-4 rounded-lg rounded-lg  transition ease-in-out duration-300 hover:bg-blue-500 text-white"
                             type="button">
                             En savoir plus</button>
                     </div>
+                    </div>
+
 
 
                 </div>
@@ -65,30 +67,31 @@
             </div>
         </div>
     </div>
-    <div class="flex flex-col lg:flex-row">
+    <div class="flex gap-4 flex-col lg:flex-row">
         <div
-            class="mb-5 lg:mr-5 bg-gradient-to-r from-zinc-500 via-zinc-700 to-zinc-800 py-2 rounded-lg w-auto lg:w-full drop-shadow-xl">
+            class="w-1/2 mb-5 bg-gradient-to-r from-zinc-500 via-zinc-700 to-zinc-800 py-2 rounded-lg w-auto lg:w-full drop-shadow-xl">
             <div class="flex w-full h-full">
                 <div class="py-2 w-full mx-5 lg:flex flex-col  ">
-                    <div class="flex  items-center justify-between w-full">
+                    <div class="flex flex-col gap-4  items-center justify-between w-full">
                         <div class="flex">
-                            <h3 class="text-5xl text-zinc-300">Impressions</h3>
+                            <h3 class="text-3xl text-zinc-300">Impressions</h3>
                         </div>
                         <div class="flex">
                             <h2
-                                class="mt-4 lg:mt-0 text-2xl bg-slate-300 rounded-full w-[100px] h-[100px] flex justify-center items-center">
+                                class="mt-4 lg:mt-0 text-2xl bg-slate-300 rounded-full w-[75px] h-[75px] flex justify-center items-center">
                                 <?php echo $_SESSION['resultTotal']->rows[0]['impressions'];
   
                                 ?>
                             </h2>
                         </div>
-                    </div>
-                    <div class="flex justify-center mt-5">
+                        <div class="flex justify-center items-end mb-1 h-full">
                         <button data-modal-target="defaultModal2" data-modal-toggle="defaultModal2"
                             class="bg-blue-700 py-1 px-4 rounded-lg rounded-lg  transition ease-in-out duration-300 hover:bg-blue-500 text-white"
                             type="button">
                             En savoir plus</button>
                     </div>
+                    </div>
+
 
 
                 </div>
@@ -98,28 +101,29 @@
             </div>
         </div>
         <div
-            class="mb-5 lg:mr-5 bg-gradient-to-r from-zinc-500 via-zinc-700 to-zinc-800 py-2 rounded-lg w-auto lg:w-full drop-shadow-xl">
+            class="w-1/2 mb-5  bg-gradient-to-r from-zinc-500 via-zinc-700 to-zinc-800 py-2 rounded-lg w-auto lg:w-full drop-shadow-xl">
             <div class="flex w-full h-full">
                 <div class="py-2 w-full mx-5 lg:flex flex-col  ">
-                    <div class="flex  items-center justify-between w-full">
+                    <div class="flex flex-col gap-4  items-center justify-between w-full">
                         <div class="flex">
-                            <h3 class="text-5xl text-zinc-300">Click</h3>
+                            <h3 class="text-3xl text-zinc-300">Click</h3>
                         </div>
                         <div class="flex">
                             <h2
-                                class="mt-4 lg:mt-0 text-2xl bg-slate-300 rounded-full w-[100px] h-[100px] flex justify-center items-center">
+                                class="mt-4 lg:mt-0 text-2xl bg-slate-300 rounded-full w-[75px] h-[75px] flex justify-center items-center">
                                 <?php echo$_SESSION['resultTotal']->rows[0]['clicks'];
                              
                                 ?>
                             </h2>
                         </div>
-                    </div>
-                    <div class="flex justify-center mt-5">
+                        <div class="flex justify-center items-end mb-1 h-full">
                         <button data-modal-target="defaultModal3" data-modal-toggle="defaultModal3"
                             class="bg-blue-700 py-1 px-4 rounded-lg rounded-lg  transition ease-in-out duration-300 hover:bg-blue-500 text-white"
                             type="button">
                             En savoir plus</button>
                     </div>
+                    </div>
+
 
 
                 </div>
@@ -186,7 +190,7 @@
                 </h3>
                 <button type="button"
                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                    data-modal-hide="defaultModal">
+                    data-modal-hide="defaultModal1">
                     <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
@@ -221,7 +225,7 @@
                 </h3>
                 <button type="button"
                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                    data-modal-hide="defaultModal">
+                    data-modal-hide="defaultModal2">
                     <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
@@ -256,7 +260,7 @@
                 </h3>
                 <button type="button"
                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                    data-modal-hide="defaultModal">
+                    data-modal-hide="defaultModal3">
                     <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
