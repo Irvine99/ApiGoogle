@@ -56,9 +56,6 @@ else if(isset($_SESSION['id_role']))
             case 'LoginTraitement':
                 login();
                 break;
-            case 'addForm':
-                addForm();
-                break; 
             case 'adminPage':
                 adminPage();
                 break;

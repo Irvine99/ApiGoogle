@@ -15,8 +15,8 @@ class Project
             return false;
         }
     
-        $projet_json = $_FILES['projet_json'];
-        if (!isset($projectForm['nom_projet']) || $projectForm['nom_projet'] == '' || !$projet_json || $projet_json['error'] !== UPLOAD_ERR_OK || pathinfo($projet_json['name'], PATHINFO_EXTENSION) !== 'json') 
+        $projet_json = $projectForm[1];
+        if (!isset($projectForm[0]) || $projectForm[0] == '' || !$projet_json || $projet_json['error'] !== UPLOAD_ERR_OK || pathinfo($projet_json['name'], PATHINFO_EXTENSION) !== 'json') 
         {
             return false;
         }
@@ -30,13 +30,13 @@ class Project
             throw new Exception("Une erreur est survenue lors de l'upload du fichier.");
         }
 
-        if(!empty($_FILES['logo_client']))
+        if(!empty($projectForm[2]))
         {
-        $nameFile = $_FILES['logo_client']['name'];
-        $typeFile = $_FILES['logo_client']['type'];
-        $tmpFile = $_FILES['logo_client']['tmp_name'];
-        $errorFile = $_FILES['logo_client']['error'];
-        $sizeFile = $_FILES['logo_client']['size'];
+        $nameFile = $projectForm[2]['name'];
+        $typeFile = $projectForm[2]['type'];
+        $tmpFile = $projectForm[2]['tmp_name'];
+        $errorFile = $projectForm[2]['error'];
+        $sizeFile = $projectForm[2]['size'];
 
         $extensions = ['png', 'jpg', 'jpeg', 'gif', 'jiff'];
         $type = ['image/png', 'image/jpg', 'image/jpeg', 'image/gif', 'image/jiff'];
@@ -76,7 +76,7 @@ class Project
         }
         }
         
-        $this->name = $projectForm['nom_projet'];
+        $this->name = $projectForm[0];
         $this->json = $uploadPath;
         $this->logo = $image ;
         return true;

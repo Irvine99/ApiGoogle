@@ -200,20 +200,20 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.302.0",
+            "version": "v0.303.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
-                "reference": "ac872f59a7b4631b12628fe990c167d18a71c783"
+                "reference": "b9c143453a94d5e6ed7257d065dcc5662619eaf4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/ac872f59a7b4631b12628fe990c167d18a71c783",
-                "reference": "ac872f59a7b4631b12628fe990c167d18a71c783",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/b9c143453a94d5e6ed7257d065dcc5662619eaf4",
+                "reference": "b9c143453a94d5e6ed7257d065dcc5662619eaf4",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6"
+                "php": "^7.4||^8.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^5.7||^8.5.13"
@@ -238,9 +238,9 @@
             ],
             "support": {
                 "issues": "https://github.com/googleapis/google-api-php-client-services/issues",
-                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.302.0"
+                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.303.0"
             },
-            "time": "2023-05-16T01:08:12+00:00"
+            "time": "2023-06-04T01:12:12+00:00"
         },
         {
             "name": "google/auth",
@@ -302,16 +302,16 @@
         },
         {
             "name": "google/cloud-bigquery",
-            "version": "v1.24.2",
+            "version": "v1.25.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-cloud-php-bigquery.git",
-                "reference": "1c82d670bfc27efbd33afbdeec74745dee31240e"
+                "reference": "fc0d9c4119fcab0379ebac7833845a213182e98d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-cloud-php-bigquery/zipball/1c82d670bfc27efbd33afbdeec74745dee31240e",
-                "reference": "1c82d670bfc27efbd33afbdeec74745dee31240e",
+                "url": "https://api.github.com/repos/googleapis/google-cloud-php-bigquery/zipball/fc0d9c4119fcab0379ebac7833845a213182e98d",
+                "reference": "fc0d9c4119fcab0379ebac7833845a213182e98d",
                 "shasum": ""
             },
             "require": {
@@ -351,9 +351,9 @@
             ],
             "description": "BigQuery Client for PHP",
             "support": {
-                "source": "https://github.com/googleapis/google-cloud-php-bigquery/tree/v1.24.2"
+                "source": "https://github.com/googleapis/google-cloud-php-bigquery/tree/v1.25.0"
             },
-            "time": "2023-05-05T23:01:42+00:00"
+            "time": "2023-06-02T23:56:27+00:00"
         },
         {
             "name": "google/cloud-core",
@@ -422,16 +422,16 @@
         },
         {
             "name": "google/cloud-datastore",
-            "version": "v1.21.2",
+            "version": "v1.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-cloud-php-datastore.git",
-                "reference": "84b10573d02b11277f6408801becdb0903f56a01"
+                "reference": "24f7e9d1c36cae4c459dbd5fa8581690b36f5fcc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-cloud-php-datastore/zipball/84b10573d02b11277f6408801becdb0903f56a01",
-                "reference": "84b10573d02b11277f6408801becdb0903f56a01",
+                "url": "https://api.github.com/repos/googleapis/google-cloud-php-datastore/zipball/24f7e9d1c36cae4c459dbd5fa8581690b36f5fcc",
+                "reference": "24f7e9d1c36cae4c459dbd5fa8581690b36f5fcc",
                 "shasum": ""
             },
             "require": {
@@ -467,9 +467,9 @@
             ],
             "description": "Cloud Datastore Client for PHP",
             "support": {
-                "source": "https://github.com/googleapis/google-cloud-php-datastore/tree/v1.21.2"
+                "source": "https://github.com/googleapis/google-cloud-php-datastore/tree/v1.22.0"
             },
-            "time": "2023-05-05T23:01:42+00:00"
+            "time": "2023-06-02T23:56:27+00:00"
         },
         {
             "name": "google/cloud-storage",
