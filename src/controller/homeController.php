@@ -34,9 +34,11 @@ function addForm()
 
 function adminPage()
 {
+    $idUser = $_SESSION['id_user'];
     $user = new User();
     $userRepo = new UserRepository();
     $allUsers = $userRepo->getAllUsers($user);
+    $getData = $userRepo->getInfoById($idUser);
     require('src/view/admin.php');
 }
 

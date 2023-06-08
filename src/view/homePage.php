@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +33,7 @@
   <!-- Date Picker flatpickr -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  
+
   <title>Vos Statistiques</title>
 </head>
 
@@ -44,18 +43,10 @@
   <div class="block">
     <div id="" class="flex overflow-hidden">
       <div class="hidden md:block">
-    
-      
+
         <?php include('src/include/sideNav.php'); ?>
-    
-        
+
       </div>
-
-
-
-      
-
-
       <div id="slim-content" class="flex flex-col w-full">
 
         <?php include('src/include/navbar.php') ?>
@@ -64,28 +55,26 @@
           <?php include('src/include/datePicker.php') ?>
           <?php include('src/include/card.php') ?>
         </div>
-
-
-            <!-- //globe -->
-            <!-- <canvas id="scene"></canvas>
+        <!-- //globe -->
+        <!-- <canvas id="scene"></canvas>
                      <button>Export</button> -->
-<div class="bg-zinc-100/50 mt-10">
-<div class="block md:flex justify-center lg:justify-start lg:">
-              <?php include('src/include/chartBar.php') ?>
-              <?php include('src/include/chartLine.php') ?>
-            </div>
-            <div class="mt-10 block md:flex justify-center lg:justify-start lg:">
-              <?php include('src/include/chartBarClicks.php') ?>
-              <?php include('src/include/chartLineImpressions.php') ?>
-            </div>
-</div>
-
+        <div class="bg-zinc-100/50 mt-10">
+          <div class="block md:flex justify-center lg:justify-start lg:">
+            <?php include('src/include/chartBar.php') ?>
+            <?php include('src/include/chartLine.php') ?>
+          </div>
+          <div class="mt-10 block md:flex justify-center lg:justify-start lg:">
+            <?php include('src/include/chartBarClicks.php') ?>
+            <?php include('src/include/chartLineImpressions.php') ?>
           </div>
         </div>
+        <?php include('src/include/footer.php') ?>
       </div>
     </div>
-    <!--desktop-->
-    <!-- <div class="md:hidden">
+  </div>
+  </div>
+  <!--desktop-->
+  <!-- <div class="md:hidden">
 
     <div class="flex flex-col  w-full">
       <?php //include('src/include/navbar.php') 
@@ -103,16 +92,17 @@
     </div>
   </div>
 </div> -->
-    <!--TailwindElement -->
-    <?php include('src/include/footer.php') ?>
+  <!--TailwindElement -->
+  
 
-    <script src="assets/js/dataPickerN.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/datepicker.min.js"></script>
+  <script src="assets/js/dataPickerN.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/datepicker.min.js"></script>
 
 </body>
+
 </html>
