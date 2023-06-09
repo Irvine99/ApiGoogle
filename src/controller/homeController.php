@@ -37,6 +37,7 @@ function setPswForm()
 
 function adminPage()
 {
+
     if($_SESSION['id_role'] === 1)
     {
         $idUser = $_SESSION['id_user'];
@@ -51,6 +52,7 @@ function adminPage()
         home();
     }
     
+
 }
 
 

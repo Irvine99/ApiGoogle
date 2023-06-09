@@ -1,4 +1,4 @@
-<div class=" lg:m-5 w-1/2 justify-between flex flex-col mt-16">
+<div class=" lg:m-5 w-3 md:w-1/2 justify-between flex flex-col mt-16">
     <div class="gap-4 flex flex-col w-full lg:flex-row">
         <div
             class="w-1/2 mb-5 bg-gradient-to-r from-zinc-500 via-zinc-700 to-zinc-800 py-2 rounded-lg w-auto lg:w-full drop-shadow-xl">
