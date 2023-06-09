@@ -43,17 +43,49 @@ require_once 'src/model/Project.php';
 </head>
 
 <body class="overflow-x-hidden">
-  <!--TailwindElement -->
-  <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
-  <?php
-  include('src/include/sideNav.php');
-  ?>
-  <div class='h-screen overflow-x-hidden' id="slim-content" class="">
-    <?php include('src/include/navbar.php') ?>
 
-    <div class="flex justify-center mt-10">
-      <?php include('src/include/modalAdd.php') ?>
-    </div>
+    <!--TailwindElement -->
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+    <?php
+                  include('src/include/sideNav.php');
+                  ?>
+                  <div class='h-screen' id="slim-content" class="">
+                  <?php include('src/include/navbar.php') ?>
+                 
+                  <div class="flex justify-center mt-10">
+                  <?php include('src/include/modalAdd.php') ?>
+                  </div>
+
+                  <div class="flex justify-center mt-10">
+                    <?php
+                      if (isset($_GET['messageOk'])) 
+                      {
+                        echo '<div class="text-green-400 text-xs m-0">' . $_GET['messageOk'] . '</div>';
+                      }
+                      if (isset($_GET['messageModifOk'])) 
+                      {
+                        echo '<div class="text-green-400 text-xs m-0">' . $_GET['messageModifOk'] . '</div>';
+                      }      
+                      if (isset($_GET['message1'])) 
+                      {
+                        echo '<div class="text-red-400 text-xs m-0">' . $_GET['message1'] . '</div>';
+                      }       
+                      if (isset($_GET['message2'])) 
+                      {
+                        echo '<div class="text-red-400 text-xs m-0">' . $_GET['message2'] . '</div>';
+                      }       
+                      if (isset($_GET['message3'])) 
+                      {
+                        echo '<div class="text-red-400 text-xs m-0">' . $_GET['message3'] . '</div>';
+                      }
+                      if (isset($_GET['messageModif1'])) 
+                      {
+                        echo '<div class="text-green-400 text-xs m-0">' . $_GET['messageModifOk'] . '</div>';
+                      }                   
+                    ?>
+                  </div>
+
+
     <div class="mt-5">
       <div class="flex flex-col text-black">
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">

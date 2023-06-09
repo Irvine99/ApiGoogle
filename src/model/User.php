@@ -13,22 +13,22 @@ class User extends Project{
    
 public function createToSignin(array $userForm):bool{
    
-    if(!isset($userForm['email']) OR $userForm['email'] == ''){
+    if(!isset($userForm[0]) OR $userForm[0] == ''){
       
         return false;
     }
-    if(!isset($userForm['name']) OR $userForm['name'] == ''){
+    if(!isset($userForm[2]) OR $userForm[2] == ''){
 
         return false;
     }
-    if(!isset($userForm['lastname']) OR $userForm['name'] == ''){
+    if(!isset($userForm[1]) OR $userForm[1] == ''){
 
         return false;
     }
 
-    $this->email = $userForm['email'];
-    $this->username = $userForm['name'];
-    $this->userlastname = $userForm['lastname'];
+    $this->email = $userForm[0];
+    $this->username = $userForm[2];
+    $this->userlastname = $userForm[1];
     
     return true;
     }
